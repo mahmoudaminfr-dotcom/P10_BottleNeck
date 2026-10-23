@@ -1,0 +1,216 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="BottleNeck_Kestra_Pipeline" name="Architecture Pipeline BottleNeck">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- TITRE -->
+        <mxCell id="title" value="Architecture d&#39;Automatisation &amp; Tests (Logigramme) - Pipeline Kestra / BottleNeck" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="220" y="20" width="760" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- TRIGGER -->
+        <mxCell id="trigger" value="⏰ TRIGGER (Planification Kestra)&#xa;Tous les 15 du mois à 09h00 (Cron : 0 9 15 * *)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="410" y="80" width="380" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- SOURCES & INGESTION -->
+        <mxCell id="src_erp" value="📄 Fichier_erp.xlsx&#xa;(825 lignes brutes)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="180" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="src_liaison" value="📄 fichier_liaison.xlsx&#xa;(825 lignes brutes)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="src_web" value="📄 Fichier_web.xlsx&#xa;(1513 lignes brutes)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="860" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- TACHE 1 : INGESTION & NETTOYAGE VALEURS MANQUANTES -->
+        <mxCell id="t1_clean" value="🛠️ Tâche 1 (Python / DuckDB SQL) : Vérification des sources, Ingestion &amp; Nettoyage&#xa;- Contrôle de présence/intégrité des 3 fichiers .xlsx &amp; connexion DuckDB (avec Retry)&#xa;- Chargement dans DuckDB (typage id_web / sku en VARCHAR) &amp; filtrage WHERE sku IS NOT NULL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="260" width="600" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- TEST 1 : VALEURS MANQUANTES -->
+        <mxCell id="test1" value="✅ TEST 1 (DuckDB SQL) : Contrôle d&#39;absence de valeurs manquantes&#xa;- Vérification 0 NULL sur product_id (erp, liaison) et sku (web_clean)&#xa;- Vérification volumétrie web_clean = 1 428 lignes exactes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="355" width="520" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- TACHE 2 : DEDOUBLONNAGE -->
+        <mxCell id="t2_dedup" value="🛠️ Tâche 2 (DuckDB SQL) : Dédoublonnage des 3 tables&#xa;- erp_dedup : unicité sur product_id&#xa;- liaison_dedup : unicité sur product_id&#xa;- web_dedup : filtrage post_type = &#39;product&#39; &amp; unicité sur sku" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="445" width="580" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- TEST 2 : UNICITE & VOLUMETRIE DEDOUBLONNAGE -->
+        <mxCell id="test2" value="✅ TEST 2 (DuckDB SQL) : Contrôle d&#39;absence de doublons &amp; Unicité des clés&#xa;- erp_dedup = 825 lignes uniques | liaison_dedup = 825 lignes uniques&#xa;- web_dedup = 714 lignes uniques (0 doublon sur les clés primaires)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="550" width="520" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- TACHE 3 : FUSION / JOINTURE -->
+        <mxCell id="t3_join" value="🛠️ Tâche 3 (DuckDB SQL) : Réconciliation &amp; Fusion (INNER JOIN)&#xa;- Jointure erp_dedup + liaison_dedup (sur product_id) + web_dedup (sur id_web = sku)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="640" width="580" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- TEST 3 : COHERENCE JOINTURE -->
+        <mxCell id="test3" value="✅ TEST 3 (DuckDB SQL) : Contrôle de cohérence de la jointure&#xa;- Table fusionnée = 714 lignes exactes | 0 NULL sur price et total_sales | price &gt; 0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="730" width="520" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- BRANCHE GAUCHE : CALCUL CA (SQL) -->
+        <mxCell id="t4_ca" value="🛠️ Tâche 4A (DuckDB SQL) : Calcul du Chiffre d&#39;Affaires&#xa;- CA par produit = ROUND(price * total_sales, 2)&#xa;- Agrégation du CA Total global" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="830" width="400" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="test4_ca" value="✅ TEST 4A (DuckDB SQL) : Contrôle de cohérence du CA&#xa;- Vérification CA Total == 70 568.60 € &amp; aucun CA négatif" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="925" width="400" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ext_xlsx" value="📊 Extraction Rapport Excel (.xlsx)&#xa;- Onglet 1 : CA par produit (714 lignes)&#xa;- Onglet 2 : CA Total (70 568.60 €)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="1020" width="360" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- BRANCHE DROITE : CALCUL Z-SCORE (PYTHON) -->
+        <mxCell id="t4_zscore" value="🐍 Tâche 4B (Python) : Calcul du Z-Score sur les prix&#xa;- z_score = (price - moyenne(price)) / ecart_type(price)&#xa;- Segmentation : Millésime si z_score &gt; 2, sinon Ordinaire" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="830" width="420" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="test4_zscore" value="✅ TEST 4B (Python) : Contrôle du Z-Score &amp; Volumétrie&#xa;- Vins Premium (z &gt; 2) == 30 | Vins Ordinaires (z &lt;= 2) == 684&#xa;- Total (30 + 684) == 714 lignes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="925" width="420" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- SOUS-BRANCHES PARALLELES CSV -->
+        <mxCell id="ext_premium" value="🍾 Branche 1 : Export CSV&#xa;vins_premium.csv&#xa;(30 vins millésimes - Pour Laure)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="1025" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ext_ordinaire" value="🍷 Branche 2 : Export CSV&#xa;vins_ordinaires.csv&#xa;(684 vins ordinaires - Pour Maria)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="1025" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- GESTION DES ERREURS / RESILIENCE -->
+        <mxCell id="errors" value="🚨 GESTION DES DYSFONCTIONNEMENTS &amp; RÉSILIENCE (Bloc &#39;errors&#39; &amp; &#39;retry&#39; Kestra)&#xa;- Si Fichier source inaccessible/corrompu ou DuckDB indisponible : Retry automatique (3 tentatives) puis arrêt sécurisé&#xa;- Si un TEST est KO : Arrêt immédiat du pipeline (Fail-Fast) pour bloquer toute extraction erronée&#xa;- Envoi automatique d&#39;une alerte / notification d&#39;erreur à l&#39;équipe Data avec le log précis de la tâche ou du test en échec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1150" width="950" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- FLECHES NOMINALES & TEST OK -->
+        <mxCell id="e1" edge="1" parent="1" source="trigger" target="src_erp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="trigger" target="src_liaison" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="trigger" target="src_web" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="src_erp" target="t1_clean" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="src_liaison" target="t1_clean" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="src_web" target="t1_clean" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="Sources OK" edge="1" parent="1" source="t1_clean" target="test1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#006600;strokeColor=#006600;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="Test OK" edge="1" parent="1" source="test1" target="t2_dedup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#006600;strokeColor=#006600;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="t2_dedup" target="test2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="Test OK" edge="1" parent="1" source="test2" target="t3_join" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#006600;strokeColor=#006600;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="t3_join" target="test3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="Test OK" edge="1" parent="1" source="test3" target="t4_ca" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#006600;strokeColor=#006600;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="Test OK" edge="1" parent="1" source="test3" target="t4_zscore" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#006600;strokeColor=#006600;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="t4_ca" target="test4_ca" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="Test OK" edge="1" parent="1" source="test4_ca" target="ext_xlsx" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#006600;strokeColor=#006600;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="t4_zscore" target="test4_zscore" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="Test OK" edge="1" parent="1" source="test4_zscore" target="ext_premium" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#006600;strokeColor=#006600;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="Test OK" edge="1" parent="1" source="test4_zscore" target="ext_ordinaire" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontStyle=1;fontColor=#006600;strokeColor=#006600;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- FLECHE INGESTION / FICHIER KO (DEPUIS TACHE 1 VERS BLOC ERRORS) -->
+        <mxCell id="ko_ingest" value="Fichier manquant / corrompu&#xa;ou DuckDB KO (après Retry)" edge="1" parent="1" source="t1_clean" target="errors" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.12;entryDx=0;entryDy=0;strokeColor=#cc0000;fontColor=#cc0000;fontStyle=1;dashed=1;strokeWidth=2;">
+          <mxGeometry x="-0.78" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1190" y="293" />
+              <mxPoint x="1190" y="1160" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- FLECHES TEST KO (ROUGES POINTILLEES VERS BLOC ERRORS) -->
+        <mxCell id="ko1" value="Test KO (Erreur)" edge="1" parent="1" source="test1" target="errors" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeColor=#cc0000;fontColor=#cc0000;fontStyle=1;dashed=1;strokeWidth=2;">
+          <mxGeometry x="-0.75" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="70" y="385" />
+              <mxPoint x="70" y="1170" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ko2" value="Test KO (Erreur)" edge="1" parent="1" source="test2" target="errors" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#cc0000;fontColor=#cc0000;fontStyle=1;dashed=1;strokeWidth=2;">
+          <mxGeometry x="-0.68" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="90" y="580" />
+              <mxPoint x="90" y="1190" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ko3" value="Test KO (Erreur)" edge="1" parent="1" source="test3" target="errors" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.45;entryDx=0;entryDy=0;strokeColor=#cc0000;fontColor=#cc0000;fontStyle=1;dashed=1;strokeWidth=2;">
+          <mxGeometry x="-0.65" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="758" />
+              <mxPoint x="1160" y="1188" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ko4a" value="Test KO" edge="1" parent="1" source="test4_ca" target="errors" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeColor=#cc0000;fontColor=#cc0000;fontStyle=1;dashed=1;strokeWidth=2;">
+          <mxGeometry x="-0.55" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="110" y="953" />
+              <mxPoint x="110" y="1210" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ko4b" value="Test KO" edge="1" parent="1" source="test4_zscore" target="errors" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeColor=#cc0000;fontColor=#cc0000;fontStyle=1;dashed=1;strokeWidth=2;">
+          <mxGeometry x="-0.55" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="955" />
+              <mxPoint x="1130" y="1210" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

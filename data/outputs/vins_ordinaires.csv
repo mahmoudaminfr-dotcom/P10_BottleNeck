@@ -1,0 +1,685 @@
+product_id,id_web,sku,post_title,onsale_web,price,stock_quantity,stock_status,total_sales,rating_count,average_rating,post_date,z_score
+4165,15075,15075,Parés Baltà Penedès Indigena 2017,1,12.0,57,instock,3.0,0,0.0,2018-02-14 15:39:43,-0.7374007984661265
+4174,16209,16209,Maurel Cabardès Tradition 2017,1,5.7,94,instock,6.0,0,0.0,2018-02-14 17:15:31,-0.9640925427584927
+5796,13895,13895,Château Saransot-Dupré Bordeaux Blanc 2016,1,12.5,12,instock,0.0,0,0.0,2019-03-19 10:41:50,-0.7194093901889546
+6106,14106,14106,Stéphane Tissot Château-Chalon 2011,1,74.8,15,instock,0.0,0,0.0,2019-06-08 09:54:21,1.522320081146666
+4246,15428,15428,Domaine Saint-Denis Mâcon Lugny 2017,1,15.3,25,instock,7.0,0,0.0,2018-02-20 10:40:13,-0.6186575038367919
+5756,7033,7033,Huile d'Olive Extra Vierge Planeta Selezione Chef 3L,1,42.2,30,instock,4.0,0,0.0,2019-03-13 13:44:44,0.34928026147505725
+6207,16077,16077,Domaine Giudicelli Patrimonio Rouge 2016,1,25.2,363,instock,37.0,0,0.0,2019-07-24 09:33:52,-0.262427619948788
+4153,16237,16237,Elian Daros Côtes du Marmandais Clos Baquey 2015,1,29.0,0,outofstock,36.0,0,0.0,2018-02-13 14:13:53,-0.12569291704228142
+6072,16028,16028,Clos du Mont-Olivet Côtes-du-Rhône Blanc 2019,1,13.6,41,instock,9.0,0,0.0,2019-05-16 15:51:57,-0.6798282919791764
+4148,1364,1364,Champagne Mailly Grand Cru Brut Rosé,1,37.5,18,instock,0.0,0,0.0,2018-02-13 13:36:44,0.18016102366964115
+5026,13913,13913,Champagne Agrapart &amp; Fils Minéral Extra Brut Blanc de Blancs Grand Cru 2012,1,86.8,2,instock,0.0,0,0.0,2018-07-18 10:46:30,1.9541138797987918
+4039,19815,19815,Pierre Jean Villa Côte Rôtie Carmina 2017,1,46.0,0,outofstock,0.0,0,0.0,2018-02-12 09:04:37,0.4860149643815637
+5715,14982,14982,François Baur Gewurztraminer Herrenweg de Turckheim 2016,1,13.7,35,instock,0.0,0,0.0,2019-01-31 15:13:51,-0.676230010323742
+4130,15339,15339,Zind-Humbrecht Pinot Gris Roche Calcaire 2017,1,23.0,0,outofstock,0.0,0,0.0,2018-02-13 11:39:19,-0.3415898163683444
+5826,15325,15325,Agnès Levet Côte Rôtie Améthyste 2017,1,41.2,12,outofstock,4.0,0,0.0,2019-03-27 17:59:49,0.31329744492071343
+4156,14941,14941,Elian Daros Côtes du Marmandais Coucou Blanc 2016,1,20.35,1,instock,6.0,0,0.0,2018-02-13 14:34:40,-0.4369442802373555
+5818,15241,15241,Maison Trimbach Riesling Grand Cru Schlossberg 2015,1,63.5,19,instock,0.0,0,0.0,2019-03-26 17:54:19,1.1157142540825806
+4398,12641,12641,Wemyss Malts Blended Malt Scotch Whisky Peat Chimney Batch Strength,1,59.0,0,outofstock,0.0,0,0.0,2018-03-22 10:53:34,0.9537915795880335
+4274,12942,12942,Domaine Sérol Vin Mousseux Rosé Turbullent Méthode Ancestrale,1,12.9,0,outofstock,0.0,0,0.0,2018-02-27 13:29:52,-0.7050162635672171
+5069,15344,15344,Albert Mann Pinot Noir Les Saintes Claires 2017,1,65.0,2,instock,0.0,0,0.0,2018-07-31 11:55:32,1.1696884789140964
+6664,15661,15661,Catherine et Claude Maréchal Savigny-Lès-Beaune Rouge 2017,1,35.6,38,instock,0.0,0,0.0,2020-02-22 14:03:10,0.11179367221638792
+4865,16274,16274,Mourgues du Grès Costières de Nîmes Capitelles Rosé 2018,1,9.8,1,instock,13.0,0,0.0,2018-05-03 13:09:18,-0.816562994885683
+4213,15718,15718,Lucien Boillot Volnay 1er Cru Les Angles 2017,1,58.8,2,instock,0.0,0,0.0,2018-02-16 10:02:13,0.9465950162771646
+4908,14395,14395,Alphonse Mellot Sancerre Blanc Edmond 2016,1,53.2,5,instock,4.0,0,0.0,2018-05-15 10:45:05,0.7450912435728394
+5769,15254,15254,Camille Giroud Marsannay Rouge Les Longeroies 2016,1,33.6,0,outofstock,0.0,0,0.0,2019-03-13 14:56:23,0.03982803910770026
+5016,14839,14839,Château Tour Des Gendres Bergerac Blanc Cuvée Des Conti 2017,1,9.3,1,instock,3.0,0,0.0,2018-07-17 14:32:01,-0.8345544031628548
+5551,13957,13957,Thierry Germain Saumur-Champigny Franc De Pied 2017,1,36.3,18,instock,0.0,0,0.0,2018-11-26 10:16:51,0.13698164380442845
+4704,15004,15004,Albert Mann Gewurztraminer 2017,1,18.2,0,outofstock,3.0,0,0.0,2018-04-17 21:08:33,-0.5143073358291947
+4976,16005,16005,Château Lafont Menaut Pessac-Leognan Rouge 2017,1,16.45,26,instock,4.0,0,0.0,2018-06-07 17:05:04,-0.5772772647992965
+4915,15615,15615,Jean-Baptiste Arena Patrimonio Blanc Morta Maio,1,25.9,14,instock,8.0,0,0.0,2018-05-15 12:00:26,-0.23723964836074732
+4650,15206,15206,Thierry Germain Saumur Blanc L'Insolite 2018,1,25.3,14,instock,5.0,0,0.0,2018-04-17 09:47:54,-0.25882933829335353
+4616,14371,14371,Alphonse Mellot Sancerre Rouge La Demoiselle 2015,1,57.0,5,instock,0.0,0,0.0,2018-04-13 15:53:44,0.8818259464793459
+4098,15378,15378,Paul Ginglinger Pinot Noir Les Rocailles 2016,1,22.1,22,instock,1.0,0,0.0,2018-02-13 09:51:50,-0.37397435126725376
+4154,15141,15141,Elian Daros Côtes du Marmandais Le Vin Est Une Fête 2017,1,9.8,128,instock,18.0,0,0.0,2018-02-13 14:26:09,-0.816562994885683
+4152,16238,16238,Elian Daros Côtes du Marmandais Chante Coucou 2016,1,19.2,57,instock,7.0,0,0.0,2018-02-13 13:57:13,-0.478324519274851
+4676,15280,15280,Domaine Rotier Gaillac Blanc Doux Les Gravels 2016,1,12.9,73,instock,0.0,0,0.0,2018-04-17 15:53:22,-0.7050162635672171
+4612,15038,15038,Gilbert Picq Chablis Vieilles Vignes 2017,1,20.6,49,instock,10.0,0,0.0,2018-04-13 15:27:12,-0.4279485760987695
+4103,16505,16505,Emile Boeckel Riesling Grand Cru Wiebelsberg 2016,1,16.3,6,instock,12.0,0,0.0,2018-02-13 10:19:23,-0.582674687282448
+4722,15880,15880,François Baur Pinot Gris Herrenweg de Turckheim 2018,1,13.7,0,outofstock,1.0,0,0.0,2018-04-18 11:31:10,-0.676230010323742
+4719,16527,16527,Domaine Schoenheitz Pinot Noir Tradition 2019,1,12.5,29,instock,15.0,0,0.0,2018-04-17 22:17:45,-0.7194093901889546
+5439,15649,15649,La Préceptorie Maury Sec Rouge Copain Comme Cochon 2018,1,13.2,0,outofstock,18.0,0,0.0,2018-09-13 15:25:52,-0.6942214186009139
+4564,15621,15621,Domaine Giudicelli Vin de France Eté Rouge 2018,1,21.7,60,instock,19.0,0,0.0,2018-04-12 09:51:40,-0.3883674778889914
+6204,14604,14604,Domaine Giudicelli Muscat du Cap Corse 2016,1,31.0,7,instock,7.0,0,0.0,2019-07-24 09:27:36,-0.053727283933593745
+4251,15032,15032,Domaine Saint-Denis Bourgogne Rouge Le Clos 2017,1,14.1,102,instock,8.0,0,0.0,2018-02-20 11:48:09,-0.6618368837020044
+5829,15329,15329,Agnès Levet Côte Rôtie Péroline 2017,1,57.0,26,instock,3.0,0,0.0,2019-03-27 18:28:15,0.8818259464793459
+4792,15733,15733,Maurice Schoech Riesling Grand Cru Kaefferkopf 2018,1,21.0,13,instock,19.0,0,0.0,2018-04-19 14:35:01,-0.41355544947703204
+5816,15237,15237,Maison Trimbach Riesling 2017,1,16.9,5,instock,0.0,0,0.0,2019-03-26 17:42:31,-0.5610849973498417
+5061,15711,15711,Lucien Boillot Gevrey Chambertin Les Evocelles 2017,1,52.6,24,instock,0.0,0,0.0,2018-07-31 10:33:12,0.723501553640233
+4227,15261,15261,La Cotelleraie Saint-Nicolas-de-Bourgueil La Croisée 2018,1,12.6,49,instock,6.0,0,0.0,2018-02-16 14:53:33,-0.7158111085335201
+6626,15790,15790,Weingut Besson-Strasser Zürich Räuschling 2018,1,33.2,1,instock,0.0,0,0.0,2020-01-23 11:23:58,0.02543491248596278
+4204,15414,15414,Mas Laval IGP Pays d'Hérault Les Pampres Rouges 2017,1,11.3,31,instock,3.0,0,0.0,2018-02-15 14:40:54,-0.7625887700541671
+4613,15030,15030,Gilbert Picq Chablis 2017,1,16.9,31,instock,9.0,0,0.0,2018-04-13 15:35:29,-0.5610849973498417
+4726,14950,14950,François Baur Pinot Noir Schlittweg 2017,1,12.7,0,outofstock,4.0,0,0.0,2018-04-18 11:53:51,-0.7122128268780858
+5960,15892,15892,Domaine Labranche Laffont Pacherenc du Vic-Bilh Sec 2017,1,12.7,27,instock,0.0,0,0.0,2019-04-18 11:22:53,-0.7122128268780858
+4927,15425,15425,Domaine La Croix Belle Côtes de Thongue Rouge La Caringole 2018,1,6.5,0,outofstock,4.0,0,0.0,2018-05-17 12:26:25,-0.9353062895150176
+5486,16130,16130,Decelle-Villa Meursault 2018,1,49.5,5,instock,9.0,0,0.0,2018-10-09 15:22:19,0.6119548223217671
+4626,807,807,Marcel Windholtz Eau de Vie de Prunelle Sauvage,1,52.9,2,instock,0.0,0,0.0,2018-04-14 11:43:35,0.7342963986065361
+4681,15933,15933,Domaine de Joy Côtes de Gascogne Blanc Moelleux Saint-André 2018,1,7.1,178,instock,12.0,0,0.0,2018-04-17 16:24:35,-0.9137165995824112
+5000,15868,15868,David Duband Côtes de Nuits Villages 2017,1,27.3,0,outofstock,6.0,0,0.0,2018-07-17 09:30:42,-0.18686370518466588
+4598,15478,15478,Marc Colin Et Fils Saint-Aubin Blanc En Montceau 2017,1,41.8,61,instock,1.0,0,0.0,2018-04-13 13:36:35,0.3348871348533195
+4046,15269,15269,Pierre Gaillard Côte Rôtie Rose Pourpre 2017,1,80.0,0,outofstock,6.0,0,0.0,2018-02-12 10:16:27,1.709430727229254
+5389,13904,13904,Australie Maverick Breechens Blend 2012,1,16.1,5,instock,0.0,0,0.0,2018-09-06 10:07:35,-0.5898712505933168
+4630,793,793,Marcel Windholtz Eau de Vie de Coing,1,62.4,3,instock,4.0,0,0.0,2018-04-14 11:52:20,1.0761331558728024
+4776,14302,14302,Château de La Liquière Pays d'Hérault Blanc A Mi Chemin 2017,1,6.8,11,instock,7.0,0,0.0,2018-04-19 13:03:31,-0.9245114445487144
+5506,14192,14192,Château de la Selve Coteaux de l'Ardèche Rouge Serre de Berty 2014,1,18.2,63,instock,0.0,0,0.0,2018-10-09 17:27:22,-0.5143073358291947
+4709,10775,10775,Albert Mann Pinot Gris Vendanges Tardives Altenbourg 2011,1,44.0,0,outofstock,0.0,0,0.0,2018-04-17 21:28:52,0.414049331272876
+4785,15448,15448,Maurice Schoech Pinot Auxerrois Vieilles Vignes 2018,1,10.1,18,instock,1.0,0,0.0,2018-04-19 13:48:57,-0.8057681499193797
+6887,15736,15736,Gratavinum Priorat 2?r 2017,1,21.8,24,instock,0.0,0,0.0,2020-04-24 21:32:59,-0.38476919623355693
+4147,15648,15648,Champagne Mailly Grand Cru Extra Brut Millésimé 2012,1,33.0,7,instock,3.0,0,0.0,2018-02-13 13:32:49,0.018238349175093913
+5618,15921,15921,"Albert Boxler Riesling Grand Cru Sommerberg ""D"" 2018",1,71.3,31,instock,0.0,0,0.0,2019-01-15 16:31:35,1.3963802232064624
+4867,16148,16148,Château De La Selve IGP Coteaux de l'Ardèche Maguelonne Rosé 2019,1,9.9,0,outofstock,1.0,0,0.0,2018-05-03 13:20:05,-0.8129647132302485
+6884,15735,15735,Domino Romano Ribera del Duero RDR 2015,1,46.5,12,instock,0.0,0,0.0,2020-04-24 20:55:26,0.5040063726587356
+4715,15196,15196,Domaine Schoenheitz Pinot Blanc Val Saint Grégoire 2017,1,11.1,30,instock,0.0,0,0.0,2018-04-17 22:04:25,-0.7697853333650359
+6615,16071,16071,Clos du Mont-Olivet Châteauneuf-du-Pape 2018,1,32.8,8,instock,0.0,0,0.0,2020-01-18 10:21:05,0.011041785864225046
+5056,13531,13531,Domaine de Montgilet Anjou Rouge 2016,1,7.5,9,instock,1.0,0,0.0,2018-07-27 10:21:50,-0.8993234729606737
+5554,13969,13969,Thierry Germain Saumur-Champigny Clos de l'Echelier 2017,1,38.0,10,instock,0.0,0,0.0,2018-11-26 10:28:41,0.19815243194681306
+4748,14632,14632,Jean-Paul Brun Saint-Amour 2017,1,14.5,14,instock,0.0,0,0.0,2018-04-18 21:29:50,-0.6474437570802669
+5900,12869,12869,Stéphane Tissot Arbois D.D. 2016,1,18.25,0,outofstock,0.0,0,0.0,2019-03-28 14:29:35,-0.5125081950014776
+4782,16564,16564,Paul Ginglinger Pinot Blanc 2017,1,9.8,22,instock,3.0,0,0.0,2018-04-19 13:41:51,-0.816562994885683
+4041,14975,14975,Pierre Gaillard Condrieu 2018,1,32.7,15,instock,0.0,0,0.0,2018-02-12 09:45:14,0.007443504208790867
+4078,13435,13435,Domaine des Bosquets Gigondas La Colline 2015,1,44.0,14,instock,10.0,0,0.0,2018-02-12 14:52:10,0.414049331272876
+4191,16263,16263,Château de La Liquière Faugères Les Amandiers Rouge 2019,1,9.3,209,instock,12.0,0,0.0,2018-02-15 10:36:35,-0.8345544031628548
+4797,14506,14506,Domaine Peyre Rose Clos des Cistes 2008,1,78.0,0,outofstock,0.0,0,0.0,2018-04-19 14:56:05,1.6374650941205662
+4671,15527,15527,Domaine Pellé Menetou Salon Rouge Les Cris 2015,1,21.9,24,instock,0.0,0,0.0,2018-04-17 15:22:16,-0.38117091457812263
+5002,14580,14580,David Duband Morey-Saint-Denis 1er Cru Les Broc 2016,1,64.9,1,instock,0.0,0,0.0,2018-07-17 09:53:18,1.1660901972586624
+4272,13089,13089,Domaine Sérol Côte Roannaise Rosé Cabochard 2016,1,9.2,25,instock,1.0,0,0.0,2018-02-27 13:20:53,-0.8381526848182893
+4669,16053,16053,Domaine Pellé Menetou Salon Blanc Le Carroir 2018,1,20.2,37,instock,1.0,0,0.0,2018-04-17 15:14:00,-0.4423417027205071
+4155,14944,14944,Elian Daros Côtes du Marmandais Le Vignoble d'Elian 2016,1,14.5,70,instock,3.0,0,0.0,2018-02-13 14:29:41,-0.6474437570802669
+6047,16264,16264,Château de La Liquière Faugères L'Ampoule 2019,1,10.9,46,instock,38.0,0,0.0,2019-05-03 11:18:00,-0.7769818966759048
+4392,11586,11586,Wemyss Malts Blended Malt Scotch Whisky Spice King,1,49.5,13,instock,0.0,0,0.0,2018-03-22 10:28:41,0.6119548223217671
+4216,15213,15213,Domaine de l'Ecu Muscadet Classic 2018,1,13.4,34,instock,1.0,0,0.0,2018-02-16 10:23:45,-0.6870248552900452
+5547,13959,13959,Thierry Germain Saumur-Champigny Terres Chaudes 2017,1,24.6,32,instock,1.0,0,0.0,2018-11-26 10:12:27,-0.2840173098813942
+4716,15657,15657,Domaine Schoenheitz Pinot Gris Herrenreben 2017,1,18.6,7,instock,0.0,0,0.0,2018-04-17 22:07:28,-0.49991420920745716
+4601,16151,16151,Catherine et Claude Maréchal Bourgogne Aligoté 2018,1,16.1,31,instock,4.0,0,0.0,2018-04-13 13:49:18,-0.5898712505933168
+6575,15479,15479,Marc Colin Et Fils Saint-Aubin 1er Cru La Chatenière 2017,1,41.8,1,instock,0.0,0,0.0,2020-01-03 17:12:27,0.3348871348533195
+7025,15887,15887,Domaine Jamet Côte Rôtie Fructus Voluptas 2018,1,69.0,2,instock,0.0,0,0.0,2020-05-02 15:00:54,1.3136197451314717
+7023,15891,15891,Camin Larredya Jurançon Sec La Virada 2018,1,27.5,15,instock,0.0,0,0.0,2020-05-02 14:53:40,-0.17966714187379715
+4954,bon-cadeau-25-euros,bon-cadeau-25-euros,Bon cadeau de 25€,1,25.0,0,instock,10.0,0,0.0,2018-06-01 13:53:46,-0.2696241832596567
+5893,13910,13910,Gilbert Picq Chablis 1er Cru Vaucoupin 2016,1,26.6,65,instock,5.0,0,0.0,2019-03-28 10:30:16,-0.21205167677270653
+4172,16210,16210,Maurel Pays d'Oc Chardonnay 2019,1,5.7,167,instock,43.0,0,0.0,2018-02-14 16:54:33,-0.9640925427584927
+5477,15526,15526,Domaine Pellé Menetou Salon Blanc Les Vignes de Ratier 2018,1,19.8,38,instock,4.0,0,0.0,2018-10-09 14:21:32,-0.45673482934224463
+4858,16342,16342,Château Turcaud Bordeaux Rosé 2019,1,6.5,257,instock,1.0,0,0.0,2018-05-03 11:37:55,-0.9353062895150176
+5806,13567,13567,Château La Croix Meunier Saint-Emilion Grand Cru 2014,1,17.4,0,outofstock,2.0,0,0.0,2019-03-19 15:34:53,-0.5430935890726699
+4401,3506,3506,Cognac Frapin VSOP,1,62.5,1,instock,1.0,0,0.0,2018-03-22 11:13:24,1.079731437528237
+4928,15047,15047,Domaine La Croix Belle Côtes de Thongue Rouge Le Champ du Coq 2016,1,7.9,1,instock,5.0,0,0.0,2018-05-17 12:29:29,-0.8849303463389363
+5760,11258,11258,Huile d'Olive Extra Vierge Planeta 50cl,1,13.1,37,instock,2.0,0,0.0,2019-03-13 14:02:06,-0.6978197002563482
+5777,14338,14338,Maurel Pays d'Oc Cabernet-Sauvignon 2017,1,5.7,132,instock,0.0,0,0.0,2019-03-15 10:13:30,-0.9640925427584927
+4632,2179,2179,Marcel Windholtz Eau de Vie de Quetsch d'Alsace Réserve Particulière,1,50.0,3,instock,0.0,0,0.0,2018-04-14 11:56:12,0.6299462305989391
+4058,16318,16318,Mourgues du Grès Costières de Nîmes Galets Rouges 2019,1,8.7,267,instock,11.0,0,0.0,2018-02-12 12:07:23,-0.8561440930954611
+5902,14095,14095,Stéphane Tissot Arbois Pinot Noir Sous La Tour 2016,1,35.1,9,instock,0.0,0,0.0,2019-03-28 14:54:20,0.09380226393921601
+4149,7086,7086,Champagne Mailly Grand Cru Intemporelle Rosé 2009,1,69.0,34,instock,0.0,0,0.0,2018-02-13 13:41:05,1.3136197451314717
+4965,16586,16586,Château Turcaud Entre-Deux-Mers 2019,1,7.1,203,instock,26.0,0,0.0,2018-06-02 09:35:14,-0.9137165995824112
+4086,16013,16013,Rimauresq Côtes de Provence Blanc Cru Classé 2019,1,16.4,31,instock,4.0,0,0.0,2018-02-12 15:32:24,-0.5790764056270137
+5546,15202,15202,Thierry Germain Saumur-Champigny Cuvée Domaine 2018,1,15.2,130,instock,6.0,0,0.0,2018-11-26 10:08:20,-0.6222557854922263
+4717,15658,15658,Domaine Schoenheitz Pinot Noir Herrenreben 2017,1,23.4,0,outofstock,6.0,0,0.0,2018-04-17 22:11:25,-0.32719668974660693
+4285,16153,16153,Château de Cazeneuve Pic Saint-Loup Le Sang Du Calvaire 2017,1,41.0,24,instock,8.0,0,0.0,2018-02-28 13:27:18,0.30610088160984456
+4749,15315,15315,Domaine de Montgilet Anjou Blanc 2016,1,11.9,140,instock,0.0,0,0.0,2018-04-18 21:33:24,-0.7409990801215609
+6666,16067,16067,Domaine Hauvette IGP Alpilles Dolia 2013,1,48.5,24,instock,0.0,0,0.0,2020-02-22 14:29:36,0.5759720057674232
+6038,15318,15318,I Fabbri Chianti Classico Gran Selezione 2015,1,48.5,11,instock,0.0,0,0.0,2019-04-25 09:47:47,0.5759720057674232
+5613,14855,14855,Albert Boxler Chasselas 2016,1,19.2,11,instock,6.0,0,0.0,2019-01-15 15:52:33,-0.478324519274851
+4070,15444,15444,Gilles Robin Crozes-Hermitage Blanc Les Marelles 2018,1,23.4,98,instock,7.0,0,0.0,2018-02-12 14:02:17,-0.32719668974660693
+7338,16230,16230,Domaine Saint-Nicolas Vin de France Blanc Les Clous 2019,1,16.3,45,instock,0.0,0,0.0,2020-07-20 11:00:00,-0.582674687282448
+5479,16305,16305,Domaine Bulliat Beaujolais Blanc 2019,1,10.2,69,instock,3.0,0,0.0,2018-10-09 14:32:21,-0.8021698682639454
+4286,16066,16066,Domaine Hauvette Les Baux de Provence Amethyste 2017,1,69.8,4,instock,10.0,0,0.0,2018-02-28 13:33:10,1.3424059983749468
+6622,15205,15205,Thierry Germain Saumur-Champigny Les Mémoires 2018,1,42.2,12,instock,0.0,0,0.0,2020-01-18 10:54:29,0.34928026147505725
+4648,16262,16262,Bernard Baudry Chinon Blanc La Croix Boissée 2018,1,24.3,9,instock,2.0,0,0.0,2018-04-17 09:34:01,-0.29481215484769735
+5519,15860,15860,Domaine Chambeyron Côtes du Rhône 2017,1,12.9,35,instock,22.0,0,0.0,2018-10-31 13:33:53,-0.7050162635672171
+4299,16578,16578,Domaine de La Tour Du Bon Bandol Rouge Saint Ferréol 2018,1,39.1,18,instock,0.0,0,0.0,2018-02-28 14:57:26,0.23773353015659132
+6573,15473,15473,Marc Colin Et Fils Chassagne-Montrachet 1er Cru Les Champs Gain 2017,1,68.3,12,instock,1.0,0,0.0,2020-01-03 17:01:21,1.288431773543431
+6751,16144,16144,Château Simone Palette Blanc 2017,1,46.5,0,outofstock,0.0,0,0.0,2020-03-10 14:03:32,0.5040063726587356
+4171,14332,14332,Le Hameau Des Ollieux Monsieur Pinot 2017,1,7.8,65,instock,1.0,0,0.0,2018-02-14 16:45:18,-0.8885286279943706
+5695,16304,16304,Philippe Nusswitz IGP Cévènnes Rosé O Pale 2019,1,6.5,123,instock,14.0,0,0.0,2019-01-30 16:32:42,-0.9353062895150176
+4200,16295,16295,Moulin de Gassac IGP Pays d'Hérault Guilhem Rosé 2019,1,5.8,190,instock,46.0,0,0.0,2018-02-15 14:05:06,-0.9604942611030582
+5761,13849,13849,Huiles d'Olive Extra Vierge Planeta 3x 10cl,1,19.5,0,outofstock,0.0,0,0.0,2019-03-13 14:05:40,-0.4675296743085478
+6621,15204,15204,Thierry Germain Saumur-Champigny La Marginale 2018,1,35.2,69,instock,3.0,0,0.0,2020-01-18 10:54:27,0.09740054559465045
+4901,14802,14802,Domaine Des Croix Beaune 1er Cru Les Cent Vignes 2017,1,41.0,36,instock,0.0,0,0.0,2018-05-15 09:44:00,0.30610088160984456
+4260,14945,14945,Chermette Domaine du Vissoux Beaujolais Blanc Collonge 2017,1,12.2,22,instock,2.0,0,0.0,2018-02-27 09:57:24,-0.7302042351552578
+4178,16160,16160,Domaine de l'Hortus Pic Saint-Loup La Bergerie Rosé 2019,1,11.5,12,instock,17.0,0,0.0,2018-02-14 17:43:30,-0.7553922067432984
+4258,14485,14485,Domaine Huet Vouvray Le Mont Sec 2017,1,32.1,0,outofstock,5.0,0,0.0,2018-02-20 15:52:12,-0.014146185723815482
+4714,15361,15361,Domaine Schoenheitz Muscat 2017,1,13.3,25,instock,3.0,0,0.0,2018-04-17 22:01:10,-0.6906231369454795
+4680,15934,15934,Domaine de Joy Côtes de Gascogne Envie de Joy 2018,1,6.3,34,instock,2.0,0,0.0,2018-04-17 16:16:34,-0.9425028528258863
+4099,15813,15813,Paul Ginglinger Riesling Drei Exa 2018,1,12.8,43,instock,0.0,0,0.0,2018-02-13 09:57:24,-0.7086145452226514
+4190,16191,16191,Le Pas de l'Escalette Coteaux du Languedoc Ze Rozé 2019,1,12.1,0,outofstock,5.0,0,0.0,2018-02-15 10:33:55,-0.7338025168106921
+4176,15629,15629,Domaine de l'Hortus Pic Saint-Loup La Bergerie Rouge 2018,1,13.5,276,instock,9.0,0,0.0,2018-02-14 17:25:46,-0.6834265736346108
+4301,16553,16553,Domaine de La Tour Du Bon Bandol Rosé 2019,1,17.5,14,instock,3.0,0,0.0,2018-02-28 15:20:21,-0.5394953074172354
+4179,16166,16166,Domaine de l'Hortus Pic Saint-Loup La Grande Cuvée 2018,1,24.0,73,instock,7.0,0,0.0,2018-02-14 17:48:16,-0.3056069998140006
+5608,15944,15944,Domaine Weinbach Gewurztraminer Cuvée Théo 2018,1,30.5,20,instock,2.0,0,0.0,2019-01-15 14:47:12,-0.07171869221076566
+5907,12882,12882,Domaine de Montbourgeau Vin de Paille 2013,1,17.7,5,instock,0.0,0,0.0,2019-03-28 17:08:38,-0.5322987441063667
+4250,16317,16317,Domaine Saint-Denis Bourgogne Rouge Clos de la Coque 2018,1,19.5,14,instock,30.0,0,0.0,2018-02-20 11:38:11,-0.4675296743085478
+4647,16525,16525,Bernard Baudry Chinon Rouge La Croix Boissée 2017,1,28.5,48,instock,8.0,0,0.0,2018-04-17 09:28:58,-0.14368432531945333
+5956,15895,15895,Clos du Prieur Terrasses du Larzac 2018,1,17.2,12,instock,0.0,0,0.0,2019-04-18 09:23:08,-0.5502901523835386
+4686,16324,16324,Cosse Maisonneuve Cahors Solis 2018,1,14.0,6,instock,2.0,0,0.0,2018-04-17 16:47:34,-0.6654351653574389
+5694,14661,14661,Philippe Nusswitz Duché d'Uzès Orénia Rouge Réserve 2016,1,12.7,62,instock,5.0,0,0.0,2019-01-30 16:29:06,-0.7122128268780858
+4198,16322,16322,Moulin de Gassac IGP Pays d'Hérault Guilhem Rouge 2019,1,5.8,105,instock,0.0,0,0.0,2018-02-15 13:51:32,-0.9604942611030582
+4603,15147,15147,Catherine et Claude Maréchal Ladoix Rouge Les Chaillots 2017,1,31.5,39,instock,1.0,0,0.0,2018-04-13 13:59:17,-0.035735875656421834
+4605,15148,15148,Catherine et Claude Maréchal Savigny-Lès-Beaune Rouge 2016,1,32.2,1,instock,0.0,0,0.0,2018-04-13 14:16:01,-0.010547904068381048
+4158,16093,16093,Planeta Sicilia Etna Rosso 2018,1,18.5,0,outofstock,0.0,0,0.0,2018-02-13 14:48:58,-0.5035124908628916
+4277,14865,14865,I Fabbri Chianti Classico Riserva 2015,1,24.8,0,outofstock,3.0,0,0.0,2018-02-27 13:53:06,-0.27682074657052547
+4358,13854,13854,Champagne Larmandier-Bernier Grand Cru Vieilles Vignes du Levant 2008,1,77.0,0,outofstock,0.0,0,0.0,2018-03-02 11:03:30,1.6014822775662223
+4267,16537,16537,Domaine Bulliat Morgon Amphore Cou de Jus 2019,1,19.0,21,instock,2.0,0,0.0,2018-02-27 10:56:17,-0.4855210825857197
+4977,14930,14930,Château Lafont Menaut Pessac-Leognan Blanc 2017,1,16.3,47,instock,3.0,0,0.0,2018-06-07 17:11:47,-0.582674687282448
+4683,16239,16239,Château Plaisance Fronton Rosé 2019,1,9.1,42,instock,1.0,0,0.0,2018-04-17 16:36:10,-0.8417509664737236
+4217,15672,15672,Domaine de l'Ecu Muscadet Granite 2018,1,17.1,17,instock,0.0,0,0.0,2018-02-16 10:38:32,-0.5538884340389729
+4224,15306,15306,Pierre Martin Sancerre Chavignol Rouge 2017,1,17.2,13,instock,2.0,0,0.0,2018-02-16 14:22:18,-0.5502901523835386
+4219,12599,12599,Domaine de l'Ecu Muscadet Orthogneiss 2014,1,16.7,0,outofstock,1.0,0,0.0,2018-02-16 10:46:59,-0.5682815606607106
+4194,15441,15441,Château de La Liquière Faugères 2017,1,10.8,5,instock,9.0,0,0.0,2018-02-15 11:47:07,-0.7805801783313391
+4759,16229,16229,Domaine Saint-Nicolas Fiefs Vendéens Rouge Reflets 2018,1,16.9,49,instock,0.0,0,0.0,2018-04-18 22:15:13,-0.5610849973498417
+4202,15655,15655,Mas de Daumas Gassac IGP Saint-Guilhem-le-Désert Blanc 2019,1,38.0,46,instock,0.0,0,0.0,2018-02-15 14:21:07,0.19815243194681306
+4350,12588,12588,Champagne Egly-Ouriet Grand Cru Extra Brut V.P.,1,79.5,20,instock,0.0,0,0.0,2018-03-02 10:00:02,1.691439318952082
+5969,13211,13211,Zind-Humbrecht Riesling Clos Windsbuhl 2014,1,69.0,0,outofstock,0.0,0,0.0,2019-04-18 17:36:03,1.3136197451314717
+4032,19814,19814,Pierre Jean Villa IGP Collines Rhodaniennes Gamine 2018,1,14.1,0,outofstock,3.0,0,0.0,2018-02-09 14:01:05,-0.6618368837020044
+6886,14897,14897,Gratavinum Priorat GV5 2011,1,42.0,0,outofstock,0.0,0,0.0,2020-04-24 21:18:32,0.3420836981641884
+5484,15756,15756,David-Beaupère Juliénas Vayolette 2017,1,21.6,0,outofstock,1.0,0,0.0,2018-10-09 15:02:42,-0.3919657595444257
+4288,15292,15292,Domaine Hauvette IGP Alpilles Jaspe 2017,1,26.7,8,instock,1.0,0,0.0,2018-02-28 13:43:33,-0.20845339511727223
+5614,14856,14856,Albert Boxler Crémant d'Alsace Brut 2014,1,19.2,39,instock,3.0,0,0.0,2019-01-15 16:00:35,-0.478324519274851
+5712,14241,14241,Albert Mann Gewurztraminer Vendanges Tardives Altenbourg 2015,1,57.6,0,outofstock,1.0,0,0.0,2019-01-31 14:57:35,0.9034156364119522
+6627,15791,15791,Weingut Besson-Strasser Zürich Fumé 2017,1,41.8,16,instock,1.0,0,0.0,2020-01-23 11:39:24,0.3348871348533195
+6926,15845,15845,Château Jean Faure Saint-Emilion Grand Cru 2016,1,49.9,24,instock,1.0,0,0.0,2020-04-25 12:43:23,0.6263479489435045
+4300,15567,15567,Domaine de La Tour Du Bon Bandol Rouge En Sol 2017,1,44.0,15,instock,1.0,0,0.0,2018-02-28 15:13:09,0.414049331272876
+4892,15952,15952,Jacqueson Rully Rouge Les Chaponnières 2018,1,20.1,34,instock,3.0,0,0.0,2018-05-11 15:05:32,-0.44593998437594146
+5483,15753,15753,David-Beaupère Juliénas La Bottière Vieilles Vignes 2018,1,17.9,22,instock,0.0,0,0.0,2018-10-09 14:59:27,-0.525102180795498
+4297,16246,16246,Domaine de La Tour Du Bon Bandol Blanc 2019,1,19.0,26,instock,0.0,0,0.0,2018-02-28 14:46:15,-0.4855210825857197
+5696,15797,15797,Planeta Sicilia Etna Bianco 2018,1,17.5,35,instock,0.0,0,0.0,2019-01-30 16:47:30,-0.5394953074172354
+5963,15574,15574,Domaine de l'Ancienne Cure Bergerac Blanc Sec L'Abbaye 2016,1,13.5,28,instock,0.0,0,0.0,2019-04-18 11:39:43,-0.6834265736346108
+4963,15958,15958,Château Turcaud Bordeaux Rouge 2016,1,7.0,289,instock,2.0,0,0.0,2018-06-02 09:28:24,-0.9173148812378457
+4203,15415,15415,Mas Laval IGP Pays d'Hérault Les Pampres Blancs 2018,1,9.9,89,instock,6.0,0,0.0,2018-02-15 14:33:42,-0.8129647132302485
+4677,15282,15282,Domaine Rotier Gaillac Rouge Les Gravels 2016,1,9.5,161,instock,1.0,0,0.0,2018-04-17 15:56:56,-0.8273578398519861
+4210,15720,15720,Lucien Boillot Nuits-Saint-Georges 1er Cru Les Pruliers 2017,1,79.8,0,outofstock,0.0,0,0.0,2018-02-16 09:43:40,1.7022341639183851
+4137,13209,13209,Zind-Humbrecht Muscat Grand Cru Goldert 2015,1,29.8,0,outofstock,0.0,0,0.0,2018-02-13 11:49:42,-0.09690666379880632
+4794,12771,12771,Maurice Schoech Riesling Grand Cru Rangen de Thann 2014,1,41.6,0,outofstock,0.0,0,0.0,2018-04-19 14:41:18,0.3276905715424509
+5474,14679,14679,Domaine Saint-Nicolas Fiefs Vendéens Rouge La Grande Pièce 2013,1,42.0,0,outofstock,4.0,0,0.0,2018-10-09 14:05:15,0.3420836981641884
+4780,13096,13096,Maurice Schoech Crémant d'Alsace Brut Rosé Bulles de Granite,1,13.7,12,instock,1.0,0,0.0,2018-04-19 13:29:50,-0.676230010323742
+6093,15487,15487,Château de Villeneuve Saumur-Champigny 2017,1,12.6,0,outofstock,1.0,0,0.0,2019-06-04 17:04:39,-0.7158111085335201
+5703,11736,11736,Domaine de l'Ecu Muscadet Taurus 2012,1,29.4,1,instock,0.0,0,0.0,2019-01-31 13:19:51,-0.11129979042054393
+4269,16244,16244,Domaine Sérol Côte Roannaise Les Originelles 2019,1,10.2,1,instock,0.0,0,0.0,2018-02-27 13:09:12,-0.8021698682639454
+4795,3568,3568,Emile Boeckel Crémant Brut Rosé,1,12.0,34,instock,10.0,0,0.0,2018-04-19 14:48:15,-0.7374007984661265
+4240,15436,15436,Domaine Augustin Collioure Rouge Adéodat 2017,1,28.0,1,instock,0.0,0,0.0,2018-02-20 09:49:21,-0.16167573359662524
+5894,16539,16539,Thevenet Quintaine Viré-Clessé Emilian Gillet 2017,1,15.4,18,instock,5.0,0,0.0,2019-03-28 10:42:01,-0.6150592221813576
+6129,14570,14570,Moulin de Gassac IGP Pays d'Hérault Guilhem Blanc 2017,1,5.2,30,instock,0.0,0,0.0,2019-06-28 18:01:06,-0.9820839510356646
+4049,16043,16043,Pierre Gaillard Saint-Joseph Rouge 2018,1,19.3,46,instock,1.0,0,0.0,2018-02-12 10:41:11,-0.4747262376194165
+5006,15870,15870,David Duband Nuits-Saint-Georges 2017,1,48.7,0,outofstock,0.0,0,0.0,2018-07-17 10:14:28,0.5831685690782922
+5773,15264,15264,Decelle-Villa Auxey-Duresses Blanc 2017,1,32.8,18,instock,3.0,0,0.0,2019-03-13 15:12:41,0.011041785864225046
+4739,14366,14366,Jean-Paul Brun Beaujolais Le Ronsay 2016,1,7.4,50,instock,0.0,0,0.0,2018-04-18 21:00:55,-0.9029217546161081
+6578,15647,15647,Saumaize-Michelin Pouilly-Fuissé Ampélopsis 2016,1,40.0,0,outofstock,7.0,0,0.0,2020-01-04 10:02:37,0.27011806505550073
+4353,12587,12587,Champagne Egly-Ouriet Grand Cru Brut Rosé,1,79.5,11,instock,3.0,0,0.0,2018-03-02 10:37:26,1.691439318952082
+5804,14955,14955,Château Le Puy Bordeaux Côtes-de-Francs Emilien 2016,1,25.0,0,outofstock,1.0,0,0.0,2019-03-19 11:43:49,-0.2696241832596567
+5968,13215,13215,Zind-Humbrecht Pinot Gris Clos Windsbuhl 2013,1,71.5,18,instock,0.0,0,0.0,2019-04-18 17:05:30,1.4035767865173314
+6094,15486,15486,Château de Villeneuve Saumur-Champigny Clos de la Bienboire 2018,1,13.4,2,instock,0.0,0,0.0,2019-06-04 17:23:20,-0.6870248552900452
+5768,15183,15183,Camille Giroud Maranges Rouge 1er Cru Le Croix Moines 2016,1,35.6,0,outofstock,1.0,0,0.0,2019-03-13 14:49:54,0.11179367221638792
+4718,15670,15670,Domaine Schoenheitz Pinot Noir Val Saint Grégoire 2017,1,18.2,19,instock,0.0,0,0.0,2018-04-17 22:14:29,-0.5143073358291947
+4619,11049,11049,Alphonse Mellot Sancerre Rouge En Grands Champs 2012,1,59.0,5,instock,0.0,0,0.0,2018-04-13 16:07:49,0.9537915795880335
+6632,15794,15794,Weingut Besson-Strasser Zürich Pinot Noir Chlosterberg 2016,1,52.7,2,instock,1.0,0,0.0,2020-01-23 12:06:12,0.7270998352956675
+4307,15946,15946,Domaine de l'Idylle Savoie Mondeuse Le Tithonien 2018,1,10.9,0,outofstock,0.0,0,0.0,2018-02-28 16:42:41,-0.7769818966759048
+4730,5646,5646,Domaine Muré Crémant d'Alsace Cuvée Prestige,1,14.3,6,instock,0.0,0,0.0,2018-04-18 20:24:22,-0.6546403203911356
+6103,14100,14100,Stéphane Tissot Arbois Trousseau Amphore 2017,1,40.7,0,outofstock,0.0,0,0.0,2019-06-08 09:39:05,0.2953060366435415
+5394,15462,15462,Chili Valdivieso Merlot 2017,1,10.7,4,instock,0.0,0,0.0,2018-09-06 10:45:03,-0.7841784599867735
+6205,16565,16565,Domaine Giudicelli Vin de France Corail Rouge 2019,1,20.2,109,instock,0.0,0,0.0,2019-07-24 09:28:46,-0.4423417027205071
+4662,16081,16081,Pierre Martin Sancerre Les Monts Damnés 2018,1,20.8,24,instock,0.0,0,0.0,2018-04-17 10:38:36,-0.42075201278790075
+4073,13074,13074,Château de Vaudieu Châteauneuf-du-Pape L'Avenue 2015,1,77.8,11,instock,0.0,0,0.0,2018-02-12 14:25:28,1.6302685308096974
+4223,16585,16585,Xavier Frissant Touraine Sauvignon 2019,1,9.7,180,instock,3.0,0,0.0,2018-02-16 14:03:16,-0.8201612765411174
+4609,15145,15145,François Bergeret Hautes Côtes de Beaune Rouge 2017,1,11.8,237,instock,0.0,0,0.0,2018-04-13 14:31:47,-0.7445973617769952
+4689,13736,13736,Domaine Plageoles Côtes du Tarn Blanc Sec Ondenc,1,12.8,6,instock,1.0,0,0.0,2018-04-17 17:05:09,-0.7086145452226514
+4197,16256,16256,Château de La Liquière Faugères Les Amandiers Rosé 2019,1,9.4,24,instock,8.0,0,0.0,2018-02-15 12:02:37,-0.8309561215074205
+4264,15665,15665,Chermette Domaine du Vissoux Moulin à Vent Les Trois Roches 2018,1,17.8,48,instock,2.0,0,0.0,2018-02-27 10:30:04,-0.5287004624509323
+5932,523,523,Cognac Normandin Mercier VFC,1,59.9,3,instock,0.0,0,0.0,2019-04-06 15:25:58,0.9861761144869429
+5747,15631,15631,Thibaud Boudignon Anjou Blanc 2018,1,24.5,1,instock,21.0,0,0.0,2019-02-21 16:19:41,-0.28761559153682864
+5617,14844,14844,Albert Boxler Pinot Gris Réserve 2016,1,27.8,12,instock,3.0,0,0.0,2019-01-15 16:18:18,-0.16887229690749397
+6041,13073,13073,Château de Vaudieu Châteauneuf-du-Pape Amiral G 2015,1,71.7,4,instock,0.0,0,0.0,2019-04-25 12:39:20,1.4107733498282002
+4629,2534,2534,Marcel Windholtz Eau de Vie de Fraise,1,52.4,3,instock,2.0,0,0.0,2018-04-14 11:50:29,0.7163049903293641
+4196,13032,13032,Château de La Liquière Faugères Tucade 2015,1,27.2,13,instock,2.0,0,0.0,2018-02-15 11:58:43,-0.19046198684010032
+4337,4679,4679,Champagne Mailly Grand Cru Les Echansons 2007,1,83.0,13,instock,0.0,0,0.0,2018-03-01 14:19:24,1.8173791768922853
+4727,16540,16540,Paul Ginglinger Riesling Grand Cru Pfersigberg 2018,1,26.0,33,instock,2.0,0,0.0,2018-04-18 12:00:04,-0.23364136670531288
+4996,14508,14508,Domaine Peyre Rose Marlène N°3 2008,1,78.0,33,instock,0.0,0,0.0,2018-07-12 14:05:47,1.6374650941205662
+7247,13127-1,13127-1,Clos du Mont-Olivet Châteauneuf-du-Pape 2007,1,54.8,23,instock,0.0,0,0.0,2020-06-09 15:42:04,0.8026637500597893
+4918,15533,15533,Alain Graillot Crozes-Hermitage Rouge La Guiraude 2016,1,37.2,0,outofstock,24.0,0,0.0,2018-05-17 11:09:36,0.1693661787033381
+4094,15676,15676,Paul Ginglinger Gewurztraminer Wahlenbourg 2017,1,13.7,24,instock,0.0,0,0.0,2018-02-13 09:24:04,-0.676230010323742
+4275,14864,14864,I Fabbri Chianti Classico Lamole 2017,1,14.9,14,instock,12.0,0,0.0,2018-02-27 13:33:54,-0.6330506304585295
+4139,13217,13217,Zind-Humbrecht Gewurztraminer Grand Cru Rangen De Thann Clos Saint-Urbain 2013,1,77.4,7,instock,0.0,0,0.0,2018-02-13 11:58:08,1.6158754041879602
+4405,13230,13230,Cognac Frapin Château de Fontpinot XO 1/2,1,68.1,6,instock,0.0,0,0.0,2018-03-22 11:40:06,1.2812352102325621
+4670,15525,15525,Domaine Pellé Menetou Salon Blanc Morogues 2018,1,17.0,93,instock,2.0,0,0.0,2018-04-17 15:18:53,-0.5574867156944073
+4939,15338,15338,Oratoire Saint Martin Cairanne Blanc Réserve des Seigneurs 2018,1,12.9,0,outofstock,0.0,0,0.0,2018-05-17 13:41:23,-0.7050162635672171
+5903,14099,14099,Stéphane Tissot Arbois Trousseau Singulier 2017,1,27.3,1,instock,0.0,0,0.0,2019-03-28 14:59:48,-0.18686370518466588
+4618,14372,14372,Alphonse Mellot Sancerre Rouge La Moussière 2014,1,30.6,3,instock,0.0,0,0.0,2018-04-13 16:03:28,-0.06812041055533123
+4265,15136,15136,Domaine Bulliat Beaujolais Villages Bibine 2018,1,9.6,21,instock,3.0,0,0.0,2018-02-27 10:34:22,-0.8237595581965517
+4962,15737,15737,Château Turcaud Bordeaux Blanc Cuvée Majeure 2018,1,11.3,95,instock,14.0,0,0.0,2018-06-02 09:23:21,-0.7625887700541671
+4649,16261,16261,Bernard Baudry Chinon Blanc 2018,1,16.5,5,instock,1.0,0,0.0,2018-04-17 09:37:34,-0.5754781239715793
+5795,13291,13291,Château de Chantegrive Graves Blanc Caroline 2016,1,23.0,18,instock,0.0,0,0.0,2019-03-19 10:30:57,-0.3415898163683444
+5764,15818,15818,Parcé Frères Collioure Rouge Petit Gus 2018,1,12.9,84,instock,12.0,0,0.0,2019-03-13 14:17:23,-0.7050162635672171
+3847,15298,15298,Pierre Jean Villa Saint-Joseph Préface 2018,1,24.2,0,outofstock,6.0,0,0.0,2018-02-08 12:58:52,-0.2984104365031318
+4673,16057,16057,Domaine Pellé Sancerre Rouge La Croix Au Garde 2017,1,19.8,35,instock,0.0,0,0.0,2018-04-17 15:29:17,-0.45673482934224463
+5628,12366,12366,Parés Baltà Penedès Hisenda Miret 2013,1,25.0,20,instock,0.0,0,0.0,2019-01-29 15:23:12,-0.2696241832596567
+4187,16189,16189,Le Pas de l'Escalette Languedoc Les Petits Pas 2019,1,13.3,90,instock,42.0,0,0.0,2018-02-15 10:10:23,-0.6906231369454795
+4923,15928,15928,Cave de Castelmaure Corbières Rouge Vigneron 2018,1,7.0,143,instock,10.0,0,0.0,2018-05-17 11:53:08,-0.9173148812378457
+5610,14912,14912,Domaine Weinbach Pinot Blanc 2017,1,18.0,11,instock,0.0,0,0.0,2019-01-15 15:00:13,-0.5215038991400636
+4242,15310,15310,Parcé Frères Côtes du Roussillon Villages Zoé Rouge 2018,1,8.6,85,instock,14.0,0,0.0,2018-02-20 10:07:41,-0.8597423747508954
+5770,15178,15178,Camille Giroud Santenay Blanc 2017,1,34.4,54,instock,4.0,0,0.0,2019-03-13 15:01:34,0.06861429235117522
+4042,16042,16042,Pierre Gaillard Cornas 2017,1,31.2,34,instock,7.0,0,0.0,2018-02-12 09:54:27,-0.04653072062272501
+5778,15561,15561,Maurel Pays d'Oc Merlot 2018,1,5.8,36,instock,24.0,0,0.0,2019-03-15 10:20:59,-0.9604942611030582
+4678,15281,15281,Domaine Rotier Gaillac Rouge L'Ame 2016,1,29.8,30,instock,0.0,0,0.0,2018-04-17 16:06:47,-0.09690666379880632
+5062,15713,15713,Lucien Boillot Gevrey Chambertin 2017,1,45.0,4,instock,2.0,0,0.0,2018-07-31 10:51:21,0.45003214782721984
+4558,15426,15426,Domaine de Montcalmès Terrasses du Larzac Rouge 2017,1,28.1,96,instock,3.0,0,0.0,2018-04-11 13:32:19,-0.1580774519411908
+4628,802,802,Marcel Windholtz Eau de Vie de Marc de Muscat,1,39.6,2,instock,0.0,0,0.0,2018-04-14 11:48:19,0.25572493843376326
+6042,16159,16159,Domaine La Croix Belle Côtes de Thongue Rosé Les Grillons 2019,1,8.5,0,outofstock,18.0,0,0.0,2019-04-26 11:08:24,-0.86334065640633
+4758,15859,15859,Domaine Saint-Nicolas Fiefs Vendéens Rouge Cuvée Jacques 2016,1,24.3,22,instock,0.0,0,0.0,2018-04-18 22:12:03,-0.29481215484769735
+5010,15073,15073,Domaine des Comtes Lafon Monthélie 1er Cru Les Duresses 2017,1,55.6,17,instock,0.0,0,0.0,2018-07-17 10:56:21,0.8314500033032645
+5380,16022,16022,Nouvelle-Zélande Marlborough Momo Sauvignon Blanc 2018,1,18.0,24,instock,0.0,0,0.0,2018-09-01 15:39:38,-0.5215038991400636
+5706,15674,15674,Domaine des Terres d'Ocre Saint-Pourçain Blanc Instant T 2018,1,10.3,22,instock,0.0,0,0.0,2019-01-31 14:08:10,-0.798571586608511
+5550,13958,13958,Thierry Germain Saumur-Champigny La Marginale 2017,1,34.3,0,outofstock,0.0,0,0.0,2018-11-26 10:16:49,0.06501601069574078
+5705,15360,15360,Domaine Huet Vouvray Pétillant Brut 2014,1,19.8,9,instock,2.0,0,0.0,2019-01-31 13:42:46,-0.45673482934224463
+5890,15775,15775,Saumaize-Michelin Saint-Véran Les Crèches 2018,1,19.3,55,instock,0.0,0,0.0,2019-03-28 10:11:26,-0.4747262376194165
+6108,14797,14797,Gilles Robin Cornas 2016,1,46.0,0,outofstock,0.0,0,0.0,2019-06-08 10:05:31,0.4860149643815637
+4180,15783,15783,Domaine de l'Hortus Val de Montferrand La Grande Cuvée Blanc 2018,1,24.0,47,instock,0.0,0,0.0,2018-02-14 17:55:16,-0.3056069998140006
+5024,11996,11996,Champagne Agrapart &amp; Fils Les 7 Crus Brut Blanc de Blancs,1,45.0,0,outofstock,0.0,0,0.0,2018-07-18 10:05:56,0.45003214782721984
+4104,15683,15683,Emile Boeckel Riesling Brandluft 2018,1,9.7,37,instock,12.0,0,0.0,2018-02-13 10:23:45,-0.8201612765411174
+4633,804,804,Marcel Windholtz Eau de Vie de Mirabelle d'Alsace Réserve Particulière,1,52.4,2,instock,3.0,0,0.0,2018-04-14 11:59:32,0.7163049903293641
+5443,14809,14809,La Rectorie Banyuls Léon Parcé 2016,1,23.6,2,instock,5.0,0,0.0,2018-09-13 16:17:15,-0.32000012643573805
+6101,14089,14089,Stéphane Tissot Arbois Blanc La Mailloche 2016,1,36.9,16,instock,0.0,0,0.0,2019-06-08 09:33:48,0.1585713337370348
+4910,13809,13809,Antoine-Marie Arena Vin de France Rouge San Giovanni 2017,1,17.3,0,outofstock,4.0,0,0.0,2018-05-15 11:11:59,-0.5466918707281042
+6930,16135,16135,Mouthes Le Bihan Côtes de Duras L'Aimé Chai 2015,1,8.4,83,instock,5.0,0,0.0,2020-04-25 13:22:38,-0.8669389380617644
+4229,15403,15403,Mérieau Touraine L'Arpent des Vaudons 2018,1,9.6,26,instock,0.0,0,0.0,2018-02-16 15:21:11,-0.8237595581965517
+4974,16004,16004,Château du Couvent Pomerol 2017,1,23.0,2,instock,5.0,0,0.0,2018-06-07 16:27:25,-0.3415898163683444
+5504,16146,16146,Château de la Selve Coteaux de l'Ardèche Blanc Saint-Régis Blanc 2019,1,13.8,35,instock,3.0,0,0.0,2018-10-09 17:08:52,-0.6726317286683076
+6568,15707,15707,Decelle-Villa Chambolle-Musigny 2017,1,72.0,19,instock,0.0,0,0.0,2020-01-03 16:37:41,1.4215681947945034
+4597,14000,14000,Marc Colin Et Fils Chassagne-Montrachet Blanc Les Vide-Bourses 1er Cru 2016,1,61.6,0,outofstock,2.0,0,0.0,2018-04-13 13:32:03,1.0473469026293274
+6109,15201,15201,Gilles Robin Saint-Joseph Rouge André Péalat 2010,1,39.2,0,outofstock,1.0,0,0.0,2019-06-08 10:08:41,0.24133181181202576
+4177,15583,15583,Domaine de l'Hortus Val de Montferrand La Bergerie Blanc 2018,1,13.5,109,instock,0.0,0,0.0,2018-02-14 17:38:26,-0.6834265736346108
+5891,15774,15774,Saumaize-Michelin Viré-Clessé 2018,1,19.0,4,instock,1.0,0,0.0,2019-03-28 10:14:07,-0.4855210825857197
+4102,15767,15767,Emile Boeckel Sylvaner Grand Cru Zotzenberg 2017,1,16.3,16,instock,1.0,0,0.0,2018-02-13 10:14:48,-0.582674687282448
+5794,14692,14692,Château Fonréaud Bordeaux Blanc Le Cygne 2016,1,21.7,34,instock,0.0,0,0.0,2019-03-19 10:06:47,-0.3883674778889914
+4788,15731,15731,Maurice Schoech Pinot Gris 2018,1,12.3,21,instock,3.0,0,0.0,2018-04-19 13:56:47,-0.7266059534998234
+4615,16186,16186,Alphonse Mellot Sancerre Blanc La Moussière 2018,1,24.0,10,instock,7.0,0,0.0,2018-04-13 15:45:04,-0.3056069998140006
+6585,15434,15434,La Préceptorie Côtes du Roussillon Blanc Terres Nouvelles 2018,1,19.0,38,instock,0.0,0,0.0,2020-01-04 11:42:17,-0.4855210825857197
+4283,16154,16154,Château de Cazeneuve Pic Saint-Loup Le Roc Des Mates 2017,1,27.0,58,instock,4.0,0,0.0,2018-02-28 13:21:40,-0.19765855015096906
+5398,12315,12315,Chili Montsecano (Ostertag) Pinot Noir 2013,1,39.0,10,instock,1.0,0,0.0,2018-09-06 11:21:44,0.23413524850115688
+5741,15127,15127,Domaine Clerget Chambolle-Musigny Les Charmes 2015,1,73.3,0,outofstock,0.0,0,0.0,2019-02-15 17:54:04,1.4683458563151501
+4241,14725,14725,Parcé Frères IGP Côtes Catalanes Hommage à Fernand Blanc 2019,1,8.9,7,instock,1.0,0,0.0,2018-02-20 10:07:09,-0.8489475297845924
+5629,8365,8365,Parés Baltà Cava Brut Nature,1,10.3,51,instock,0.0,0,0.0,2019-01-29 15:38:48,-0.798571586608511
+5693,15812,15812,Philippe Nusswitz Duché d'Uzès Orénia Blanc Réserve 2018,1,13.0,55,instock,11.0,0,0.0,2019-01-30 16:24:13,-0.7014179819117827
+5630,12365,12365,Parés Baltà Penedès Electio 2013,1,28.0,1,instock,1.0,0,0.0,2019-01-29 15:53:05,-0.16167573359662524
+5544,14828,14828,Marc Colin Et Fils Chassagne-Montrachet Blanc Les Vide-Bourses 1er Cru 2016,1,61.6,0,outofstock,0.0,0,0.0,2018-11-26 09:52:56,1.0473469026293274
+4708,14700,14700,Albert Mann Pinot Gris Grand Cru Furstentum 2016,1,32.6,15,instock,8.0,0,0.0,2018-04-17 21:25:37,0.0038452225533564324
+4364,11585,11585,Wemyss Malts Blended Malt Scotch Whisky The Hive,1,49.5,6,instock,1.0,0,0.0,2018-03-12 10:03:27,0.6119548223217671
+5481,15138,15138,Domaine Bulliat Moulin-à-Vent 2017,1,11.5,46,instock,0.0,0,0.0,2018-10-09 14:48:09,-0.7553922067432984
+4653,13515,13515,Thierry Germain Saumur-Champigny Franc De Pied 2016,1,36.2,18,instock,0.0,0,0.0,2018-04-17 10:01:46,0.13338336214899427
+4929,15927,15927,Domaine La Croix Belle Côtes de Thongue Rouge N°7 2017,1,16.7,4,instock,2.0,0,0.0,2018-05-17 12:32:07,-0.5682815606607106
+6631,15795,15795,Weingut Besson-Strasser Zürich Pinot Noir Albi 2016,1,47.2,12,instock,0.0,0,0.0,2020-01-23 12:04:38,0.5291943442467764
+4900,16063,16063,Domaine Brintet Mercurey Rouge Vieilles Vignes 2018,1,20.8,42,instock,1.0,0,0.0,2018-05-15 09:32:58,-0.42075201278790075
+5697,16094,16094,Planeta Sicilia Noto Santa Cecilia 2016,1,29.9,1,instock,0.0,0,0.0,2019-01-30 16:54:02,-0.093308382143372
+6049,14899,14899,Christophe Pichon Saint-Joseph Blanc 2017,1,21.8,6,instock,3.0,0,0.0,2019-05-07 17:07:05,-0.38476919623355693
+4934,15554,15554,Marcel Richaud Rasteau Rouge 2017,1,22.2,57,instock,2.0,0,0.0,2018-05-17 13:03:46,-0.37037606961181946
+5522,15861,15861,Domaine Chambeyron Côte Rôtie L'Angéline 2017,1,48.4,10,instock,1.0,0,0.0,2018-10-31 13:52:29,0.5723737241119888
+5619,15922,15922,"Albert Boxler Riesling Grand Cru Sommerberg ""E"" 2018",1,71.3,13,instock,0.0,0,0.0,2019-01-15 16:42:01,1.3963802232064624
+6104,14092,14092,Stéphane Tissot Arbois Blanc Savagnin 2015,1,33.2,0,outofstock,0.0,0,0.0,2019-06-08 09:42:36,0.02543491248596278
+5379,14561,14561,Argentine Mendoza Alamos Torrontes 2017,1,11.1,26,instock,0.0,0,0.0,2018-09-01 15:34:55,-0.7697853333650359
+4225,16497,16497,Pierre Martin Sancerre Chavignol Blanc 2019,1,16.9,20,instock,13.0,0,0.0,2018-02-16 14:47:19,-0.5610849973498417
+4097,15675,15675,Paul Ginglinger Pinot Gris Les Prelats 2018,1,12.8,26,instock,1.0,0,0.0,2018-02-13 09:48:06,-0.7086145452226514
+4270,15839,15839,Domaine Sérol Côte Roannaise Les Millerands 2018,1,15.5,31,instock,4.0,0,0.0,2018-02-27 13:15:12,-0.6114609405259231
+4280,15690,15690,Château de Cazeneuve Languedoc Blanc 2016,1,18.9,46,instock,0.0,0,0.0,2018-02-27 14:18:27,-0.48911936424115415
+4635,798,798,Marcel Windholtz Eau de Vie de Kirsch d'Alsace Réserve Particulière,1,62.4,3,instock,0.0,0,0.0,2018-04-14 12:05:09,1.0761331558728024
+4600,15475,15475,Marc Colin Et Fils Chassagne-Montrachet Rouge Vieilles Vignes 2017,1,26.5,0,outofstock,0.0,0,0.0,2018-04-13 13:46:01,-0.21564995842814097
+4611,15452,15452,Gilbert Picq Chablis Vosgros 1er Cru 2017,1,26.2,27,instock,15.0,0,0.0,2018-04-13 15:15:26,-0.22644480339444414
+4913,13814,13814,Jean-Batiste Arena Muscat du Cap Corse 2015,1,28.0,16,instock,0.0,0,0.0,2018-05-15 11:44:19,-0.16167573359662524
+4393,13765,13765,Wemyss Malts Blended Malt Scotch Whisky Vanilla Burst,1,57.0,2,instock,0.0,0,0.0,2018-03-22 10:32:22,0.8818259464793459
+6629,15793,15793,Weingut Besson-Strasser Zürich Pinot Noir Cholfirst 2017,1,37.7,25,instock,1.0,0,0.0,2020-01-23 11:53:21,0.18735758698051003
+4081,13117,13117,Le Vieux Donjon Châteauneuf-du-Pape 2016,1,39.0,0,outofstock,4.0,0,0.0,2018-02-12 15:05:35,0.23413524850115688
+4394,13766,13766,Wemyss Malts Blended Malt Scotch Whisky Treacle Chest,1,59.8,0,outofstock,0.0,0,0.0,2018-03-22 10:35:08,0.9825778328315085
+4651,11849,11849,Thierry Germain Saumur Blanc Terres 2014,1,49.0,21,instock,0.0,0,0.0,2018-04-17 09:52:48,0.5939634140445952
+5799,14461,14461,Château Carbonnieux Graves Blanc 2017,1,40.2,0,outofstock,0.0,0,0.0,2019-03-19 11:07:07,0.2773146283663696
+6570,15706,15706,Decelle-Villa Marsannay Les Longeroies 2015,1,29.2,0,outofstock,0.0,0,0.0,2020-01-03 16:42:53,-0.11849635373141267
+6221,16096,16096,Planeta Sicilia Eruzione 1614 2017,1,23.5,3,instock,0.0,0,0.0,2019-07-26 09:53:23,-0.32359840809117246
+5563,19821,19821,Tempier Bandol Tourtine 2017,1,58.0,0,outofstock,0.0,0,0.0,2018-11-26 10:56:30,0.9178087630336896
+4395,11587,11587,Wemyss Malts Blended Scotch Whisky Lord Elcho,1,27.5,8,instock,0.0,0,0.0,2018-03-22 10:38:04,-0.17966714187379715
+4101,14905,14905,Emile Boeckel Pinot Gris Grand Cru Zotzenberg 2016,1,15.8,37,instock,0.0,0,0.0,2018-02-13 10:11:16,-0.6006660955596199
+5827,15328,15328,Agnès Levet Côte Rôtie Maestria 2017,1,55.0,11,instock,3.0,0,0.0,2019-03-27 18:05:09,0.8098603133706581
+5480,16306,16306,Domaine Bulliat Chiroubles Cuvée Félix 2019,1,10.4,37,instock,1.0,0,0.0,2018-10-09 14:43:02,-0.7949733049530767
+4228,12657,12657,Domaine de Bellivière Jasnières Les Rosiers 2015,1,29.9,8,instock,0.0,0,0.0,2018-02-16 15:13:54,-0.093308382143372
+5707,13557,13557,Domaine des Terres d'Ocre Saint-Pourçain Rouge Instant T 2015,1,10.8,13,instock,10.0,0,0.0,2019-01-31 14:13:47,-0.7805801783313391
+5962,16326,16326,Camin Larredya Jurançon Moelleux Au Capcéu 2018,1,30.0,22,instock,0.0,0,0.0,2019-04-18 11:32:46,-0.08971010048793758
+5609,15930,15930,Domaine Weinbach Riesling Cuvée Colette 2018,1,38.6,25,instock,2.0,0,0.0,2019-01-15 14:52:59,0.2197421218794194
+5959,15766,15766,Domaine Labranche Laffont Madiran Vieilles Vignes 2015,1,15.4,32,instock,0.0,0,0.0,2019-04-18 10:50:35,-0.6150592221813576
+4095,16120,16120,Paul Ginglinger Muscat Caroline 2018,1,12.6,19,instock,4.0,0,0.0,2018-02-13 09:31:50,-0.7158111085335201
+4938,13379,13379,Domaine Rouge Garance Côtes du Rhône Villages Garances 2016,1,12.5,0,outofstock,0.0,0,0.0,2018-05-17 13:36:16,-0.7194093901889546
+5803,13572,13572,Château Tour Haut-Caussan Médoc 2015,1,17.1,36,instock,3.0,0,0.0,2019-03-19 11:33:39,-0.5538884340389729
+4687,15582,15582,Cosse-Maisonneuve Cahors Le Sid 2014,1,30.1,36,instock,0.0,0,0.0,2018-04-17 16:54:45,-0.08611181883250314
+4056,16029,16029,Clos du Mont-Olivet Côtes-du-Rhône Vieilles Vignes 2018,1,12.7,0,outofstock,10.0,0,0.0,2018-02-12 11:38:55,-0.7122128268780858
+4725,16010,16010,François Baur Riesling Grand Cru Brand Clos De La Treille 2017,1,23.4,1,instock,0.0,0,0.0,2018-04-18 11:45:30,-0.32719668974660693
+4752,14184,14184,Domaine de Montgilet Coteaux de l'Aubance Les Trois Schistes 2016,1,27.9,42,instock,0.0,0,0.0,2018-04-18 21:44:46,-0.16527401525205968
+4303,13172,13172,Rimauresq Côtes de Provence Rouge Cru Classé Quintessence 2015,1,30.0,0,outofstock,0.0,0,0.0,2018-02-28 15:29:50,-0.08971010048793758
+4334,7818,7818,Champagne Gosset Grand Blanc de Blancs,1,49.0,0,outofstock,96.0,0,0.0,2018-03-01 14:02:44,0.5939634140445952
+6137,15834,15834,Domaine de Vaccelli Ajaccio Blanc Sirocco 2017,1,46.0,0,outofstock,2.0,0,0.0,2019-07-16 10:22:33,0.4860149643815637
+4141,304,304,Champagne Gosset Grande Réserve,1,39.0,1,instock,40.0,0,0.0,2018-02-13 12:57:44,0.23413524850115688
+5743,14323,14323,Domaine Clerget Vosne-Romanée Les Violettes 2015,1,57.0,0,outofstock,0.0,0,0.0,2019-02-15 18:07:59,0.8818259464793459
+4256,14253,14253,Domaine Huet Vouvray Haut-Lieu Sec 2017,1,24.4,0,outofstock,0.0,0,0.0,2018-02-20 15:29:32,-0.29121387319226305
+4731,8344,8344,Domaine Muré Crémant d'Alsace Rosé,1,22.0,7,instock,18.0,0,0.0,2018-04-18 20:28:24,-0.3775726329226882
+5375,15755,15755,David-Beaupère Juliénas Les Trois Verres 2018,1,15.2,0,outofstock,1.0,0,0.0,2018-09-01 09:32:13,-0.6222557854922263
+5737,15369,15369,Triennes IGP Méditerranée Rouge Les Auréliens 2016,1,11.0,12,instock,9.0,0,0.0,2019-02-15 14:11:24,-0.7733836150204704
+6616,15781,15781,Clos du Mont-Olivet Lirac Rouge 2017,1,15.4,8,instock,1.0,0,0.0,2020-01-18 10:25:18,-0.6150592221813576
+5574,8463,8463,Domaine Huet Vouvray Le Mont Moelleux Première Trie 2008,1,59.6,9,instock,0.0,0,0.0,2018-11-26 11:25:35,0.9753812695206399
+4399,12640,12640,Wemyss Malts Blended Malt Scotch Whisky Spice King Batch Strength,1,59.0,6,instock,1.0,0,0.0,2018-03-22 10:56:07,0.9537915795880335
+4076,13072,13072,Plateau des Chênes Lirac 2016,1,14.05,53,instock,4.0,0,0.0,2018-02-12 14:38:37,-0.6636360245297216
+4348,12586,12586,Champagne Egly-Ouriet Grand Cru Brut Tradition,1,59.0,21,instock,0.0,0,0.0,2018-03-02 09:22:39,0.9537915795880335
+4066,15967,15967,Oratoire Saint Martin Cairanne Rouge Haut Coustias 2016,1,20.8,65,instock,20.0,0,0.0,2018-02-12 13:17:53,-0.42075201278790075
+4621,15849,15849,Bernard Baudry Chinon Rouge Les Grézeaux 2017,1,16.5,49,instock,9.0,0,0.0,2018-04-13 16:23:55,-0.5754781239715793
+5487,16129,16129,Decelle-Villa Nuits-Saint-Georges Rouge 2016,1,43.5,1,instock,3.0,0,0.0,2018-10-09 15:27:50,0.39605792299570414
+4083,16296,16296,"Rimauresq Côtes de Provence Blanc Cru Classé ""R"" 2019",1,17.0,0,outofstock,0.0,0,0.0,2018-02-12 15:13:25,-0.5574867156944073
+4964,16515,16515,Château Turcaud Bordeaux Rouge Cuvée Majeure 2018,1,12.1,72,instock,6.0,0,0.0,2018-06-02 09:31:31,-0.7338025168106921
+4208,16024,16024,Domaine Montrose Côtes de Thongue Rosé 2019,1,7.6,578,instock,16.0,0,0.0,2018-02-15 15:43:45,-0.8957251913052393
+4205,15413,15413,Mas Laval Terrasses du Larzac La Grande Cuvée 2016,1,23.0,0,outofstock,12.0,0,0.0,2018-02-15 14:49:25,-0.3415898163683444
+4625,812,812,Marcel Windholtz Eau de Vie de Sureau,1,52.4,3,instock,0.0,0,0.0,2018-04-14 11:35:24,0.7163049903293641
+5384,14149,14149,Liban Vallée de la Békaa Château Marsyas 2012,1,28.8,0,outofstock,0.0,0,0.0,2018-09-01 15:58:23,-0.13288948035315015
+5445,12194,12194,La Préceptorie Maury Blanc 2015,1,16.3,11,instock,0.0,0,0.0,2018-09-13 16:31:51,-0.582674687282448
+4069,11862,11862,Gilles Robin Hermitage Rouge 2012,1,60.0,0,outofstock,0.0,0,0.0,2018-02-12 13:46:23,0.9897743961423773
+6663,16152,16152,Catherine et Claude Maréchal Pommard La Chanière 2017,1,50.4,6,instock,0.0,0,0.0,2020-02-22 14:01:55,0.6443393572206765
+4160,15373,15373,Planeta Sicilia La Segreta Rosso 2017,1,9.3,0,outofstock,7.0,0,0.0,2018-02-13 15:04:36,-0.8345544031628548
+4063,16319,16319,Mourgues du Grès Costières de Nîmes Terre de Feu 2017,1,14.5,10,instock,3.0,0,0.0,2018-02-12 12:56:54,-0.6474437570802669
+5047,531,531,Champagne Petit Lebrun &amp; Fils Blanc de Blancs Grand Cru,1,22.5,129,instock,13.0,0,0.0,2018-07-18 15:58:02,-0.3595812246455163
+5524,15864,15864,Domaine Chambeyron Condrieu Vernon 2018,1,38.6,0,outofstock,1.0,0,0.0,2018-10-31 13:58:13,0.2197421218794194
+5564,15748,15748,Tempier Bandol Rouge 2017,1,30.8,21,instock,3.0,0,0.0,2018-11-26 10:57:23,-0.06092384724446249
+4397,12639,12639,Wemyss Malts Blended Malt Scotch Whisky The Hive Batch Strength,1,59.0,7,instock,0.0,0,0.0,2018-03-22 10:48:30,0.9537915795880335
+5003,15869,15869,David Duband Morey-Saint-Denis 2017,1,48.7,9,instock,0.0,0,0.0,2018-07-17 09:53:48,0.5831685690782922
+6227,15163,15163,Le Pas de l'Escalette Terrasses du Larzac Les Frieys 2017,1,40.2,15,instock,1.0,0,0.0,2019-07-30 15:03:50,0.2773146283663696
+4909,15614,15614,Antoine-Marie Arena Vin de France Bianco Gentile 2018,1,25.9,27,instock,0.0,0,0.0,2018-05-15 10:53:15,-0.23723964836074732
+4658,13517,13517,Thierry Germain Saumur-Champigny Outre Terre 2016,1,48.8,12,instock,0.0,0,0.0,2018-04-17 10:16:09,0.5867668507337264
+5819,11933,11933,Maison Trimbach Riesling Cuvée Frédéric Emile 2008,1,56.0,1,instock,1.0,0,0.0,2019-03-26 17:57:25,0.845843129925002
+6618,15539,15539,Clos du Mont-Olivet Vins de Pays du Gard Confluence 2017,1,13.5,2,instock,0.0,0,0.0,2020-01-18 10:38:05,-0.6834265736346108
+4646,15848,15848,Bernard Baudry Chinon Rouge Le Clos Guillot 2017,1,21.5,34,instock,1.0,0,0.0,2018-04-17 09:23:13,-0.3955640411998601
+5810,14429,14429,Château Tour De Pez Saint-Estèphe 2017,1,24.0,95,instock,0.0,0,0.0,2019-03-19 16:46:55,-0.3056069998140006
+5807,15471,15471,Château d'Arcole Saint-Emilion Grand Cru 2016,1,27.3,1,instock,4.0,0,0.0,2019-03-19 15:58:25,-0.18686370518466588
+4713,14746,14746,Domaine Schoenheitz Gewurztraminer Lisenberg 2015,1,18.4,6,instock,12.0,0,0.0,2018-04-17 21:57:53,-0.507110772518326
+5711,16121,16121,Albert Mann Riesling Cuvée Albert 2017,1,25.0,35,instock,5.0,0,0.0,2019-01-31 14:39:08,-0.2696241832596567
+3850,15300,15300,Pierre Jean Villa Crozes-Hermitage Accroche Coeur 2018,1,20.8,0,outofstock,0.0,0,0.0,2018-02-08 14:08:36,-0.42075201278790075
+4054,19816,19816,Clos du Mont-Olivet Châteauneuf-du-Pape Cuvée du Papet 2018,1,71.6,0,outofstock,10.0,0,0.0,2018-02-12 11:25:39,1.4071750681727655
+5809,15080,15080,Château Tour De Pez Saint-Estèphe Les Hauts de Pez 2016,1,17.9,0,outofstock,0.0,0,0.0,2019-03-19 16:41:40,-0.525102180795498
+4257,12476,12476,Domaine Huet Vouvray Le Mont Moelleux 2015,1,31.7,0,outofstock,0.0,0,0.0,2018-02-20 15:32:29,-0.02853931234555309
+4396,9636,9636,Wemyss Malts Blended Malt Scotch Whisky The Hive 12 ans,1,62.0,7,instock,0.0,0,0.0,2018-03-22 10:44:57,1.061740029251065
+4631,791,791,Marcel Windholtz Eau de Vie de Baie de Houx,1,76.8,3,instock,0.0,0,0.0,2018-04-14 11:54:47,1.5942857142553535
+6753,15256,15256,Château Simone Palette Rouge 2015,1,46.5,29,instock,0.0,0,0.0,2020-03-10 14:09:42,0.5040063726587356
+5491,15481,15481,Marc Colin Et Fils Santenay Rouge 2017,1,26.5,15,instock,0.0,0,0.0,2018-10-09 16:15:00,-0.21564995842814097
+4790,15732,15732,Maurice Schoech Riesling 2018,1,11.1,43,instock,0.0,0,0.0,2018-04-19 14:25:00,-0.7697853333650359
+4221,15829,15829,Xavier Frissant Touraine Les Roses du Clos 2018,1,12.8,83,instock,15.0,0,0.0,2018-02-16 11:06:30,-0.7086145452226514
+4914,15613,15613,Antoine-Marie Arena Patrimonio Hauts de Carco 2018,1,25.9,6,instock,2.0,0,0.0,2018-05-15 11:47:17,-0.23723964836074732
+5815,15238,15238,Maison Trimbach Muscat Réserve 2017,1,16.6,11,instock,1.0,0,0.0,2019-03-26 17:31:09,-0.5718798423161449
+4665,15404,15404,Vincent Carême Vouvray Sec 2018,1,14.4,6,instock,2.0,0,0.0,2018-04-17 11:00:54,-0.6510420387357013
+4107,14800,14800,Emile Boeckel Pinot Noir Terres Rouges 2016,1,35.0,35,instock,0.0,0,0.0,2018-02-13 10:48:51,0.09020398228378157
+4188,16265,16265,Château de La Liquière Languedoc Blanc Les Amandiers 2019,1,9.5,99,instock,8.0,0,0.0,2018-02-15 10:18:39,-0.8273578398519861
+4400,14768,14768,Cognac Frapin 1270,1,44.0,0,outofstock,0.0,0,0.0,2018-03-22 11:03:06,0.414049331272876
+4053,13127,13127,Clos du Mont-Olivet Châteauneuf-du-Pape 2012,1,44.3,16,instock,23.0,0,0.0,2018-02-12 11:18:33,0.4248441762391791
+4862,16047,16047,Philippe Nusswitz Duché d'Uzès Orénia Blanc 2018,1,9.9,168,instock,12.0,0,0.0,2018-05-03 12:52:23,-0.8129647132302485
+4162,14474,14474,Domino Romano Ribera Del Duero Camino Romano 2016,1,14.3,26,instock,1.0,0,0.0,2018-02-14 14:53:20,-0.6546403203911356
+5067,15346,15346,Albert Mann Pinot Noir Grand H 2017,1,59.9,0,outofstock,16.0,0,0.0,2018-07-31 11:49:05,0.9861761144869429
+4920,15530,15530,Alain Graillot Crozes-Hermitage Blanc 2018,1,24.4,1,instock,10.0,0,0.0,2018-05-17 11:17:53,-0.29121387319226305
+4261,15662,15662,Chermette Domaine du Vissoux Beaujolais Griottes 2018,1,9.9,89,instock,1.0,0,0.0,2018-02-27 10:13:03,-0.8129647132302485
+4281,16330,16330,Château de Cazeneuve Val de Montferrand Rouge Caza Sorix 2019,1,11.6,4,instock,0.0,0,0.0,2018-02-28 13:09:29,-0.751793925087864
+4357,9562,9562,Champagne Larmandier-Bernier Latitude,1,39.0,0,outofstock,0.0,0,0.0,2018-03-02 10:57:02,0.23413524850115688
+4978,13313,13313,Château Dutruch Grand Poujeaux Moulis 2016,1,18.5,0,outofstock,0.0,0,0.0,2018-06-07 17:16:05,-0.5035124908628916
+4899,16062,16062,Domaine Brintet Mercurey Blanc Vieilles Vignes 2018,1,21.2,35,instock,9.0,0,0.0,2018-05-15 09:25:03,-0.4063588861661633
+4614,15875,15875,Gilbert Picq Chablis En Vaudécorse 2017,1,19.0,50,instock,11.0,0,0.0,2018-04-13 15:41:12,-0.4855210825857197
+4620,15850,15850,Bernard Baudry Chinon Rouge Les Granges 2018,1,11.9,106,instock,6.0,0,0.0,2018-04-13 16:14:05,-0.7409990801215609
+4666,13647,13647,Vincent Carême Vouvray Moelleux 2015,1,21.0,32,instock,0.0,0,0.0,2018-04-17 11:06:33,-0.41355544947703204
+4778,16072,16072,Clos du Mont-Olivet Lirac Rosé Farel 2019,1,13.9,0,outofstock,0.0,0,0.0,2018-04-19 13:14:36,-0.6690334470128733
+6107,14101,14101,Stéphane Tissot Arbois Vin Jaune En Spois 2011,1,62.4,4,instock,0.0,0,0.0,2019-06-08 09:55:58,1.0761331558728024
+4740,13412,13412,Jean-Paul Brun Beaujolais L'Ancien 2016,1,9.7,8,instock,0.0,0,0.0,2018-04-18 21:03:27,-0.8201612765411174
+5704,15036,15036,Domaine de l'Ecu Muscadet Gneiss 2015,1,16.9,5,instock,0.0,0,0.0,2019-01-31 13:23:20,-0.5610849973498417
+4664,15402,15402,La Cotelleraie Saint-Nicolas-de-Bourgueil Le Vau Jaumier 2016,1,16.4,15,instock,0.0,0,0.0,2018-04-17 10:45:13,-0.5790764056270137
+6095,15489,15489,Château de Villeneuve Saumur-Champigny Le Grand Clos 2017,1,29.8,3,instock,0.0,0,0.0,2019-06-04 17:25:46,-0.09690666379880632
+6073,15951,15951,Jacqueson Rully Rouge 1er Cru Les Preaux 2018,1,24.5,19,instock,0.0,0,0.0,2019-05-16 15:54:52,-0.28761559153682864
+4067,15490,15490,Gilles Robin Crozes-Hermitage Rouge Albéric 2017,1,22.0,31,instock,19.0,0,0.0,2018-02-12 13:24:30,-0.3775726329226882
+4940,15337,15337,Oratoire Saint Martin Cairanne Blanc Haut-Coustias 2017,1,20.5,44,instock,2.0,0,0.0,2018-05-17 13:45:08,-0.4315468577542039
+4994,14507,14507,Domaine Peyre Rose Syrah Léone 2008,1,78.0,7,instock,0.0,0,0.0,2018-07-12 11:20:07,1.6374650941205662
+4193,16529,16529,Château de La Liquière Faugères Cistus Blanc 2019,1,13.5,55,instock,8.0,0,0.0,2018-02-15 10:58:12,-0.6834265736346108
+5709,15035,15035,Philippe Alliet Chinon Rouge Coteau de Noiré 2016,1,31.7,0,outofstock,0.0,0,0.0,2019-01-31 14:25:44,-0.02853931234555309
+6928,15741,15741,Le Cèdre de Jean Faure Saint-Emilion 2016,1,19.0,20,instock,2.0,0,0.0,2020-04-25 12:49:49,-0.4855210825857197
+5753,16147,16147,Château de la Selve Vin de France Petite Selve 2019,1,10.1,101,instock,4.0,0,0.0,2019-03-07 16:05:51,-0.8057681499193797
+4707,15466,15466,Albert Mann Pinot Gris Cuvée Albert 2017,1,22.8,13,instock,13.0,0,0.0,2018-04-17 21:20:47,-0.3487863796792131
+4886,15773,15773,Saumaize-Michelin Pouilly-Fuissé Clos sur la Roche 2018,1,28.4,48,instock,5.0,0,0.0,2018-05-11 14:10:53,-0.14728260697488776
+4084,16014,16014,"Rimauresq Côtes de Provence Rouge Cru Classé ""R"" 2017",1,23.2,14,instock,0.0,0,0.0,2018-02-12 15:21:03,-0.33439325305747564
+4212,15717,15717,Lucien Boillot Volnay 2017,1,39.8,19,instock,2.0,0,0.0,2018-02-16 09:55:50,0.26292150174463186
+4391,11467,11467,Wemyss Malts Blended Malt Scotch Whisky Peat Chimney,1,49.5,7,instock,0.0,0,0.0,2018-03-22 10:12:29,0.6119548223217671
+5465,16034,16034,Clos du Mont-Olivet Châteauneuf-du-Pape 2007,1,54.8,12,instock,3.0,0,0.0,2018-09-25 15:35:26,0.8026637500597893
+5914,14265,14265,Darnley's London Dry Gin Spiced,1,36.0,2,instock,1.0,0,0.0,2019-04-04 15:56:05,0.1261867988381254
+4057,16039,16039,Mourgues du Grès Costières de Nîmes Galets Dorés 2019,1,8.7,112,instock,18.0,0,0.0,2018-02-12 11:56:27,-0.8561440930954611
+5913,10014,10014,Darnley's London Dry Gin Original,1,36.0,9,instock,0.0,0,0.0,2019-04-04 15:45:23,0.1261867988381254
+4050,16449,16449,Pierre Gaillard Saint-Joseph Blanc 2019,1,21.8,0,outofstock,6.0,0,0.0,2018-02-12 10:50:59,-0.38476919623355693
+4679,15283,15283,Domaine Rotier Gaillac Rouge Renaissance 2016,1,13.2,37,instock,0.0,0,0.0,2018-04-17 16:09:58,-0.6942214186009139
+4159,15668,15668,Planeta Sicilia La Segreta Bianco 2017,1,9.3,0,outofstock,3.0,0,0.0,2018-02-13 14:57:29,-0.8345544031628548
+4163,15482,15482,Parés Baltà Penedès Calcari 2018,1,10.8,18,instock,3.0,0,0.0,2018-02-14 15:12:58,-0.7805801783313391
+5779,16213,16213,Maurel Pays d'Oc Syrah 2019,1,5.8,211,instock,8.0,0,0.0,2019-03-15 10:24:21,-0.9604942611030582
+4728,15729,15729,Maurice Schoech Gewurztraminer Vendanges Tardives 2017,1,29.5,20,instock,2.0,0,0.0,2018-04-18 12:08:52,-0.10770150876510949
+5444,15155,15155,La Préceptorie Maury Rouge Cuvée Aurélie 2017,1,15.5,37,instock,1.0,0,0.0,2018-09-13 16:26:11,-0.6114609405259231
+4298,16501,16501,Domaine de La Tour Du Bon Bandol Rouge 2018,1,23.2,36,instock,1.0,0,0.0,2018-02-28 14:53:17,-0.33439325305747564
+4215,15480,15480,Marc Colin Et Fils Saint-Aubin Blanc Luce 2017,1,26.5,0,outofstock,0.0,0,0.0,2018-02-16 10:12:18,-0.21564995842814097
+5766,15179,15179,Camille Giroud Auxey-Duresses Blanc 2017,1,35.6,30,instock,0.0,0,0.0,2019-03-13 14:39:13,0.11179367221638792
+6584,15769,15769,La Préceptorie Côtes du Roussillon Blanc Coume Marie 2018,1,13.5,29,instock,0.0,0,0.0,2020-01-04 11:37:10,-0.6834265736346108
+4211,15714,15714,Lucien Boillot Pommard 2017,1,48.5,0,outofstock,1.0,0,0.0,2018-02-16 09:50:55,0.5759720057674232
+4753,15429,15429,Domaine de Montgilet Coteaux de l'Aubance 2017,1,12.0,76,instock,7.0,0,0.0,2018-04-18 21:49:35,-0.7374007984661265
+4072,12045,12045,Château de Vaudieu Châteauneuf-du-Pape Blanc 2015,1,32.0,28,instock,1.0,0,0.0,2018-02-12 14:17:41,-0.017744467379249916
+4995,14509,14509,Domaine Peyre Rose Oro Blanc 2002,1,78.0,0,outofstock,0.0,0,0.0,2018-07-12 11:22:04,1.6374650941205662
+4793,15730,15730,Maurice Schoech Pinot Gris Grand Cru Schlossberg 2017,1,18.7,17,instock,0.0,0,0.0,2018-04-19 14:37:49,-0.49631592755202286
+4192,15605,15605,Château de La Liquière Faugères Cistus Rouge 2017,1,17.8,43,instock,5.0,0,0.0,2018-02-15 10:42:15,-0.5287004624509323
+4150,1366,1366,Champagne Mailly Grand Cru Intemporelle 2010,1,59.0,17,instock,1.0,0,0.0,2018-02-13 13:45:31,0.9537915795880335
+4356,12585,12585,Champagne Egly-Ouriet Premier Cru Les Vignes de Vrigny,1,51.6,5,instock,12.0,0,0.0,2018-03-02 10:51:14,0.6875187370858892
+4040,15303,15303,Pierre Jean Villa Saint-Joseph Saut De l'Ange 2018,1,34.3,0,outofstock,0.0,0,0.0,2018-02-12 09:13:35,0.06501601069574078
+4276,14527,14527,I Fabbri Chianti Classico Terra Di Lamole 2015,1,17.6,1,instock,0.0,0,0.0,2018-02-27 13:45:13,-0.535897025761801
+4596,15476,15476,Marc Colin Et Fils Chassagne-Montrachet Blanc Margot 2017,1,43.9,0,outofstock,23.0,0,0.0,2018-04-13 13:27:19,0.4104510496174416
+5801,11277,11277,Château Monbrison Margaux Bouquet de Monbrison 2012,1,24.0,62,instock,0.0,0,0.0,2019-03-19 11:22:01,-0.3056069998140006
+4931,16280,16280,Marcel Richaud Cairanne Rouge L'Ebrescade 2017,1,27.8,11,instock,0.0,0,0.0,2018-05-17 12:42:03,-0.16887229690749397
+4791,14599,14599,Maurice Schoech Pinot Noir Pièce de Chêne 2016,1,13.6,24,instock,0.0,0,0.0,2018-04-19 14:31:41,-0.6798282919791764
+5377,15677,15677,Argentine Alamos Catena Malbec 2017,1,19.0,7,instock,0.0,0,0.0,2018-09-01 15:30:19,-0.4855210825857197
+5904,15856,15856,Domaine de Montbourgeau Côtes du Jura Poulsard 2018,1,18.8,25,instock,0.0,0,0.0,2019-03-28 15:10:42,-0.49271764589658845
+5395,15095,15095,Chili Errazuriz Cabernet Sauvignon 2016,1,12.7,6,instock,0.0,0,0.0,2018-09-06 11:04:31,-0.7122128268780858
+5771,15184,15184,Camille Giroud Santenay Rouge 1er Cru Clos Rousseau 2016,1,38.4,3,instock,0.0,0,0.0,2019-03-13 15:05:54,0.21254555856855054
+4657,11847,11847,Thierry Germain Saumur-Champigny Outre Terre 2014,1,43.0,11,instock,0.0,0,0.0,2018-04-17 10:15:23,0.3780665147185322
+6620,16046,16046,Domaine de La Tour Du Bon Bandol Rouge Saint Ferréol 2005,1,51.0,2,instock,0.0,0,0.0,2020-01-18 10:50:11,0.6659290471532828
+5525,14819,14819,Domaine Chambeyron Vin de Pays des Collines Rhodaniennes Viognier 2016,1,12.0,0,outofstock,0.0,0,0.0,2018-10-31 14:04:38,-0.7374007984661265
+4170,15786,15786,Ollieux Romanis Corbières Classique 2018,1,9.0,58,instock,4.0,0,0.0,2018-02-14 16:39:22,-0.845349248129158
+4779,14300,14300,Clos du Mont-Olivet Vin de France La Sabonite,1,7.8,163,instock,18.0,0,0.0,2018-04-19 13:19:00,-0.8885286279943706
+4182,15747,15747,Borie La Vitarèle Saint-Chinian Les Schistes 2017,1,16.7,53,instock,3.0,0,0.0,2018-02-15 09:31:31,-0.5682815606607106
+4052,16030,16030,Clos du Mont-Olivet Châteauneuf-du-Pape Blanc 2019,1,33.7,35,instock,6.0,0,0.0,2018-02-12 11:06:11,0.0434263207631347
+4975,14756,14756,Château Cordet Margaux 2013,1,23.7,15,instock,4.0,0,0.0,2018-06-07 16:35:10,-0.31640184478030375
+5004,15871,15871,David Duband Vosne Romanée 2017,1,59.4,1,instock,2.0,0,0.0,2018-07-17 10:07:09,0.9681847062097709
+4573,13604,13604,Château de Meursault Beaune-Grèves Les Trois Journaux 1er Cru 2015,1,67.2,9,instock,0.0,0,0.0,2018-04-12 16:31:16,1.248850675333653
+4924,16276,16276,Cave de Castelmaure Corbières Rouge Grande Cuvée 2017,1,12.8,0,outofstock,0.0,0,0.0,2018-05-17 12:02:25,-0.7086145452226514
+5742,15125,15125,Domaine Clerget Chambolle-Musigny 2014,1,42.1,0,outofstock,0.0,0,0.0,2019-02-15 18:02:05,0.3456819798196228
+4604,15660,15660,Catherine et Claude Maréchal Pommard La Chanière 2016,1,49.0,9,instock,1.0,0,0.0,2018-04-13 14:11:01,0.5939634140445952
+5446,16328,16328,Parcé Frères Banyuls Rimage 2018,1,16.2,30,instock,0.0,0,0.0,2018-09-13 16:43:39,-0.5862729689378825
+6127,14573,14573,Moulin de Gassac IGP Pays d'Hérault Rouge Mazet du Levant 2017,1,10.6,66,instock,0.0,0,0.0,2019-06-28 17:33:35,-0.7877767416422078
+6301,15745,15745,Borie La Vitarèle Saint-Chinian Midi Rouge 2015,1,40.5,20,instock,0.0,0,0.0,2019-10-05 10:57:58,0.2881094733326726
+4064,15966,15966,Oratoire Saint Martin Cairanne Rouge Réserve des Seigneurs 2017,1,14.4,27,instock,3.0,0,0.0,2018-02-12 13:08:24,-0.6510420387357013
+5580,13982,13982,Lucien Boillot Puligny-Montrachet 1er Cru Les Perrières 2016,1,83.7,18,instock,0.0,0,0.0,2018-11-26 15:19:55,1.842567148480326
+5690,14647,14647,Domaine Hauvette IGP Alpilles Dolia 2012,1,44.6,8,instock,0.0,0,0.0,2019-01-29 17:48:30,0.43563902120548237
+4306,15949,15949,Domaine de l'Idylle Roussette de Savoie Anne de Chypre 2018,1,10.7,41,instock,1.0,0,0.0,2018-02-28 16:37:33,-0.7841784599867735
+4065,15022,15022,Oratoire Saint Martin Cairanne Rouge Les Douyes 2016,1,19.5,35,instock,0.0,0,0.0,2018-02-12 13:14:22,-0.4675296743085478
+5383,3383,3383,Nouvelle-Zélande Marlborough Kim Crawford Sauvignon Blanc 2015,1,19.5,9,instock,0.0,0,0.0,2018-09-01 15:53:58,-0.4675296743085478
+5448,14469,14469,Parcé Frères Côtes du Roussillon Villages Hommage à Fernand 2017,1,7.2,0,outofstock,0.0,0,0.0,2018-09-13 16:51:09,-0.910118317926977
+4784,15734,15734,Maurice Schoech Riesling Vendanges Tardives 2017,1,28.5,10,instock,0.0,0,0.0,2018-04-19 13:46:52,-0.14368432531945333
+4186,16190,16190,Le Pas de l'Escalette Terrasses du Larzac Les Clapas Rouge 2018,1,16.6,0,outofstock,1.0,0,0.0,2018-02-15 10:04:42,-0.5718798423161449
+4876,16289,16289,Tempier Bandol Rosé 2019,1,22.8,4,instock,22.0,0,0.0,2018-05-04 13:40:16,-0.3487863796792131
+5817,14600,14600,Maison Trimbach Riesling Grand Cru Geisberg 2012,1,57.6,5,instock,0.0,0,0.0,2019-03-26 17:46:40,0.9034156364119522
+4183,15746,15746,Borie La Vitarèle Saint-Chinian Les Crès 2016,1,21.4,48,instock,0.0,0,0.0,2018-02-15 09:39:10,-0.39916232285529457
+5964,13662,13662,Domaine de l'Ancienne Cure Pécharmant L'Abbaye 2015,1,16.3,11,instock,3.0,0,0.0,2019-04-18 11:46:21,-0.582674687282448
+4068,16416,16416,Gilles Robin Crozes-Hermitage Rouge Papillon 2019,1,16.6,157,instock,62.0,0,0.0,2018-02-12 13:42:28,-0.5718798423161449
+5485,16131,16131,Decelle-Villa Savigny-Lès-Beaune Blanc 2018,1,33.4,13,instock,3.0,0,0.0,2018-10-09 15:11:51,0.03263147579683139
+6328,15810,15810,Le Pas de l'Escalette IGP Pays d'Hérault Les Clapas Blanc 2018,1,22.4,7,instock,0.0,0,0.0,2019-11-02 14:01:31,-0.36317950630095075
+5722,15026,15026,Domaine de l'Hortus Pays de l'Hérault Le Loup Dans La Bergerie 2018,1,7.1,118,instock,19.0,0,0.0,2019-02-05 10:14:58,-0.9137165995824112
+4207,16023,16023,Domaine Montrose Côtes de Thongue Rouge 2018,1,6.7,195,instock,5.0,0,0.0,2018-02-15 15:35:09,-0.9281097262041488
+5561,19820,19820,Tempier Bandol Migoua 2017,1,58.0,0,outofstock,0.0,0,0.0,2018-11-26 10:54:29,0.9178087630336896
+5797,15688,15688,Château Saransot-Dupré Listrac-Médoc 2016,1,17.2,123,instock,0.0,0,0.0,2019-03-19 10:51:29,-0.5502901523835386
+4720,16513,16513,Domaine Schoenheitz Riesling Herrenreben 2018,1,15.9,10,instock,15.0,0,0.0,2018-04-17 22:20:31,-0.5970678139041856
+4142,11641,11641,Champagne Gosset Grand Millésime 2006,1,53.0,8,instock,30.0,0,0.0,2018-02-13 13:08:44,0.7378946802619705
+4729,38,38,Emile Boeckel Crémant Brut Blanc de Blancs,1,8.6,151,instock,38.0,0,0.0,2018-04-18 12:25:58,-0.8597423747508954
+4684,14451,14451,Château Plaisance Fronton To Co Que Cal 2015,1,18.1,25,instock,3.0,0,0.0,2018-04-17 16:39:44,-0.517905617484629
+4932,9937,9937,Marcel Richaud Cairanne Rouge Les Estrambords 2011,1,25.7,0,outofstock,4.0,0,0.0,2018-05-17 12:55:13,-0.24443621167161605
+5391,14141,14141,Australie Maverick Trial Hill Riesling 2010,1,24.2,17,instock,1.0,0,0.0,2018-09-06 10:21:59,-0.2984104365031318
+4151,15140,15140,Elian Daros Côtes du Marmandais Abouriou 2016,1,13.7,0,outofstock,12.0,0,0.0,2018-02-13 13:50:16,-0.676230010323742
+4870,16149,16149,Triennes IGP Méditerranée Rosé 2019,1,9.3,0,outofstock,33.0,0,0.0,2018-05-03 13:45:43,-0.8345544031628548
+4254,12203,12203,Domaine Huet Vouvray Haut-Lieu Demi-Sec 2015,1,26.9,0,outofstock,0.0,0,0.0,2018-02-20 15:19:23,-0.2012568318064035
+4359,13853,13853,Champagne Larmandier-Bernier Grand Cru Les Chemins d'Avize 2011,1,85.6,0,outofstock,1.0,0,0.0,2018-03-02 11:11:48,1.9109344999335791
+4970,11225,11225,Champagne Larmandier-Bernier Terre de Vertus Premier Cru 2011,1,49.5,0,outofstock,0.0,0,0.0,2018-06-06 16:47:38,0.6119548223217671
+5967,11669,11669,Zind-Humbrecht Gewurztraminer Clos Windsbuhl 2012,1,56.3,9,instock,0.0,0,0.0,2019-04-18 17:00:13,0.856637974891305
+4164,13453,13453,Parés Baltà Penedès Mas Petit 2015,1,7.6,19,instock,20.0,0,0.0,2018-02-14 15:24:37,-0.8957251913052393
+4783,13754,13754,Maurice Schoech Pinot Gris Vendanges Tardives 2015,1,29.5,5,instock,0.0,0,0.0,2018-04-19 13:45:11,-0.10770150876510949
+4235,13905,13905,Maroc Graillot/Thaleb Tandem Syrah 2015,1,17.1,0,outofstock,1.0,0,0.0,2018-02-16 16:16:16,-0.5538884340389729
+6567,15779,15779,"Decelle-Villa Côte de Nuits Villages ""Aux Montagnes"" 2014",1,28.4,9,instock,0.0,0,0.0,2020-01-03 16:37:27,-0.14728260697488776
+4253,6616,6616,Domaine Huet Vouvray Le Clos du Bourg Moelleux Première Trie 2008,1,59.6,15,instock,0.0,0,0.0,2018-02-20 15:10:17,0.9753812695206399
+5958,15577,15577,Domaine Labranche Laffont Madiran Tradition 2016,1,8.7,44,instock,0.0,0,0.0,2019-04-18 10:29:19,-0.8561440930954611
+4138,15341,15341,Zind-Humbrecht Zind 2017,1,25.7,0,outofstock,6.0,0,0.0,2018-02-13 11:54:31,-0.24443621167161605
+4912,15612,15612,Jean-Baptiste Arena Patrimonio Rouge Grotte Di Sole 2018,1,25.9,10,instock,6.0,0,0.0,2018-05-15 11:37:35,-0.23723964836074732
+5027,11997,11997,Champagne Agrapart &amp; Fils Terroirs Brut Blanc de Blancs Grand Cru,1,62.1,0,outofstock,0.0,0,0.0,2018-07-18 11:45:12,1.0653383109064993
+4606,15149,15149,Catherine et Claude Maréchal Volnay 2017,1,50.1,41,instock,1.0,0,0.0,2018-04-13 14:19:27,0.6335445122543735
+5912,15227,15227,Kingsbarns Distillery Lowland Single Malt Whisky,1,57.0,8,instock,0.0,0,0.0,2019-04-04 15:36:52,0.8818259464793459
+4602,15659,15659,Catherine et Claude Maréchal Chorey-Lès-Beaune 2017,1,31.5,26,instock,7.0,0,0.0,2018-04-13 13:54:21,-0.035735875656421834
+6070,16133,16133,Borie La Vitarèle Pays d'Hérault Les Cigales 2019,1,9.3,124,instock,1.0,0,0.0,2019-05-16 15:01:36,-0.8345544031628548
+4051,16045,16045,Jeanne Gaillard IGP Collines Rhodaniennes Syrah Terre de Mandrin 2018,1,7.7,41,instock,6.0,0,0.0,2018-02-12 10:58:41,-0.892126909649805
+4087,16180,16180,Rimauresq Côtes de Provence Cru Classé Rosé 2019,1,14.4,45,instock,18.0,0,0.0,2018-02-12 15:36:40,-0.6510420387357013
+4181,16560,16560,Borie La Vitarèle Saint-Chinian Les Terres Blanches 2019,1,11.9,137,instock,9.0,0,0.0,2018-02-15 09:12:13,-0.7409990801215609
+6035,15342,15342,Zind-Humbrecht Muscat Turckheim 2016,1,17.9,21,instock,1.0,0,0.0,2019-04-25 09:34:44,-0.525102180795498
+6592,15764,15764,Domaine de la Monardière Vacqueyras Blanc Galéjade 2018,1,24.4,70,instock,0.0,0,0.0,2020-01-04 14:12:18,-0.29121387319226305
+5523,15862,15862,Domaine Chambeyron Côte Rôtie Lancement 2017,1,60.4,16,instock,1.0,0,0.0,2018-10-31 13:55:02,1.0041675227641147
+5930,16323,16323,Borie La Vitarèle Languedoc Blanc Le Grand Mayol 2019,1,14.1,66,instock,1.0,0,0.0,2019-04-06 10:36:51,-0.6618368837020044
+6206,16580,16580,Domaine Giudicelli Patrimonio Blanc 2019,1,25.2,120,instock,41.0,0,0.0,2019-07-24 09:31:48,-0.262427619948788
+4861,15307,15307,Philippe Nusswitz Duché d'Uzès Orénia Rouge 2017,1,8.5,284,instock,29.0,0,0.0,2018-05-03 12:49:00,-0.86334065640633
+4607,15146,15146,François Bergeret Hautes Côtes de Beaune Vieilles Vignes Rondo 2017,1,13.4,0,outofstock,0.0,0,0.0,2018-04-13 14:26:33,-0.6870248552900452
+6572,15704,15704,Decelle-Villa Saint-Aubin 1er Cru Sous Roche Dumay 2015,1,44.0,0,outofstock,0.0,0,0.0,2020-01-03 16:46:47,0.414049331272876
+5573,14729,14729,Domaine Huet Vouvray Le Clos du Bourg Demi-Sec 2017,1,34.7,5,instock,0.0,0,0.0,2018-11-26 11:24:02,0.07940913731747852
+4627,805,805,Marcel Windholtz Eau de Vie de Poire Williams Réserve Particulière,1,58.3,1,instock,4.0,0,0.0,2018-04-14 11:45:24,0.9286036079999926
+6050,15134,15134,Christophe Pichon Condrieu 2017,1,38.5,0,outofstock,0.0,0,0.0,2019-05-07 17:25:10,0.21614384022398497
+6223,15324,15324,Planeta Sicilia Chardonnay 2017,1,26.7,1,instock,6.0,0,0.0,2019-07-26 10:44:28,-0.20845339511727223
+4043,14980,14980,Pierre Gaillard Côte Rôtie Esprit de Blonde 2017,1,60.0,12,instock,3.0,0,0.0,2018-02-12 10:03:05,0.9897743961423773
+4863,16255,16255,Château Ollieux Romanis Corbières Rosé Classique 2019,1,8.2,0,outofstock,4.0,0,0.0,2018-05-03 12:58:34,-0.8741355013726331
+5552,13520,13520,Thierry Germain Saumur Blanc Clos Roman 2016,1,57.7,12,instock,0.0,0,0.0,2018-11-26 10:21:02,0.9070139180673866
+4157,14751,14751,Planeta Sicilia Alastro 2017,1,12.0,10,instock,0.0,0,0.0,2018-02-13 14:39:39,-0.7374007984661265
+4096,15564,15564,Paul Ginglinger Pinot Gris Grand Cru Eichberg 2015,1,22.8,12,instock,0.0,0,0.0,2018-02-13 09:42:25,-0.3487863796792131
+4711,16119,16119,Albert Mann Riesling Grand Cru Schlossberg 2018,1,55.4,9,instock,1.0,0,0.0,2018-04-17 21:44:24,0.8242534399923956
+6226,15161,15161,Le Pas de l'Escalette Terrasses du Larzac Le Pas de D. 2017,1,20.4,0,outofstock,0.0,0,0.0,2019-07-30 14:59:19,-0.4351451394096384
+4750,13627,13627,Domaine de Montgilet Anjou Rouge Les Yvonnais 2015,1,16.4,45,instock,2.0,0,0.0,2018-04-18 21:37:27,-0.5790764056270137
+5396,14626,14626,Chili De Martino Gallardia Cinsault 2017,1,17.1,34,instock,0.0,0,0.0,2018-09-06 11:10:49,-0.5538884340389729
+5700,14736,14736,"Gilles Robin Crozes-Hermitage Rouge ""1920"" 2016",1,44.5,-1,outofstock,1.0,0,0.0,2019-01-31 11:58:26,0.43204073955004796
+5615,15923,15923,"Albert Boxler Pinot Gris Grand Cru Sommerberg ""W"" 2016",1,56.4,11,instock,0.0,0,0.0,2019-01-15 16:06:19,0.8602362565467395
+5739,16003,16003,Triennes IGP Méditerranée Rouge Merlot 2016,1,10.7,39,instock,1.0,0,0.0,2019-02-15 17:47:54,-0.7841784599867735
+4786,15881,15881,Maurice Schoech Gewurztraminer 2018,1,12.1,37,instock,0.0,0,0.0,2018-04-19 13:52:18,-0.7338025168106921
+5548,13965,13965,Thierry Germain Saumur-Champigny Outre Terre 2017,1,48.8,6,instock,0.0,0,0.0,2018-11-26 10:13:45,0.5867668507337264
+4201,15656,15656,Mas de Daumas Gassac IGP Saint-Guilhem-le-Désert 2018,1,38.0,69,instock,0.0,0,0.0,2018-02-15 14:09:02,0.19815243194681306
+4085,16462,16462,Rimauresq Côtes de Provence Rouge Cru Classé 2017,1,19.0,37,instock,7.0,0,0.0,2018-02-12 15:28:10,-0.4855210825857197
+4723,15879,15879,François Baur Pinot Noir Sang Du Dragon 2017,1,29.0,5,instock,3.0,0,0.0,2018-04-18 11:36:38,-0.12569291704228142
+6738,8193,8193,Emile Boeckel Crémant Chardonnay Extra Brut 2016,1,15.4,40,instock,3.0,0,0.0,2020-03-04 13:54:12,-0.6150592221813576
+4059,16275,16275,Mourgues du Grès Costières de Nîmes Galets Rosés 2019,1,8.7,36,instock,7.0,0,0.0,2018-02-12 12:12:28,-0.8561440930954611
+6628,15792,15792,Weingut Besson-Strasser Zürich Blauer Zweigelt 2016,1,32.2,31,instock,0.0,0,0.0,2020-01-23 11:46:11,-0.010547904068381048
+4048,16044,16044,Pierre Gaillard Saint-Joseph Rouge Clos de Cuminaille 2018,1,22.8,22,instock,7.0,0,0.0,2018-02-12 10:34:08,-0.3487863796792131
+4239,16567,16567,Domaine Augustin Collioure Blanc Adéodat 2019,1,28.0,18,instock,0.0,0,0.0,2018-02-20 09:23:00,-0.16167573359662524
+4885,14981,14981,Saumaize-Michelin Mâcon Vergisson Sur La Roche 2017,1,18.7,6,instock,0.0,0,0.0,2018-05-11 13:57:21,-0.49631592755202286
+4045,16041,16041,Pierre Gaillard Côte Rôtie 2018,1,42.6,66,instock,14.0,0,0.0,2018-02-12 10:09:03,0.3636733880967947
+4690,13659,13659,Domaine Plageoles Vin de France Contre-Pied 2016,1,12.8,15,instock,0.0,0,0.0,2018-04-17 17:12:30,-0.7086145452226514
+5820,15240,15240,Maison Trimbach Riesling Cuvée Frédéric Emile 2012,1,63.5,7,instock,0.0,0,0.0,2019-03-26 18:00:36,1.1157142540825806
+4105,16504,16504,Emile Boeckel Sylvaner Vieilles Vignes 2019,1,6.8,42,instock,5.0,0,0.0,2018-02-13 10:31:33,-0.9245114445487144
+4757,14680,14680,Domaine Saint-Nicolas Fiefs Vendéens Blanc Le Haut des Clous 2017,1,26.5,1,instock,6.0,0,0.0,2018-04-18 22:06:42,-0.21564995842814097
+4220,15758,15758,Xavier Frissant Touraine Amboise Chenin Les Pierres 2018,1,11.6,66,instock,12.0,0,0.0,2018-02-16 10:54:27,-0.751793925087864
+5899,12339,12339,Stéphane Tissot Arbois Blanc Les Bruyères 2015,1,28.1,0,outofstock,4.0,0,0.0,2019-03-28 14:23:41,-0.1580774519411908
+6569,15705,15705,Decelle-Villa Chorey-Lès-Beaune 2016,1,29.0,6,instock,3.0,0,0.0,2020-01-03 16:39:53,-0.12569291704228142
+4071,15953,15953,Château de Vaudieu Châteauneuf-du-Pape Rouge 2015,1,33.2,16,instock,19.0,0,0.0,2018-02-12 14:08:13,0.02543491248596278
+4675,13762,13762,Domaine Rotier Gaillac Blanc Sec Renaissance 2015,1,10.7,35,instock,0.0,0,0.0,2018-04-17 15:49:37,-0.7841784599867735
+5611,15945,15945,Domaine Weinbach Riesling Grand Cru Schlossberg Cuvée Ste Catherine 2018,1,63.4,1,instock,1.0,0,0.0,2019-01-15 15:05:12,1.1121159724271463
+5925,15351,15351,Albert Mann Riesling Grand Cru Furstentum 2017,1,49.5,12,instock,2.0,0,0.0,2019-04-06 10:14:45,0.6119548223217671
+5736,15116,15116,Triennes IGP Méditerranée Blanc Sainte Fleur 2018,1,14.9,10,instock,5.0,0,0.0,2019-02-15 14:02:14,-0.6330506304585295
+4161,15375,15375,Planeta Sicilia Plumbago 2017,1,11.6,0,outofstock,0.0,0,0.0,2018-02-13 15:09:20,-0.751793925087864
+4860,16292,16292,Philippe Nusswitz Duché d'Uzès Orénia Rosé 2019,1,8.7,85,instock,11.0,0,0.0,2018-05-03 12:46:23,-0.8561440930954611
+4980,15229,15229,Château La Tour l'Aspic Pauillac 2014,1,26.5,88,instock,0.0,0,0.0,2018-06-07 17:23:29,-0.21564995842814097
+4902,13052,13052,Domaine Des Croix Savigny-Lès-Beaune 1er Cru Les Peuillets 2015,1,46.0,11,instock,0.0,0,0.0,2018-05-15 10:05:23,0.4860149643815637
+4712,15667,15667,Domaine Schoenheitz Crémant d'Alsace Mémoire de Granit Extra Brut,1,15.8,0,outofstock,1.0,0,0.0,2018-04-17 21:53:24,-0.6006660955596199
+6617,16031,16031,Clos du Mont-Olivet Vins de Pays du Gard Rive Droite 2018,1,9.9,12,instock,6.0,0,0.0,2020-01-18 10:30:35,-0.8129647132302485
+4610,15801,15801,François Bergeret Hautes Côtes de Beaune Blanc 2018,1,13.1,114,instock,0.0,0,0.0,2018-04-13 15:10:06,-0.6978197002563482
+4674,16056,16056,Domaine Pellé Sancerre Blanc La Croix Au Garde 2018,1,19.0,41,instock,7.0,0,0.0,2018-04-17 15:32:02,-0.4855210825857197
+5393,12494,12494,Australie Harkham Wines Old Vines 2011,1,35.3,9,instock,0.0,0,0.0,2018-09-06 10:34:05,0.10099882725008462
+5397,12496,12496,Chili De Martino Viejas Tinajas Cinsault 2013,1,24.0,6,instock,0.0,0,0.0,2018-09-06 11:17:24,-0.3056069998140006
+4755,16132,16132,Domaine de Montgilet Vin de France Grolleau 2019,1,7.4,97,instock,0.0,0,0.0,2018-04-18 21:55:53,-0.9029217546161081
+6280,15654,15654,Borie de Maurel Minervois Blanc La Belle Aude 2018,1,10.4,0,outofstock,0.0,0,0.0,2019-09-10 11:38:09,-0.7949733049530767
+5566,16192,16192,Le Pas de l'Escalette Terrasses du Larzac Le Grand Pas 2018,1,27.5,17,instock,0.0,0,0.0,2018-11-26 11:01:40,-0.17966714187379715
+4799,15811,15811,Domaine de la Monardière Vacqueyras Les Deux Monardes 2017,1,14.9,56,instock,3.0,0,0.0,2018-04-19 15:17:59,-0.6330506304585295
+4077,15440,15440,Domaine des Bosquets Gigondas 2016,1,22.9,48,instock,0.0,0,0.0,2018-02-12 14:46:08,-0.3451880980237788
+6299,15710,15710,Lucien Boillot Gevrey Chambertin 1er Cru Les Cherbaudes 2017,1,78.0,10,instock,0.0,0,0.0,2019-10-05 10:46:15,1.6374650941205662
+5019,14696,14696,Château Tour Des Gendres Bergerac Blanc Moulin Des Dames 2016,1,19.8,0,outofstock,0.0,0,0.0,2018-07-17 14:49:39,-0.45673482934224463
+6920,15740,15740,Château Jean Faure Saint-Emilion Grand Cru 2015,1,50.5,1,instock,0.0,0,0.0,2020-04-25 12:32:17,0.6479376388761109
+4146,1360,1360,Champagne Mailly Grand Cru Brut Réserve,1,29.5,33,instock,0.0,0,0.0,2018-02-13 13:26:34,-0.10770150876510949
+4244,15770,15770,La Préceptorie Côtes du Roussillon Coume Marie 2018,1,13.5,50,instock,5.0,0,0.0,2018-02-20 10:16:13,-0.6834265736346108
+4706,15349,15349,Albert Mann Muscat 2018,1,16.8,23,instock,32.0,0,0.0,2018-04-17 21:17:02,-0.5646832790052762
+5520,15863,15863,Domaine Chambeyron Côte Rôtie La Chavarine 2017,1,38.6,54,instock,2.0,0,0.0,2018-10-31 13:45:06,0.2197421218794194
+5950,15432,15432,Domaine de Vaccelli AOP Ajaccio Rouge Granit 2016,1,46.0,0,outofstock,5.0,0,0.0,2019-04-17 09:26:12,0.4860149643815637
+6325,15678,15678,Tempier Bandol Blanc 2018,1,27.9,7,instock,0.0,0,0.0,2019-11-02 13:01:42,-0.16527401525205968
+5545,14827,14827,Marc Colin Et Fils Chassagne-Montrachet Blanc Les Caillerets 1er Cru 2016,1,65.9,0,outofstock,7.0,0,0.0,2018-11-26 09:56:52,1.202073013813006
+4937,16283,16283,Domaine Rouge Garance Côtes du Rhône Feuille de Garance 2019,1,9.9,28,instock,4.0,0,0.0,2018-05-17 13:31:40,-0.8129647132302485
+3849,15296,15296,Pierre Jean Villa Saint-Joseph Rouge Tildé 2017,1,34.3,0,outofstock,0.0,0,0.0,2018-02-08 13:49:41,0.06501601069574078
+5802,15399,15399,Château Peymartin Saint-Julien 2014,1,23.8,22,instock,0.0,0,0.0,2019-03-19 11:29:23,-0.3128035631248693
+6278,16273,16273,Borie de Maurel Minervois Rouge Esprit d'Automne 2019,1,9.0,69,instock,5.0,0,0.0,2019-09-10 11:27:33,-0.845349248129158
+4336,13599,13599,Champagne Mailly Grand Cru Blanc de Pinot Noir,1,35.5,36,instock,1.0,0,0.0,2018-03-01 14:12:39,0.10819539056095348
+5905,12881,12881,Domaine de Montbourgeau L'Etoile Vin Jaune 2009,1,43.9,0,outofstock,2.0,0,0.0,2019-03-28 15:25:14,0.4104510496174416
+5738,15566,15566,Triennes IGP Méditerranée Rouge Saint Auguste 2016,1,14.6,26,instock,11.0,0,0.0,2019-02-15 14:16:03,-0.6438454754248325
+4703,15465,15465,Albert Mann Crémant d'Alsace Extra Brut 2017,1,19.8,2,instock,7.0,0,0.0,2018-04-17 21:03:25,-0.45673482934224463
+4654,13514,13514,Thierry Germain Saumur-Champigny La Marginale 2016,1,33.4,0,outofstock,0.0,0,0.0,2018-04-17 10:05:42,0.03263147579683139
+4891,15807,15807,Jacqueson Rully Blanc 1er Cru La Pucelle 2018,1,27.9,0,outofstock,36.0,0,0.0,2018-05-11 14:59:33,-0.16527401525205968
+4166,16124,16124,Ollieux Romanis Corbières Boutenac Atal Sia 2017,1,20.5,8,instock,6.0,0,0.0,2018-02-14 15:43:42,-0.4315468577542039
+4682,15575,15575,Château Plaisance Fronton Rouge 2017,1,9.1,26,instock,6.0,0,0.0,2018-04-17 16:29:35,-0.8417509664737236
+6222,7032,7032,Planeta Sicilia Passito di Noto 2016,1,26.4,10,instock,0.0,0,0.0,2019-07-26 10:27:08,-0.2192482400835754
+4079,13078,13078,Le Vieux Donjon Châteauneuf-du-Pape 2013,1,37.0,0,outofstock,0.0,0,0.0,2018-02-12 14:55:54,0.16216961539246924
+6128,14569,14569,Moulin de Gassac IGP Pays d'Hérault Blanc Faune 2017,1,10.6,50,instock,3.0,0,0.0,2019-06-28 17:56:00,-0.7877767416422078
+6665,16068,16068,Domaine Hauvette IGP Alpilles Jaspe 2017,1,27.7,8,instock,1.0,0,0.0,2020-02-22 14:28:32,-0.1724705785629284
+4734,16138,16138,Camin Larredya Jurançon Moelleux Costat Darrer 2018,1,15.3,36,instock,1.0,0,0.0,2018-04-18 20:43:01,-0.6186575038367919
+4705,14699,14699,Albert Mann Gewurztraminer Grand Cru Steingrubler 2016,1,31.6,12,instock,8.0,0,0.0,2018-04-17 21:12:38,-0.032137594000987396
+4232,16269,16269,Argentine Mendoza Alamos Chardonnay 2019,1,11.1,35,instock,2.0,0,0.0,2018-02-16 15:52:37,-0.7697853333650359
+4108,15353,15353,Zind-Humbrecht Riesling Herrenweg de Turckheim 2017,1,31.7,0,outofstock,2.0,0,0.0,2018-02-13 10:56:04,-0.02853931234555309
+6225,15162,15162,Le Pas de l'Escalette IGP Hérault Ze Cinsault 2017,1,20.4,0,outofstock,4.0,0,0.0,2019-07-30 14:53:47,-0.4351451394096384
+5488,14712,14712,Decelle-Villa Beaune Rouge 2015,1,43.5,17,instock,0.0,0,0.0,2018-10-09 16:01:48,0.39605792299570414
+6635,15763,15763,Domaine de la Monardière Vacqueyras Vieilles Vignes 2016,1,22.4,23,instock,1.0,0,0.0,2020-01-25 14:08:16,-0.36317950630095075
+4100,13416,13416,Emile Boeckel Gewurztraminer Grand Cru Zotzenberg 2016,1,15.8,7,instock,0.0,0,0.0,2018-02-13 10:04:03,-0.6006660955596199
+4231,15461,15461,Argentine Mendoza Alamos Malbec 2018,1,11.1,0,outofstock,1.0,0,0.0,2018-02-16 15:39:34,-0.7697853333650359
+4634,41,41,Marcel Windholtz Eau de Vie de Marc de Gewurztraminer,1,41.0,4,instock,0.0,0,0.0,2018-04-14 12:01:43,0.30610088160984456
+4907,14374,14374,Alphonse Mellot Coteaux Charitois Rouge Les Pénitents 2015,1,22.9,6,instock,0.0,0,0.0,2018-05-15 10:40:56,-0.3451880980237788
+5772,15180,15180,Camille Giroud Santenay Rouge 2016,1,29.7,47,instock,1.0,0,0.0,2019-03-13 15:08:45,-0.10050494545424075
+5382,16011,16011,Nouvelle-Zélande Marlborough Momo Pinot Noir 2016,1,22.8,11,instock,0.0,0,0.0,2018-09-01 15:50:44,-0.3487863796792131
+4144,1662,1662,Champagne Gosset Grand Rosé,1,49.0,11,instock,87.0,0,0.0,2018-02-13 13:17:25,0.5939634140445952
+5616,14845,14845,"Albert Boxler Pinot Noir ""S"" 2016",1,38.4,6,instock,2.0,0,0.0,2019-01-15 16:12:13,0.21254555856855054
+4668,14657,14657,Xavier Frissant Touraine Amboise L'Orée des Frênes 2015,1,12.3,23,instock,3.0,0,0.0,2018-04-17 11:22:03,-0.7266059534998234
+6279,16247,16247,Borie de Maurel Minervois Rouge Maxime 2003,1,45.9,10,instock,0.0,0,0.0,2019-09-10 11:33:37,0.48241668272612925
+4733,15576,15576,Camin Larredya Jurançon Sec La Part Davant 2018,1,16.8,13,instock,0.0,0,0.0,2018-04-18 20:37:25,-0.5646832790052762
+4933,16281,16281,Marcel Richaud Cairanne Rouge 2018,1,18.4,30,instock,0.0,0,0.0,2018-05-17 12:59:29,-0.507110772518326
+4075,16069,16069,Plateau des Chênes Lirac 2015,1,14.7,54,instock,0.0,0,0.0,2018-02-12 14:34:12,-0.6402471937693982
+4167,15785,15785,Ollieux Romanis Corbières Rouge Cuvée Prestige 2017,1,14.3,36,instock,3.0,0,0.0,2018-02-14 16:02:48,-0.6546403203911356
+4168,15784,15784,Ollieux Romanis Corbières Blanc Cuvée Prestige 2018,1,18.2,50,instock,12.0,0,0.0,2018-02-14 16:09:44,-0.5143073358291947
+4173,16211,16211,Maurel Pays d'Oc Chenin-Colombard 2019,1,5.7,100,instock,13.0,0,0.0,2018-02-14 17:10:39,-0.9640925427584927
+4890,16038,16038,Saumaize-Michelin Saint-Véran 2018,1,17.0,29,instock,6.0,0,0.0,2018-05-11 14:55:23,-0.5574867156944073
+5906,15857,15857,Domaine de Montbourgeau L'Etoile En Banode 2016,1,19.8,0,outofstock,0.0,0,0.0,2019-03-28 16:26:27,-0.45673482934224463
+4047,14977,14977,Pierre Gaillard Côtes-du-Rhône Blanc Les Gendrines 2018,1,18.3,36,instock,0.0,0,0.0,2018-02-12 10:28:30,-0.5107090541737603
+4304,15120,15120,Domaine de l'Idylle Savoie Cruet 2018,1,8.1,133,instock,0.0,0,0.0,2018-02-28 15:45:13,-0.8777337830280674
+4271,13460,13460,Domaine Sérol Côte Roannaise Perdrizière 2016,1,16.6,56,instock,0.0,0,0.0,2018-02-27 13:17:25,-0.5718798423161449
+5068,15345,15345,Albert Mann Pinot Noir Grand P 2017,1,59.9,1,instock,0.0,0,0.0,2018-07-31 11:52:58,0.9861761144869429
+6105,14090,14090,Stéphane Tissot Côtes du Jura Sursis 2017,1,34.8,1,instock,7.0,0,0.0,2019-06-08 09:47:41,0.08300741897291271
+4930,16155,16155,Domaine La Croix Belle Côtes de Thongue Blanc N°7 2018,1,17.5,9,instock,5.0,0,0.0,2018-05-17 12:35:04,-0.5394953074172354
+4248,15033,15033,Domaine Saint-Denis Mâcon Chardonnay 2017,1,14.8,64,instock,12.0,0,0.0,2018-02-20 11:24:01,-0.6366489121139638
+4936,15106,15106,Domaine Rouge Garance Côtes du Rhône Blanc De Garance 2018,1,11.1,88,instock,11.0,0,0.0,2018-05-17 13:25:19,-0.7697853333650359
+4106,15787,15787,Emile Boeckel Pinot Noir Barriques Oberpfoeller 2018,1,12.6,26,instock,6.0,0,0.0,2018-02-13 10:36:10,-0.7158111085335201
+5063,15715,15715,Lucien Boillot Pommard 1er Cru Les Croix Noires 2017,1,67.0,0,outofstock,0.0,0,0.0,2018-07-31 11:18:26,1.2416541120227842
+4656,10814,10814,Thierry Germain Saumur-Champigny Outre Terre 2013,1,43.0,3,instock,0.0,0,0.0,2018-04-17 10:12:40,0.3780665147185322
+5922,15343,15343,Albert Mann Pinot Noir Clos de la Faille 2017,1,48.5,0,outofstock,17.0,0,0.0,2019-04-06 09:59:39,0.5759720057674232
+4926,15456,15456,Domaine La Croix Belle Côtes de Thongue Blanc Champ des Lys 2018,1,7.9,92,instock,0.0,0,0.0,2018-05-17 12:20:36,-0.8849303463389363
+4222,15759,15759,Xavier Frissant Touraine Amboise M de La Touche 2016,1,8.9,66,instock,4.0,0,0.0,2018-02-16 11:14:54,-0.8489475297845924
+5951,16472,16472,Domaine de Vaccelli AOP Ajaccio Rouge Granit 174 2017,1,74.5,6,instock,0.0,0,0.0,2019-04-17 09:39:01,1.5115252361803628
+4263,15664,15664,Chermette Domaine du Vissoux Fleurie Poncié 2018,1,15.8,50,instock,0.0,0,0.0,2018-02-27 10:27:32,-0.6006660955596199
+4889,16037,16037,Saumaize-Michelin Pouilly-Fuissé Vignes Blanches 2018,1,25.3,0,outofstock,0.0,0,0.0,2018-05-11 14:52:59,-0.25882933829335353
+4925,16277,16277,Cave de Castelmaure Corbières Rouge N°3 2017,1,23.2,0,outofstock,12.0,0,0.0,2018-05-17 12:05:44,-0.33439325305747564
+4789,15316,15316,Maurice Schoech Pinot Noir 2018,1,11.1,62,instock,2.0,0,0.0,2018-04-19 13:59:04,-0.7697853333650359
+4672,14676,14676,Domaine Pellé Menetou Salon Rouge Morogues 2017,1,17.8,5,instock,0.0,0,0.0,2018-04-17 15:25:56,-0.5287004624509323
+4636,2361,2361,Marcel Windholtz Eau de Vie de Framboise d'Alsace,1,50.0,4,instock,1.0,0,0.0,2018-04-14 12:20:54,0.6299462305989391
+4566,15457,15457,Domaine de Montcalmès Coteaux du Languedoc Blanc 2017,1,28.5,3,instock,0.0,0,0.0,2018-04-12 10:14:12,-0.14368432531945333
+4655,13516,13516,Thierry Germain Saumur-Champigny Les Mémoires 2016,1,40.2,23,instock,0.0,0,0.0,2018-04-17 10:09:55,0.2773146283663696
+4268,16307,16307,Domaine Bulliat Morgon Le Colombier 2019,1,15.2,55,instock,1.0,0,0.0,2018-02-27 11:02:05,-0.6222557854922263
+4893,15808,15808,Jacqueson Rully Rouge 1er Cru Les Cloux 2018,1,27.9,0,outofstock,3.0,0,0.0,2018-05-11 15:10:59,-0.16527401525205968
+4888,15776,15776,Saumaize-Michelin Pouilly-Fuissé Les Ronchevats 2018,1,27.9,53,instock,0.0,0,0.0,2018-05-11 14:41:39,-0.16527401525205968
+4245,16097,16097,Parcé Frères IGP Pays d'Oc Zoé Viognier 2019,1,8.9,141,instock,1.0,0,0.0,2018-02-20 10:32:11,-0.8489475297845924
+4060,16498,16498,Mourgues du Grès Costières de Nîmes Terre d'Argence 2017,1,11.9,73,instock,9.0,0,0.0,2018-02-12 12:41:06,-0.7409990801215609
+4287,16065,16065,Domaine Hauvette Les Baux de Provence Cornaline 2014,1,38.6,22,instock,1.0,0,0.0,2018-02-28 13:40:34,0.2197421218794194
+4919,15531,15531,Alain Graillot Crozes-Hermitage Rouge 2017,1,24.4,0,outofstock,6.0,0,0.0,2018-05-17 11:15:27,-0.29121387319226305
+4074,15941,15941,Domaine de la Jérôme Côtes du Rhône Village 201,1,12.7,50,instock,4.0,0,0.0,2018-02-12 14:26:52,-0.7122128268780858
+4617,10459,10459,Alphonse Mellot Sancerre Rouge Génération XIX 2011,1,67.5,1,instock,0.0,0,0.0,2018-04-13 15:58:19,1.2596455202999561
+4062,16320,16320,Mourgues du Grès IGP Pont du Gard Terre d'Argence 2018,1,11.9,60,instock,3.0,0,0.0,2018-02-12 12:49:29,-0.7409990801215609
+4262,15663,15663,Chermette Domaine du Vissoux Brouilly Pierreux 2018,1,15.8,35,instock,3.0,0,0.0,2018-02-27 10:27:01,-0.6006660955596199
+5896,15910,15910,Thevenet Quintaine Viré-Clessé La Bongran 2015,1,24.7,17,instock,0.0,0,0.0,2019-03-28 10:59:43,-0.2804190282259599

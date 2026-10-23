@@ -1,0 +1,11 @@
+﻿sujet.md
+bilan_technique_reprise.md
+*.log
+__pycache__/
+.venv/
+*.pyc
+data/outputs/*.duckdb
+data/outputs/*.duckdb.wal
+
+*.dtmp
+*.bkp
