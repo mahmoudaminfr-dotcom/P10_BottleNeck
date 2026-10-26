@@ -9,3 +9,7 @@ data/outputs/*.duckdb.wal
 
 *.dtmp
 *.bkp
+
+diagramme_fonctionnel_copil*
+
+*.tmp
