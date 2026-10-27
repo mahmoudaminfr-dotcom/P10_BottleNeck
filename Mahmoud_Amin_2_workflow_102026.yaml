@@ -1,11 +1,12 @@
 ﻿id: bottleneck_pipeline
 namespace: bottleneck.production
-description: "Pipeline d'orchestration des flux BottleNeck (ETL DuckDB & Python avec Staging Atomique et Tests Complets)"
+description: "Pipeline d'orchestration des flux BottleNeck (ETL DuckDB & Python avec Publication Atomique par Lot et Tests Complets)"
 
 inputs:
   - id: mode_validation
     type: SELECT
-    displayName: "Mode de contrôle qualité (Recette initiale ou Production mensuelle)"
+    displayName: "Mode de contrÃ´le qualitÃ© (Recette initiale ou Production mensuelle)"
+    description: "RECETTE_INITIALE vÃ©rifie les seuils fixes du jeu d'essai (714 produits, 70568.60 EUR, 30 premium). PRODUCTION_MENSUELLE applique les invariants dynamiques."
     defaults: RECETTE_INITIALE
     values:
       - RECETTE_INITIALE
@@ -310,7 +311,7 @@ tasks:
 
   - id: t4b_calcul_zscore
     type: io.kestra.plugin.scripts.python.Script
-    description: "Tache 4B : Calcul Python du Z-Score des prix pour reperer les vins premium (ecriture sequencee)"
+    description: "Tache 4B : Calcul Python du Z-Score des prix et affectation du segment (ecriture sequencee)"
     taskRunner:
       type: io.kestra.plugin.core.runner.Process
     dependencies:
@@ -331,6 +332,7 @@ tasks:
               raise ValueError("Ecart-type des prix nul ou invalide, calcul du Z-Score impossible.")
 
           df["z_score"] = (prices - mean_price) / std_price
+          df["segment"] = df["z_score"].apply(lambda z: "premium" if z > 2 else "ordinaire")
           con.execute("CREATE OR REPLACE TABLE erp_web_zscore AS SELECT * FROM df")
 
       print(f"[TACHE 4B OK] Z-Score des prix calcule pour {len(df)} produits (Moyenne: {mean_price:.2f} EUR, Ecart-type: {std_price:.2f} EUR)")
@@ -351,8 +353,8 @@ tasks:
           nb_merged = con.execute("SELECT COUNT(*) FROM erp_web_merged").fetchone()[0]
           total = con.execute("SELECT COUNT(*) FROM erp_web_zscore").fetchone()[0]
           null_z = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score IS NULL OR isnan(z_score)").fetchone()[0]
-          premium = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score > 2").fetchone()[0]
-          ordinaire = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score <= 2").fetchone()[0]
+          premium = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score > 2 AND segment = 'premium'").fetchone()[0]
+          ordinaire = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score <= 2 AND segment = 'ordinaire'").fetchone()[0]
 
       if null_z > 0:
           raise ValueError(f"[TEST 4B KO] {null_z} valeurs de z_score NULL ou NaN detectees.")
@@ -367,7 +369,7 @@ tasks:
 
   - id: exports_paralleles_staging
     type: io.kestra.plugin.core.flow.Parallel
-    description: "Lectures DuckDB (read_only) et generation parallele des fichiers dans le dossier de staging isole"
+    description: "Seule etape parallele : Lectures DuckDB (read_only) et generation simultanee des exports Excel et CSV en staging"
     tasks:
       - id: ext_rapport_ca_xlsx
         type: io.kestra.plugin.scripts.python.Script
@@ -424,7 +426,7 @@ tasks:
 
   - id: test5_et_publication_atomique
     type: io.kestra.plugin.scripts.python.Script
-    description: "TEST 5 & PUBLICATION : Controle des fichiers exportes en staging puis publication atomique vers /data/outputs"
+    description: "TEST 5 & PUBLICATION : Verification approfondie du contenu des exports (formules, sommes, IDs, segments) puis bascule atomique du dossier complet"
     taskRunner:
       type: io.kestra.plugin.core.runner.Process
     dependencies:
@@ -437,58 +439,158 @@ tasks:
       import duckdb
       import pandas as pd
 
-      staging_dir = "/data/outputs/.staging_{{ execution.id }}"
+      exec_id = "{{ execution.id }}"
       output_dir = "/data/outputs"
+      staging_dir = os.path.join(output_dir, f".staging_{exec_id}")
+
       db_staging = os.path.join(staging_dir, "bottleneck.duckdb")
       xlsx_staging = os.path.join(staging_dir, "rapport_chiffre_affaires.xlsx")
       prem_staging = os.path.join(staging_dir, "vins_premium.csv")
       ord_staging = os.path.join(staging_dir, "vins_ordinaires.csv")
 
+      # 1. Verification physique des fichiers en staging
       for fpath in [db_staging, xlsx_staging, prem_staging, ord_staging]:
           if not os.path.exists(fpath) or os.path.getsize(fpath) == 0:
               raise FileNotFoundError(f"[TEST 5 KO] Fichier d'export manquant ou vide en staging : {fpath}")
 
+      # 2. Chargement des references depuis DuckDB
       with duckdb.connect(db_staging, read_only=True) as con:
-          exp_total = con.execute("SELECT COUNT(*) FROM erp_web_merged").fetchone()[0]
-          exp_ca = round(float(con.execute("SELECT chiffre_affaires_total FROM ca_global").fetchone()[0]), 2)
-          exp_prem = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score > 2").fetchone()[0]
-          exp_ord = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score <= 2").fetchone()[0]
+          df_ref_ca = con.execute("SELECT product_id, sku, price, total_sales, chiffre_affaires FROM ca_par_produit").df()
+          exp_ca_glob = round(float(con.execute("SELECT chiffre_affaires_total FROM ca_global").fetchone()[0]), 2)
+          df_ref_z = con.execute("SELECT product_id, z_score, segment FROM erp_web_zscore").df()
 
+      exp_total = len(df_ref_ca)
+      ref_ids = set(df_ref_ca["product_id"].tolist())
+      ref_prem_ids = set(df_ref_z[df_ref_z["z_score"] > 2]["product_id"].tolist())
+      ref_ord_ids = set(df_ref_z[df_ref_z["z_score"] <= 2]["product_id"].tolist())
+
+      # 3. Controle approfondi du contenu de l'Excel (CA individuel, somme des CA vs CA_Total, IDs)
       df_xlsx_prod = pd.read_excel(xlsx_staging, sheet_name="CA_par_produit")
       df_xlsx_glob = pd.read_excel(xlsx_staging, sheet_name="CA_Total")
+
+      if len(df_xlsx_prod) != exp_total or set(df_xlsx_prod["product_id"].tolist()) != ref_ids:
+          raise AssertionError("[TEST 5 KO] Incoherence des identifiants product_id ou du nombre de lignes dans l'onglet CA_par_produit.")
+
+      # Verification ligne a ligne dans l'Excel : chiffre_affaires == ROUND(price * total_sales, 2)
+      calc_ca_line = (df_xlsx_prod["price"] * df_xlsx_prod["total_sales"]).round(2)
+      bad_lines = (df_xlsx_prod["chiffre_affaires"].round(2) - calc_ca_line).abs() > 0.001
+      if bad_lines.any():
+          raise AssertionError(f"[TEST 5 KO] {int(bad_lines.sum())} ligne(s) ont un CA individuel falsifie ou incoherent dans l'Excel !")
+
+      # Comparaison exacte entre chaque CA individuel de l'Excel et la table DuckDB
+      merged_check = pd.merge(
+          df_xlsx_prod[["product_id", "chiffre_affaires"]],
+          df_ref_ca[["product_id", "chiffre_affaires"]],
+          on="product_id",
+          suffixes=("_xlsx", "_db")
+      )
+      if ((merged_check["chiffre_affaires_xlsx"].round(2) - merged_check["chiffre_affaires_db"].round(2)).abs() > 0.001).any():
+          raise AssertionError("[TEST 5 KO] Ecart detecte sur un CA individuel entre le fichier Excel et DuckDB !")
+
+      # Comparaison entre la somme des CA par produit de l'Excel et le CA Total de l'Excel
+      xlsx_sum_prod = round(float(df_xlsx_prod["chiffre_affaires"].sum()), 2)
+      xlsx_ca_glob = round(float(df_xlsx_glob["chiffre_affaires_total"].iloc[0]), 2)
+      if xlsx_sum_prod != xlsx_ca_glob or xlsx_ca_glob != exp_ca_glob:
+          raise AssertionError(
+              f"[TEST 5 KO] Incoherence des totaux Excel : Somme(CA_par_produit)={xlsx_sum_prod} vs CA_Total={xlsx_ca_glob} vs DuckDB={exp_ca_glob}"
+          )
+
+      # 4. Controle approfondi du contenu des CSV (identifiants product_id, partition, z_score et segments)
       df_prem = pd.read_csv(prem_staging)
       df_ord = pd.read_csv(ord_staging)
 
-      xlsx_ca = round(float(df_xlsx_glob["chiffre_affaires_total"].iloc[0]), 2)
-      if len(df_xlsx_prod) != exp_total or xlsx_ca != exp_ca:
-          raise AssertionError(f"[TEST 5 KO] Export Excel incoherent : {len(df_xlsx_prod)} lignes (attendu {exp_total}), CA={xlsx_ca} (attendu {exp_ca})")
+      prem_ids = set(df_prem["product_id"].tolist())
+      ord_ids = set(df_ord["product_id"].tolist())
 
-      if len(df_prem) != exp_prem or len(df_ord) != exp_ord or (len(df_prem) + len(df_ord)) != exp_total:
-          raise AssertionError(f"[TEST 5 KO] Exports CSV incoherents : premium={len(df_prem)}, ordinaires={len(df_ord)}, total={exp_total}")
+      if len(df_prem) != len(prem_ids) or len(df_ord) != len(ord_ids):
+          raise AssertionError("[TEST 5 KO] Doublons de product_id detectes dans les fichiers CSV !")
 
-      # Publication atomique vers /data/outputs uniquement apres succes complet de toutes les branches
+      if (prem_ids & ord_ids):
+          raise AssertionError("[TEST 5 KO] Chevauchement d'identifiants product_id entre vins_premium.csv et vins_ordinaires.csv !")
+
+      if prem_ids != ref_prem_ids or ord_ids != ref_ord_ids or (prem_ids | ord_ids) != ref_ids:
+          raise AssertionError("[TEST 5 KO] Les identifiants product_id des CSV ne correspondent pas exactement aux segments de DuckDB !")
+
+      if (df_prem["z_score"] <= 2).any() or (df_ord["z_score"] > 2).any():
+          raise AssertionError("[TEST 5 KO] Valeurs de z_score hors seuil detectees dans les CSV !")
+
+      if "segment" not in df_prem.columns or "segment" not in df_ord.columns:
+          raise AssertionError("[TEST 5 KO] Colonne 'segment' absente des exports CSV !")
+
+      if not (df_prem["segment"] == "premium").all() or not (df_ord["segment"] == "ordinaire").all():
+          raise AssertionError("[TEST 5 KO] Valeurs de la colonne 'segment' invalides dans les CSV !")
+
+      # 5. Publication atomique d'un dossier complet par execution et bascule vers le dernier lot valide
+      lots_root = os.path.join(output_dir, "lots")
+      os.makedirs(lots_root, exist_ok=True)
+      lot_dir = os.path.join(lots_root, f"lot_{exec_id}")
+
+      # Bascule atomique (renommage OS instantane) du dossier de staging complet vers le lot valide
+      if os.path.exists(lot_dir):
+          shutil.rmtree(lot_dir)
+      os.replace(staging_dir, lot_dir)
+
+      # Mise a jour atomique du dossier 'dernier_lot_valide' (via preparation puis swap atomique)
+      active_lot_dir = os.path.join(output_dir, "dernier_lot_valide")
+      next_lot_tmp = os.path.join(output_dir, f".next_lot_{exec_id}")
+      prev_lot_bak = os.path.join(output_dir, f".prev_lot_{exec_id}")
+
+      if os.path.exists(next_lot_tmp):
+          shutil.rmtree(next_lot_tmp)
+      shutil.copytree(lot_dir, next_lot_tmp)
+
+      # Si une erreur survenait pendant copytree ci-dessus, 'dernier_lot_valide' n'est pas touche.
+      # Le swap ci-dessous utilise uniquement os.replace (renommage de repertoire atomique) :
+      if os.path.exists(prev_lot_bak):
+          shutil.rmtree(prev_lot_bak)
+      if os.path.exists(active_lot_dir):
+          os.replace(active_lot_dir, prev_lot_bak)
+      os.replace(next_lot_tmp, active_lot_dir)
+      if os.path.exists(prev_lot_bak):
+          shutil.rmtree(prev_lot_bak, ignore_errors=True)
+
+      # Pointeur atomique indiquant l'identifiant et le chemin du dernier lot valide
+      pointer_tmp = os.path.join(output_dir, f".pointer_{exec_id}.tmp")
+      pointer_final = os.path.join(output_dir, "LAST_VALID_LOT.txt")
+      with open(pointer_tmp, "w", encoding="utf-8") as f:
+          f.write(f"lot_{exec_id}\n{lot_dir}\n")
+      os.replace(pointer_tmp, pointer_final)
+
+      # Synchronisation atomique des fichiers a la racine de /data/outputs depuis le lot deja valide
       for fname in ["bottleneck.duckdb", "rapport_chiffre_affaires.xlsx", "vins_premium.csv", "vins_ordinaires.csv"]:
-          src = os.path.join(staging_dir, fname)
-          dst = os.path.join(output_dir, fname)
-          shutil.copy2(src, dst)
+          src_file = os.path.join(active_lot_dir, fname)
+          tmp_file = os.path.join(output_dir, f".tmp_{exec_id}_{fname}")
+          dst_file = os.path.join(output_dir, fname)
+          shutil.copy2(src_file, tmp_file)
+          os.replace(tmp_file, dst_file)
 
-      shutil.rmtree(staging_dir, ignore_errors=True)
-      print(f"[TEST 5 & PUBLICATION ATOMIQUE OK] Fichiers verifies et publies dans {output_dir} ({exp_total} produits, CA={exp_ca:.2f} EUR, {exp_prem} premium / {exp_ord} ordinaires).")
+      print(f"[TEST 5 & PUBLICATION ATOMIQUE OK] Lot complet 'lot_{exec_id}' valide et bascule sur '{active_lot_dir}' ({exp_total} produits, Somme CA={xlsx_sum_prod:.2f} EUR, {len(df_prem)} premium / {len(df_ord)} ordinaires).")
 
 errors:
   - id: nettoyage_staging_et_alerte
     type: io.kestra.plugin.scripts.python.Script
-    description: "Nettoyage du dossier de staging isole et journalisation de l'alerte d'incident dans Kestra"
+    description: "Nettoyage des fichiers temporaires de staging et journalisation d'une ligne d'alerte dans les logs Kestra"
     taskRunner:
       type: io.kestra.plugin.core.runner.Process
     script: |
+      import os
       import shutil
       import sys
-      staging_dir = "/data/outputs/.staging_{{ execution.id }}"
-      shutil.rmtree(staging_dir, ignore_errors=True)
-      print("[ALERTE INCIDENT BOTTLENECK] Echec du pipeline ({{ flow.id }}) lors de l'execution {{ execution.id }}. Le dossier de staging a ete purge : les fichiers de production precedents dans /data/outputs sont restes 100% intacts.", file=sys.stderr)
+
+      exec_id = "{{ execution.id }}"
+      output_dir = "/data/outputs"
+      for d in [f".staging_{exec_id}", f".next_lot_{exec_id}"]:
+          p = os.path.join(output_dir, d)
+          if os.path.exists(p):
+              shutil.rmtree(p, ignore_errors=True)
+
+      print(f"[ALERTE INCIDENT BOTTLENECK] Echec du pipeline ({{ flow.id }}) lors de l'execution {exec_id}. Le dossier de staging a ete purge : le dernier lot valide dans /data/outputs/dernier_lot_valide est reste 100% intact (alerte tracee dans les logs Kestra uniquement).", file=sys.stderr)
 
 triggers:
   - id: planification_mensuelle_15_du_mois
     type: io.kestra.plugin.core.trigger.Schedule
     cron: "0 9 15 * *"
+    timezone: Europe/Paris
+    inputs:
+      mode_validation: PRODUCTION_MENSUELLE
+

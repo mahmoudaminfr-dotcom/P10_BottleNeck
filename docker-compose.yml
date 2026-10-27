@@ -15,7 +15,7 @@
       retries: 10
 
   kestra:
-    image: kestra/kestra:${KESTRA_VERSION:-v0.18.4}
+    image: kestra/kestra:${KESTRA_VERSION:-latest}
     container_name: p10_kestra_orchestrator
     user: "root"
     command: server standalone
@@ -59,3 +59,4 @@
 volumes:
   p10-postgres-data:
   p10-kestra-data:
+
