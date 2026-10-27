@@ -9,13 +9,13 @@
       POSTGRES_USER: ${POSTGRES_USER:-kestra}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-k3str4_password}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d $ -U $"]
+      test: ["CMD-SHELL", "pg_isready -d `${POSTGRES_DB:-kestra} -U `${POSTGRES_USER:-kestra}"]
       interval: 5s
       timeout: 5s
       retries: 10
 
   kestra:
-    image: kestra/kestra:${KESTRA_VERSION:-latest}
+    image: kestra/kestra:${KESTRA_VERSION:-v2.0.8}
     container_name: p10_kestra_orchestrator
     user: "root"
     command: server standalone
@@ -59,4 +59,5 @@
 volumes:
   p10-postgres-data:
   p10-kestra-data:
+
 

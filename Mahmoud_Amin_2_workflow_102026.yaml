@@ -5,8 +5,8 @@ description: "Pipeline d'orchestration des flux BottleNeck (ETL DuckDB & Python 
 inputs:
   - id: mode_validation
     type: SELECT
-    displayName: "Mode de contrÃ´le qualitÃ© (Recette initiale ou Production mensuelle)"
-    description: "RECETTE_INITIALE vÃ©rifie les seuils fixes du jeu d'essai (714 produits, 70568.60 EUR, 30 premium). PRODUCTION_MENSUELLE applique les invariants dynamiques."
+    displayName: "Mode de contrôle qualité (Recette initiale ou Production mensuelle)"
+    description: "RECETTE_INITIALE vérifie les seuils fixes du jeu d'essai (714 produits, 70568.60 EUR, 30 premium). PRODUCTION_MENSUELLE applique les invariants dynamiques."
     defaults: RECETTE_INITIALE
     values:
       - RECETTE_INITIALE
@@ -426,7 +426,7 @@ tasks:
 
   - id: test5_et_publication_atomique
     type: io.kestra.plugin.scripts.python.Script
-    description: "TEST 5 & PUBLICATION : Verification approfondie du contenu des exports (formules, sommes, IDs, segments) puis bascule atomique du dossier complet"
+    description: "TEST 5 & PUBLICATION : Verification approfondie des exports (absence de NULLs sur champs obligatoires, formules, sommes, IDs, segments) puis bascule atomique du pointeur de lot"
     taskRunner:
       type: io.kestra.plugin.core.runner.Process
     dependencies:
@@ -464,9 +464,15 @@ tasks:
       ref_prem_ids = set(df_ref_z[df_ref_z["z_score"] > 2]["product_id"].tolist())
       ref_ord_ids = set(df_ref_z[df_ref_z["z_score"] <= 2]["product_id"].tolist())
 
-      # 3. Controle approfondi du contenu de l'Excel (CA individuel, somme des CA vs CA_Total, IDs)
+      # 3. Controle approfondi du contenu de l'Excel (absence de NULLs sur champs obligatoires, CA individuel, somme vs total, IDs)
       df_xlsx_prod = pd.read_excel(xlsx_staging, sheet_name="CA_par_produit")
       df_xlsx_glob = pd.read_excel(xlsx_staging, sheet_name="CA_Total")
+
+      # Controle explicite des valeurs manquantes (NaN / null) sur les champs obligatoires avant comparaisons numeriques
+      mandatory_cols = ["product_id", "price", "total_sales", "chiffre_affaires"]
+      for col in mandatory_cols:
+          if col not in df_xlsx_prod.columns or df_xlsx_prod[col].isna().any():
+              raise ValueError(f"[TEST 5 KO] Valeur manquante ou NaN detectee sur le champ obligatoire '{col}' dans l'onglet CA_par_produit de l'Excel !")
 
       if len(df_xlsx_prod) != exp_total or set(df_xlsx_prod["product_id"].tolist()) != ref_ids:
           raise AssertionError("[TEST 5 KO] Incoherence des identifiants product_id ou du nombre de lignes dans l'onglet CA_par_produit.")
@@ -520,51 +526,24 @@ tasks:
       if not (df_prem["segment"] == "premium").all() or not (df_ord["segment"] == "ordinaire").all():
           raise AssertionError("[TEST 5 KO] Valeurs de la colonne 'segment' invalides dans les CSV !")
 
-      # 5. Publication atomique d'un dossier complet par execution et bascule vers le dernier lot valide
+      # 5. Publication atomique securisee : conservation des lots versionnés et bascule atomique unique de LAST_VALID_LOT.txt
       lots_root = os.path.join(output_dir, "lots")
       os.makedirs(lots_root, exist_ok=True)
       lot_dir = os.path.join(lots_root, f"lot_{exec_id}")
 
-      # Bascule atomique (renommage OS instantane) du dossier de staging complet vers le lot valide
+      # Deplacement/renommage du dossier staging vers le dossier lot versionné
       if os.path.exists(lot_dir):
           shutil.rmtree(lot_dir)
       os.replace(staging_dir, lot_dir)
 
-      # Mise a jour atomique du dossier 'dernier_lot_valide' (via preparation puis swap atomique)
-      active_lot_dir = os.path.join(output_dir, "dernier_lot_valide")
-      next_lot_tmp = os.path.join(output_dir, f".next_lot_{exec_id}")
-      prev_lot_bak = os.path.join(output_dir, f".prev_lot_{exec_id}")
-
-      if os.path.exists(next_lot_tmp):
-          shutil.rmtree(next_lot_tmp)
-      shutil.copytree(lot_dir, next_lot_tmp)
-
-      # Si une erreur survenait pendant copytree ci-dessus, 'dernier_lot_valide' n'est pas touche.
-      # Le swap ci-dessous utilise uniquement os.replace (renommage de repertoire atomique) :
-      if os.path.exists(prev_lot_bak):
-          shutil.rmtree(prev_lot_bak)
-      if os.path.exists(active_lot_dir):
-          os.replace(active_lot_dir, prev_lot_bak)
-      os.replace(next_lot_tmp, active_lot_dir)
-      if os.path.exists(prev_lot_bak):
-          shutil.rmtree(prev_lot_bak, ignore_errors=True)
-
-      # Pointeur atomique indiquant l'identifiant et le chemin du dernier lot valide
+      # Mise a jour atomique du pointeur LAST_VALID_LOT.txt (aucun fichier duplique a la racine, aucun mélange)
       pointer_tmp = os.path.join(output_dir, f".pointer_{exec_id}.tmp")
       pointer_final = os.path.join(output_dir, "LAST_VALID_LOT.txt")
       with open(pointer_tmp, "w", encoding="utf-8") as f:
           f.write(f"lot_{exec_id}\n{lot_dir}\n")
       os.replace(pointer_tmp, pointer_final)
 
-      # Synchronisation atomique des fichiers a la racine de /data/outputs depuis le lot deja valide
-      for fname in ["bottleneck.duckdb", "rapport_chiffre_affaires.xlsx", "vins_premium.csv", "vins_ordinaires.csv"]:
-          src_file = os.path.join(active_lot_dir, fname)
-          tmp_file = os.path.join(output_dir, f".tmp_{exec_id}_{fname}")
-          dst_file = os.path.join(output_dir, fname)
-          shutil.copy2(src_file, tmp_file)
-          os.replace(tmp_file, dst_file)
-
-      print(f"[TEST 5 & PUBLICATION ATOMIQUE OK] Lot complet 'lot_{exec_id}' valide et bascule sur '{active_lot_dir}' ({exp_total} produits, Somme CA={xlsx_sum_prod:.2f} EUR, {len(df_prem)} premium / {len(df_ord)} ordinaires).")
+      print(f"[TEST 5 & PUBLICATION ATOMIQUE SECURISEE OK] Lot versionne 'lot_{exec_id}' valide et pointe par LAST_VALID_LOT.txt ({exp_total} produits, Somme CA={xlsx_sum_prod:.2f} EUR, {len(df_prem)} premium / {len(df_ord)} ordinaires).")
 
 errors:
   - id: nettoyage_staging_et_alerte
@@ -579,12 +558,12 @@ errors:
 
       exec_id = "{{ execution.id }}"
       output_dir = "/data/outputs"
-      for d in [f".staging_{exec_id}", f".next_lot_{exec_id}"]:
+      for d in [f".staging_{exec_id}"]:
           p = os.path.join(output_dir, d)
           if os.path.exists(p):
               shutil.rmtree(p, ignore_errors=True)
 
-      print(f"[ALERTE INCIDENT BOTTLENECK] Echec du pipeline ({{ flow.id }}) lors de l'execution {exec_id}. Le dossier de staging a ete purge : le dernier lot valide dans /data/outputs/dernier_lot_valide est reste 100% intact (alerte tracee dans les logs Kestra uniquement).", file=sys.stderr)
+      print(f"[ALERTE INCIDENT BOTTLENECK] Echec du pipeline ({{ flow.id }}) lors de l'execution {exec_id}. Le dossier de staging a ete purge : le dernier lot valide pointe par LAST_VALID_LOT.txt est reste 100% intact (alerte tracee dans les logs Kestra uniquement).", file=sys.stderr)
 
 triggers:
   - id: planification_mensuelle_15_du_mois
@@ -593,4 +572,3 @@ triggers:
     timezone: Europe/Paris
     inputs:
       mode_validation: PRODUCTION_MENSUELLE
-
