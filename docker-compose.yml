@@ -9,7 +9,9 @@
       POSTGRES_USER: ${POSTGRES_USER:-kestra}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-k3str4_password}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d `${POSTGRES_DB:-kestra} -U `${POSTGRES_USER:-kestra}"]
+      test:
+        - CMD-SHELL
+        - 'pg_isready -d "$${POSTGRES_DB}" -U "$${POSTGRES_USER}"'
       interval: 5s
       timeout: 5s
       retries: 10
