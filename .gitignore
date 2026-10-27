@@ -13,3 +13,6 @@ data/outputs/*.duckdb.wal
 diagramme_fonctionnel_copil*
 
 *.tmp
+
+# Environment variables
+.env

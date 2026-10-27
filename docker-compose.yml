@@ -5,19 +5,18 @@
     volumes:
       - p10-postgres-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: kestra
-      POSTGRES_USER: kestra
-      POSTGRES_PASSWORD: k3str4_password
+      POSTGRES_DB: ${POSTGRES_DB:-kestra}
+      POSTGRES_USER: ${POSTGRES_USER:-kestra}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-k3str4_password}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      test: ["CMD-SHELL", "pg_isready -d $ -U $"]
       interval: 5s
       timeout: 5s
       retries: 10
 
   kestra:
-    image: kestra/kestra:latest
+    image: kestra/kestra:${KESTRA_VERSION:-v0.18.4}
     container_name: p10_kestra_orchestrator
-    pull_policy: never
     user: "root"
     command: server standalone
     volumes:
@@ -27,10 +26,10 @@
       KESTRA_CONFIGURATION: |
         datasources:
           postgres:
-            url: jdbc:postgresql://postgres:5432/kestra
+            url: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-kestra}
             driverClassName: org.postgresql.Driver
-            username: kestra
-            password: k3str4_password
+            username: ${POSTGRES_USER:-kestra}
+            password: ${POSTGRES_PASSWORD:-k3str4_password}
         kestra:
           repository:
             type: postgres

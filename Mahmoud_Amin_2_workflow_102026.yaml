@@ -1,6 +1,15 @@
 ﻿id: bottleneck_pipeline
 namespace: bottleneck.production
-description: "Pipeline d'orchestration des flux BottleNeck (ETL DuckDB & Python avec Tests Complets)"
+description: "Pipeline d'orchestration des flux BottleNeck (ETL DuckDB & Python avec Staging Atomique et Tests Complets)"
+
+inputs:
+  - id: mode_validation
+    type: SELECT
+    displayName: "Mode de contrôle qualité (Recette initiale ou Production mensuelle)"
+    defaults: RECETTE_INITIALE
+    values:
+      - RECETTE_INITIALE
+      - PRODUCTION_MENSUELLE
 
 retry:
   type: constant
@@ -10,7 +19,7 @@ retry:
 tasks:
   - id: t1_ingestion_et_nettoyage
     type: io.kestra.plugin.scripts.python.Script
-    description: "Tache 1 : Verification des sources, chargement dans DuckDB et suppression des valeurs manquantes (SQL)"
+    description: "Tache 1 : Verification des sources, initialisation du staging et suppression des valeurs manquantes (SQL)"
     taskRunner:
       type: io.kestra.plugin.core.runner.Process
     dependencies:
@@ -19,6 +28,7 @@ tasks:
       - openpyxl
     script: |
       import os
+      import shutil
       import warnings
       import duckdb
       import pandas as pd
@@ -26,8 +36,10 @@ tasks:
       warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
       input_dir = "/data/inputs"
-      output_dir = "/data/outputs"
-      os.makedirs(output_dir, exist_ok=True)
+      staging_dir = "/data/outputs/.staging_{{ execution.id }}"
+      if os.path.exists(staging_dir):
+          shutil.rmtree(staging_dir)
+      os.makedirs(staging_dir, exist_ok=True)
 
       files = {
           "erp": os.path.join(input_dir, "Fichier_erp.xlsx"),
@@ -43,7 +55,7 @@ tasks:
       df_liaison = pd.read_excel(files["liaison"], dtype={"id_web": str})
       df_web = pd.read_excel(files["web"], dtype={"sku": str})
 
-      db_path = os.path.join(output_dir, "bottleneck.duckdb")
+      db_path = os.path.join(staging_dir, "bottleneck.duckdb")
       with duckdb.connect(db_path) as con:
           con.execute("CREATE OR REPLACE TABLE raw_erp AS SELECT * FROM df_erp")
           con.execute("CREATE OR REPLACE TABLE raw_liaison AS SELECT * FROM df_liaison")
@@ -66,11 +78,11 @@ tasks:
           c_erp = con.execute("SELECT COUNT(*) FROM erp_clean").fetchone()[0]
           c_liaison = con.execute("SELECT COUNT(*) FROM liaison_clean").fetchone()[0]
           c_web = con.execute("SELECT COUNT(*) FROM web_clean").fetchone()[0]
-          print(f"[TACHE 1 OK] Lignes apres nettoyage -> erp_clean: {c_erp} | liaison_clean: {c_liaison} | web_clean: {c_web}")
+          print(f"[TACHE 1 OK] Staging cree ({staging_dir}) | Lignes nettoyees -> erp_clean: {c_erp} | liaison_clean: {c_liaison} | web_clean: {c_web}")
 
   - id: test1_valeurs_manquantes
     type: io.kestra.plugin.scripts.python.Script
-    description: "TEST 1 : Verification d'absence de valeurs manquantes et volumetrie web_clean (1428 lignes)"
+    description: "TEST 1 : Verification d'absence de valeurs manquantes et controle de volumetrie"
     taskRunner:
       type: io.kestra.plugin.core.runner.Process
     dependencies:
@@ -78,20 +90,26 @@ tasks:
     script: |
       import duckdb
 
-      db_path = "/data/outputs/bottleneck.duckdb"
+      mode = "{{ inputs.mode_validation }}"
+      db_path = "/data/outputs/.staging_{{ execution.id }}/bottleneck.duckdb"
       with duckdb.connect(db_path, read_only=True) as con:
           null_erp = con.execute("SELECT COUNT(*) FROM erp_clean WHERE product_id IS NULL").fetchone()[0]
           null_liaison = con.execute("SELECT COUNT(*) FROM liaison_clean WHERE product_id IS NULL").fetchone()[0]
-          null_web = con.execute("SELECT COUNT(*) FROM web_clean WHERE sku IS NULL OR TRIM(sku) = ''").fetchone()[0]
+          null_web = con.execute("SELECT COUNT(*) FROM web_clean WHERE sku IS NULL OR TRIM(sku) = '' OR LOWER(TRIM(sku)) = 'nan'").fetchone()[0]
+          count_erp = con.execute("SELECT COUNT(*) FROM erp_clean").fetchone()[0]
+          count_liaison = con.execute("SELECT COUNT(*) FROM liaison_clean").fetchone()[0]
           count_web = con.execute("SELECT COUNT(*) FROM web_clean").fetchone()[0]
 
       if null_erp > 0 or null_liaison > 0 or null_web > 0:
           raise ValueError(f"[TEST 1 KO] Valeurs NULL detectees ! erp: {null_erp}, liaison: {null_liaison}, web: {null_web}")
 
-      if count_web != 1428:
-          raise AssertionError(f"[TEST 1 KO] Volumetrie web_clean incorrecte : {count_web} lignes (attendu: 1428)")
+      if count_erp == 0 or count_liaison == 0 or count_web == 0:
+          raise AssertionError(f"[TEST 1 KO] Une table nettoyee est vide : erp={count_erp}, liaison={count_liaison}, web={count_web}")
 
-      print(f"[TEST 1 OK] 0 NULL sur les cles primaires & web_clean = {count_web} lignes exactes.")
+      if mode == "RECETTE_INITIALE" and count_web != 1428:
+          raise AssertionError(f"[TEST 1 KO - RECETTE] Volumetrie web_clean incorrecte : {count_web} lignes (attendu: 1428)")
+
+      print(f"[TEST 1 OK] Mode={mode} | 0 NULL sur les cles & web_clean = {count_web} lignes.")
 
   - id: t2_dedoublonnage
     type: io.kestra.plugin.scripts.python.Script
@@ -103,7 +121,7 @@ tasks:
     script: |
       import duckdb
 
-      db_path = "/data/outputs/bottleneck.duckdb"
+      db_path = "/data/outputs/.staging_{{ execution.id }}/bottleneck.duckdb"
       with duckdb.connect(db_path) as con:
           con.execute("""
               CREATE OR REPLACE TABLE erp_dedup AS
@@ -127,7 +145,7 @@ tasks:
 
   - id: test2_unicite_dedoublonnage
     type: io.kestra.plugin.scripts.python.Script
-    description: "TEST 2 : Verification de l'absence de doublons et de l'unicite des cles primaires (825 / 825 / 714)"
+    description: "TEST 2 : Verification de l'absence de doublons et de l'unicite des cles primaires"
     taskRunner:
       type: io.kestra.plugin.core.runner.Process
     dependencies:
@@ -135,7 +153,8 @@ tasks:
     script: |
       import duckdb
 
-      db_path = "/data/outputs/bottleneck.duckdb"
+      mode = "{{ inputs.mode_validation }}"
+      db_path = "/data/outputs/.staging_{{ execution.id }}/bottleneck.duckdb"
       with duckdb.connect(db_path, read_only=True) as con:
           erp_tot, erp_dist = con.execute("SELECT COUNT(*), COUNT(DISTINCT product_id) FROM erp_dedup").fetchone()
           lia_tot, lia_dist = con.execute("SELECT COUNT(*), COUNT(DISTINCT product_id) FROM liaison_dedup").fetchone()
@@ -144,10 +163,10 @@ tasks:
       if erp_tot != erp_dist or lia_tot != lia_dist or web_tot != web_dist:
           raise ValueError(f"[TEST 2 KO] Doublons detectes ! erp:{erp_tot}/{erp_dist}, liaison:{lia_tot}/{lia_dist}, web:{web_tot}/{web_dist}")
 
-      if erp_tot != 825 or lia_tot != 825 or web_tot != 714:
-          raise AssertionError(f"[TEST 2 KO] Volumetrie apres dedoublonnage non conforme : erp={erp_tot}, liaison={lia_tot}, web={web_tot}")
+      if mode == "RECETTE_INITIALE" and (erp_tot != 825 or lia_tot != 825 or web_tot != 714):
+          raise AssertionError(f"[TEST 2 KO - RECETTE] Volumetrie apres dedoublonnage non conforme : erp={erp_tot}, liaison={lia_tot}, web={web_tot}")
 
-      print(f"[TEST 2 OK] 0 doublon & cles uniques validees -> erp: {erp_tot} | liaison: {lia_tot} | web: {web_tot}")
+      print(f"[TEST 2 OK] Mode={mode} | 0 doublon & cles uniques validees -> erp: {erp_tot} | liaison: {lia_tot} | web: {web_tot}")
 
   - id: t3_fusion_jointure
     type: io.kestra.plugin.scripts.python.Script
@@ -159,7 +178,7 @@ tasks:
     script: |
       import duckdb
 
-      db_path = "/data/outputs/bottleneck.duckdb"
+      db_path = "/data/outputs/.staging_{{ execution.id }}/bottleneck.duckdb"
       with duckdb.connect(db_path) as con:
           con.execute("""
               CREATE OR REPLACE TABLE erp_web_merged AS
@@ -188,7 +207,7 @@ tasks:
 
   - id: test3_coherence_jointure
     type: io.kestra.plugin.scripts.python.Script
-    description: "TEST 3 : Verification de la coherence de la jointure (714 lignes, 0 NULL, price > 0)"
+    description: "TEST 3 : Verification de la coherence de la jointure (integrite referentielle, 0 NULL, price > 0)"
     taskRunner:
       type: io.kestra.plugin.core.runner.Process
     dependencies:
@@ -196,212 +215,278 @@ tasks:
     script: |
       import duckdb
 
-      db_path = "/data/outputs/bottleneck.duckdb"
+      mode = "{{ inputs.mode_validation }}"
+      db_path = "/data/outputs/.staging_{{ execution.id }}/bottleneck.duckdb"
       with duckdb.connect(db_path, read_only=True) as con:
           m_tot, m_dist = con.execute("SELECT COUNT(*), COUNT(DISTINCT product_id) FROM erp_web_merged").fetchone()
+          web_tot = con.execute("SELECT COUNT(*) FROM web_dedup").fetchone()[0]
           null_metrics = con.execute("SELECT COUNT(*) FROM erp_web_merged WHERE price IS NULL OR total_sales IS NULL").fetchone()[0]
           invalid_prices = con.execute("SELECT COUNT(*) FROM erp_web_merged WHERE price <= 0").fetchone()[0]
+          invalid_sales = con.execute("SELECT COUNT(*) FROM erp_web_merged WHERE total_sales < 0").fetchone()[0]
 
-      if m_tot != 714 or m_dist != 714:
-          raise AssertionError(f"[TEST 3 KO] Volumetrie jointure incoherente : {m_tot} lignes ({m_dist} uniques), attendu: 714")
+      if m_tot == 0 or m_tot != m_dist or m_tot != web_tot:
+          raise AssertionError(f"[TEST 3 KO] Jointure incoherente : fusion={m_tot} ({m_dist} uniques) vs web_dedup={web_tot}")
 
-      if null_metrics > 0:
-          raise ValueError(f"[TEST 3 KO] {null_metrics} lignes avec price ou total_sales NULL apres jointure")
+      if null_metrics > 0 or invalid_prices > 0 or invalid_sales > 0:
+          raise ValueError(f"[TEST 3 KO] Anomalies metriques : nulls={null_metrics}, prix<=0={invalid_prices}, ventes<0={invalid_sales}")
 
-      if invalid_prices > 0:
-          raise ValueError(f"[TEST 3 KO] {invalid_prices} produits avec un prix negatif ou nul (price <= 0)")
+      if mode == "RECETTE_INITIALE" and m_tot != 714:
+          raise AssertionError(f"[TEST 3 KO - RECETTE] Volumetrie jointure attendue=714, obtenue={m_tot}")
 
-      print(f"[TEST 3 OK] Jointure validee : {m_tot} lignes uniques, 0 NULL et 100% des prix > 0.")
+      print(f"[TEST 3 OK] Mode={mode} | Jointure validee : {m_tot} produits reconcilies, 0 NULL et 100% des prix > 0.")
 
-  - id: branches_analytiques_et_exports
+  - id: t4a_calcul_ca
+    type: io.kestra.plugin.scripts.python.Script
+    description: "Tache 4A : Calcul SQL (DuckDB) du CA par produit et du CA Total (ecriture sequencee)"
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    dependencies:
+      - duckdb
+    script: |
+      import duckdb
+
+      db_path = "/data/outputs/.staging_{{ execution.id }}/bottleneck.duckdb"
+      with duckdb.connect(db_path) as con:
+          con.execute("""
+              CREATE OR REPLACE TABLE ca_par_produit AS
+              SELECT
+                  product_id,
+                  sku,
+                  post_title,
+                  price,
+                  total_sales,
+                  ROUND(price * total_sales, 2) AS chiffre_affaires
+              FROM erp_web_merged
+              ORDER BY chiffre_affaires DESC;
+
+              CREATE OR REPLACE TABLE ca_global AS
+              SELECT
+                  COUNT(*) AS nb_produits,
+                  SUM(total_sales) AS total_bouteilles_vendues,
+                  ROUND(SUM(chiffre_affaires), 2) AS chiffre_affaires_total
+              FROM ca_par_produit;
+          """)
+
+          ca_tot = con.execute("SELECT chiffre_affaires_total FROM ca_global").fetchone()[0]
+          nb_prod = con.execute("SELECT COUNT(*) FROM ca_par_produit").fetchone()[0]
+          print(f"[TACHE 4A OK] Produits calcules : {nb_prod} | Chiffre d'affaires Total : {ca_tot:.2f} EUR")
+
+  - id: test4a_coherence_ca
+    type: io.kestra.plugin.scripts.python.Script
+    description: "TEST 4A : Controle des invariants financiers (CA = prix x ventes, Somme CA) + Recette (70568.60 EUR)"
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    dependencies:
+      - duckdb
+    script: |
+      import duckdb
+
+      mode = "{{ inputs.mode_validation }}"
+      db_path = "/data/outputs/.staging_{{ execution.id }}/bottleneck.duckdb"
+      with duckdb.connect(db_path, read_only=True) as con:
+          nb_merged = con.execute("SELECT COUNT(*) FROM erp_web_merged").fetchone()[0]
+          nb_lignes = con.execute("SELECT COUNT(*) FROM ca_par_produit").fetchone()[0]
+          neg_ca = con.execute("SELECT COUNT(*) FROM ca_par_produit WHERE chiffre_affaires < 0 OR chiffre_affaires IS NULL").fetchone()[0]
+          bad_formula = con.execute("""
+              SELECT COUNT(*) FROM ca_par_produit
+              WHERE ABS(chiffre_affaires - ROUND(price * total_sales, 2)) > 0.001
+          """).fetchone()[0]
+          sum_lines = con.execute("SELECT ROUND(SUM(chiffre_affaires), 2) FROM ca_par_produit").fetchone()[0]
+          ca_tot = con.execute("SELECT chiffre_affaires_total FROM ca_global").fetchone()[0]
+
+      if nb_lignes != nb_merged:
+          raise AssertionError(f"[TEST 4A KO] Nombre de produits incoherent : {nb_lignes} vs {nb_merged}")
+
+      if neg_ca > 0 or bad_formula > 0:
+          raise ValueError(f"[TEST 4A KO] Formule CA invalide : neg_ou_null={neg_ca}, ecart_prix_x_ventes={bad_formula}")
+
+      if round(float(sum_lines), 2) != round(float(ca_tot), 2):
+          raise AssertionError(f"[TEST 4A KO] Incoherence Somme(CA_produit)={sum_lines} vs CA_Total={ca_tot}")
+
+      if mode == "RECETTE_INITIALE" and (nb_lignes != 714 or round(float(ca_tot), 2) != 70568.60):
+          raise AssertionError(f"[TEST 4A KO - RECETTE] Attendu: 714 produits & 70568.60 EUR | Obtenu: {nb_lignes} & {ca_tot} EUR")
+
+      print(f"[TEST 4A OK] Mode={mode} | Formule CA=prix*ventes & Somme validees : {nb_lignes} produits, CA Total = {ca_tot:.2f} EUR.")
+
+  - id: t4b_calcul_zscore
+    type: io.kestra.plugin.scripts.python.Script
+    description: "Tache 4B : Calcul Python du Z-Score des prix pour reperer les vins premium (ecriture sequencee)"
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    dependencies:
+      - duckdb
+      - pandas
+    script: |
+      import duckdb
+      import pandas as pd
+
+      db_path = "/data/outputs/.staging_{{ execution.id }}/bottleneck.duckdb"
+      with duckdb.connect(db_path) as con:
+          df = con.execute("SELECT * FROM erp_web_merged").df()
+
+          prices = df["price"]
+          mean_price = prices.mean()
+          std_price = prices.std(ddof=0)
+          if std_price == 0 or pd.isna(std_price):
+              raise ValueError("Ecart-type des prix nul ou invalide, calcul du Z-Score impossible.")
+
+          df["z_score"] = (prices - mean_price) / std_price
+          con.execute("CREATE OR REPLACE TABLE erp_web_zscore AS SELECT * FROM df")
+
+      print(f"[TACHE 4B OK] Z-Score des prix calcule pour {len(df)} produits (Moyenne: {mean_price:.2f} EUR, Ecart-type: {std_price:.2f} EUR)")
+
+  - id: test4b_coherence_zscore
+    type: io.kestra.plugin.scripts.python.Script
+    description: "TEST 4B : Verification de la partition complete des segments Z-Score + Recette (30 Premium / 684 Ordinaires)"
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    dependencies:
+      - duckdb
+    script: |
+      import duckdb
+
+      mode = "{{ inputs.mode_validation }}"
+      db_path = "/data/outputs/.staging_{{ execution.id }}/bottleneck.duckdb"
+      with duckdb.connect(db_path, read_only=True) as con:
+          nb_merged = con.execute("SELECT COUNT(*) FROM erp_web_merged").fetchone()[0]
+          total = con.execute("SELECT COUNT(*) FROM erp_web_zscore").fetchone()[0]
+          null_z = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score IS NULL OR isnan(z_score)").fetchone()[0]
+          premium = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score > 2").fetchone()[0]
+          ordinaire = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score <= 2").fetchone()[0]
+
+      if null_z > 0:
+          raise ValueError(f"[TEST 4B KO] {null_z} valeurs de z_score NULL ou NaN detectees.")
+
+      if total != nb_merged or (premium + ordinaire) != total:
+          raise AssertionError(f"[TEST 4B KO] Partition incomplete : Premium({premium}) + Ordinaire({ordinaire}) != Total({total})")
+
+      if mode == "RECETTE_INITIALE" and (total != 714 or premium != 30 or ordinaire != 684):
+          raise AssertionError(f"[TEST 4B KO - RECETTE] Attendu 30 Premium / 684 Ordinaires (714) | Obtenu {premium} / {ordinaire} ({total})")
+
+      print(f"[TEST 4B OK] Mode={mode} | Partition Z-Score validee -> Vins Premium (prix z > 2): {premium} | Vins Ordinaires (z <= 2): {ordinaire} | Total: {total}")
+
+  - id: exports_paralleles_staging
     type: io.kestra.plugin.core.flow.Parallel
-    description: "Execution parallele : Branche Gauche (Reporting CA SQL/Excel) & Branche Droite (Segmentation Z-Score Python/CSV)"
+    description: "Lectures DuckDB (read_only) et generation parallele des fichiers dans le dossier de staging isole"
     tasks:
-      - id: branche_gauche_reporting_ca
-        type: io.kestra.plugin.core.flow.Sequential
-        tasks:
-          - id: t4a_calcul_ca
-            type: io.kestra.plugin.scripts.python.Script
-            description: "Tache 4A : Calcul SQL (DuckDB) du CA par produit et du CA Total"
-            taskRunner:
-              type: io.kestra.plugin.core.runner.Process
-            dependencies:
-              - duckdb
-            script: |
-              import duckdb
+      - id: ext_rapport_ca_xlsx
+        type: io.kestra.plugin.scripts.python.Script
+        description: "Generation en staging du rapport financier Excel (.xlsx) avec 2 onglets (CA par produit & CA Total)"
+        taskRunner:
+          type: io.kestra.plugin.core.runner.Process
+        dependencies:
+          - duckdb
+          - pandas
+          - openpyxl
+        script: |
+          import duckdb
+          import pandas as pd
 
-              db_path = "/data/outputs/bottleneck.duckdb"
-              with duckdb.connect(db_path) as con:
-                  con.execute("""
-                      CREATE OR REPLACE TABLE ca_par_produit AS
-                      SELECT
-                          product_id,
-                          sku,
-                          post_title,
-                          price,
-                          total_sales,
-                          ROUND(price * total_sales, 2) AS chiffre_affaires
-                      FROM erp_web_merged
-                      ORDER BY chiffre_affaires DESC;
+          staging_dir = "/data/outputs/.staging_{{ execution.id }}"
+          db_path = f"{staging_dir}/bottleneck.duckdb"
+          excel_path = f"{staging_dir}/rapport_chiffre_affaires.xlsx"
 
-                      CREATE OR REPLACE TABLE ca_global AS
-                      SELECT
-                          COUNT(*) AS nb_produits,
-                          SUM(total_sales) AS total_bouteilles_vendues,
-                          ROUND(SUM(chiffre_affaires), 2) AS chiffre_affaires_total
-                      FROM ca_par_produit;
-                  """)
+          with duckdb.connect(db_path, read_only=True) as con:
+              df_ca_prod = con.execute("SELECT * FROM ca_par_produit").df()
+              df_ca_glob = con.execute("SELECT * FROM ca_global").df()
 
-                  ca_tot = con.execute("SELECT chiffre_affaires_total FROM ca_global").fetchone()[0]
-                  nb_prod = con.execute("SELECT COUNT(*) FROM ca_par_produit").fetchone()[0]
-                  print(f"[TACHE 4A OK] Produits calcules : {nb_prod} | Chiffre d'affaires Total : {ca_tot:.2f} EUR")
+          with pd.ExcelWriter(excel_path, engine="openpyxl") as writer:
+              df_ca_prod.to_excel(writer, sheet_name="CA_par_produit", index=False)
+              df_ca_glob.to_excel(writer, sheet_name="CA_Total", index=False)
 
-          - id: test4a_coherence_ca
-            type: io.kestra.plugin.scripts.python.Script
-            description: "TEST 4A : Verification de la coherence financiere du CA (714 produits, CA Total = 70568.60 EUR)"
-            taskRunner:
-              type: io.kestra.plugin.core.runner.Process
-            dependencies:
-              - duckdb
-            script: |
-              import duckdb
+          print(f"[STAGING EXCEL OK] {excel_path} ({len(df_ca_prod)} produits)")
 
-              db_path = "/data/outputs/bottleneck.duckdb"
-              with duckdb.connect(db_path, read_only=True) as con:
-                  nb_lignes = con.execute("SELECT COUNT(*) FROM ca_par_produit").fetchone()[0]
-                  neg_ca = con.execute("SELECT COUNT(*) FROM ca_par_produit WHERE chiffre_affaires < 0 OR chiffre_affaires IS NULL").fetchone()[0]
-                  ca_tot = con.execute("SELECT chiffre_affaires_total FROM ca_global").fetchone()[0]
+      - id: ext_exports_csv
+        type: io.kestra.plugin.scripts.python.Script
+        description: "Generation en staging des fichiers CSV (vins_premium.csv & vins_ordinaires.csv)"
+        taskRunner:
+          type: io.kestra.plugin.core.runner.Process
+        dependencies:
+          - duckdb
+          - pandas
+        script: |
+          import duckdb
+          import pandas as pd
 
-              if nb_lignes != 714:
-                  raise AssertionError(f"[TEST 4A KO] Nombre de produits dans ca_par_produit incorrect : {nb_lignes} (attendu: 714)")
+          staging_dir = "/data/outputs/.staging_{{ execution.id }}"
+          db_path = f"{staging_dir}/bottleneck.duckdb"
 
-              if neg_ca > 0:
-                  raise ValueError(f"[TEST 4A KO] {neg_ca} lignes avec un chiffre d'affaires negatif ou NULL")
+          with duckdb.connect(db_path, read_only=True) as con:
+              df = con.execute("SELECT * FROM erp_web_zscore").df()
 
-              if round(float(ca_tot), 2) != 70568.60:
-                  raise AssertionError(f"[TEST 4A KO] Chiffre d'affaires total incoherent : {ca_tot} EUR (attendu: 70568.60 EUR)")
+          df_premium = df[df["z_score"] > 2].copy()
+          df_ordinaire = df[df["z_score"] <= 2].copy()
 
-              print(f"[TEST 4A OK] Coherence financiere validee : {nb_lignes} produits & CA Total = {ca_tot:.2f} EUR.")
+          df_premium.to_csv(f"{staging_dir}/vins_premium.csv", index=False, encoding="utf-8")
+          df_ordinaire.to_csv(f"{staging_dir}/vins_ordinaires.csv", index=False, encoding="utf-8")
 
-          - id: ext_rapport_ca_xlsx
-            type: io.kestra.plugin.scripts.python.Script
-            description: "Extraction du rapport financier au format Excel (.xlsx) avec 2 onglets (CA par produit & CA Total)"
-            taskRunner:
-              type: io.kestra.plugin.core.runner.Process
-            dependencies:
-              - duckdb
-              - pandas
-              - openpyxl
-            script: |
-              import duckdb
-              import pandas as pd
+          print(f"[STAGING CSV OK] vins_premium.csv ({len(df_premium)} lignes) & vins_ordinaires.csv ({len(df_ordinaire)} lignes)")
 
-              db_path = "/data/outputs/bottleneck.duckdb"
-              excel_path = "/data/outputs/rapport_chiffre_affaires.xlsx"
+  - id: test5_et_publication_atomique
+    type: io.kestra.plugin.scripts.python.Script
+    description: "TEST 5 & PUBLICATION : Controle des fichiers exportes en staging puis publication atomique vers /data/outputs"
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    dependencies:
+      - duckdb
+      - pandas
+      - openpyxl
+    script: |
+      import os
+      import shutil
+      import duckdb
+      import pandas as pd
 
-              with duckdb.connect(db_path, read_only=True) as con:
-                  df_ca_prod = con.execute("SELECT * FROM ca_par_produit").df()
-                  df_ca_glob = con.execute("SELECT * FROM ca_global").df()
+      staging_dir = "/data/outputs/.staging_{{ execution.id }}"
+      output_dir = "/data/outputs"
+      db_staging = os.path.join(staging_dir, "bottleneck.duckdb")
+      xlsx_staging = os.path.join(staging_dir, "rapport_chiffre_affaires.xlsx")
+      prem_staging = os.path.join(staging_dir, "vins_premium.csv")
+      ord_staging = os.path.join(staging_dir, "vins_ordinaires.csv")
 
-              with pd.ExcelWriter(excel_path, engine="openpyxl") as writer:
-                  df_ca_prod.to_excel(writer, sheet_name="CA_par_produit", index=False)
-                  df_ca_glob.to_excel(writer, sheet_name="CA_Total", index=False)
+      for fpath in [db_staging, xlsx_staging, prem_staging, ord_staging]:
+          if not os.path.exists(fpath) or os.path.getsize(fpath) == 0:
+              raise FileNotFoundError(f"[TEST 5 KO] Fichier d'export manquant ou vide en staging : {fpath}")
 
-              print(f"[EXPORT EXCEL OK] Fichier genere : {excel_path} ({len(df_ca_prod)} produits, CA Total = {df_ca_glob['chiffre_affaires_total'].iloc[0]:.2f} EUR)")
+      with duckdb.connect(db_staging, read_only=True) as con:
+          exp_total = con.execute("SELECT COUNT(*) FROM erp_web_merged").fetchone()[0]
+          exp_ca = round(float(con.execute("SELECT chiffre_affaires_total FROM ca_global").fetchone()[0]), 2)
+          exp_prem = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score > 2").fetchone()[0]
+          exp_ord = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score <= 2").fetchone()[0]
 
-      - id: branche_droite_segmentation_zscore
-        type: io.kestra.plugin.core.flow.Sequential
-        tasks:
-          - id: t4b_calcul_zscore
-            type: io.kestra.plugin.scripts.python.Script
-            description: "Tache 4B : Calcul du Z-Score des prix (Python)"
-            taskRunner:
-              type: io.kestra.plugin.core.runner.Process
-            dependencies:
-              - duckdb
-              - pandas
-            script: |
-              import duckdb
-              import pandas as pd
+      df_xlsx_prod = pd.read_excel(xlsx_staging, sheet_name="CA_par_produit")
+      df_xlsx_glob = pd.read_excel(xlsx_staging, sheet_name="CA_Total")
+      df_prem = pd.read_csv(prem_staging)
+      df_ord = pd.read_csv(ord_staging)
 
-              db_path = "/data/outputs/bottleneck.duckdb"
-              with duckdb.connect(db_path, read_only=True) as con:
-                  df = con.execute("SELECT * FROM erp_web_merged").df()
+      xlsx_ca = round(float(df_xlsx_glob["chiffre_affaires_total"].iloc[0]), 2)
+      if len(df_xlsx_prod) != exp_total or xlsx_ca != exp_ca:
+          raise AssertionError(f"[TEST 5 KO] Export Excel incoherent : {len(df_xlsx_prod)} lignes (attendu {exp_total}), CA={xlsx_ca} (attendu {exp_ca})")
 
-              prices = df["price"]
-              mean_price = prices.mean()
-              std_price = prices.std(ddof=0)
+      if len(df_prem) != exp_prem or len(df_ord) != exp_ord or (len(df_prem) + len(df_ord)) != exp_total:
+          raise AssertionError(f"[TEST 5 KO] Exports CSV incoherents : premium={len(df_prem)}, ordinaires={len(df_ord)}, total={exp_total}")
 
-              df["z_score"] = (prices - mean_price) / std_price
-              
-              # Sauvegarde temporaire du DataFrame enrichi dans DuckDB pour le test et les exports
-              with duckdb.connect(db_path) as con:
-                  con.execute("CREATE OR REPLACE TABLE erp_web_zscore AS SELECT * FROM df")
+      # Publication atomique vers /data/outputs uniquement apres succes complet de toutes les branches
+      for fname in ["bottleneck.duckdb", "rapport_chiffre_affaires.xlsx", "vins_premium.csv", "vins_ordinaires.csv"]:
+          src = os.path.join(staging_dir, fname)
+          dst = os.path.join(output_dir, fname)
+          shutil.copy2(src, dst)
 
-              print(f"[TACHE 4B OK] Z-Score calcule pour {len(df)} produits (Moyenne: {mean_price:.2f}, Ecart-type: {std_price:.2f})")
-
-          - id: test4b_coherence_zscore
-            type: io.kestra.plugin.scripts.python.Script
-            description: "TEST 4B : Verification de la volumetrie de segmentation (30 Premium, 684 Ordinaires, Total 714)"
-            taskRunner:
-              type: io.kestra.plugin.core.runner.Process
-            dependencies:
-              - duckdb
-            script: |
-              import duckdb
-
-              db_path = "/data/outputs/bottleneck.duckdb"
-              with duckdb.connect(db_path, read_only=True) as con:
-                  total = con.execute("SELECT COUNT(*) FROM erp_web_zscore").fetchone()[0]
-                  premium = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score > 2").fetchone()[0]
-                  ordinaire = con.execute("SELECT COUNT(*) FROM erp_web_zscore WHERE z_score <= 2").fetchone()[0]
-
-              if total != 714:
-                  raise AssertionError(f"[TEST 4B KO] Total produits incorrect : {total} (attendu: 714)")
-
-              if premium != 30:
-                  raise AssertionError(f"[TEST 4B KO] Nombre de vins premium incorrect : {premium} (attendu: 30)")
-
-              if ordinaire != 684:
-                  raise AssertionError(f"[TEST 4B KO] Nombre de vins ordinaires incorrect : {ordinaire} (attendu: 684)")
-
-              print(f"[TEST 4B OK] Segmentation validee -> Vins Premium (z > 2): {premium} | Vins Ordinaires (z <= 2): {ordinaire} | Total: {total}")
-
-          - id: ext_exports_csv
-            type: io.kestra.plugin.scripts.python.Script
-            description: "Extraction des fichiers CSV finaux (vins_premium.csv & vins_ordinaires.csv)"
-            taskRunner:
-              type: io.kestra.plugin.core.runner.Process
-            dependencies:
-              - duckdb
-              - pandas
-            script: |
-              import os
-              import duckdb
-              import pandas as pd
-
-              db_path = "/data/outputs/bottleneck.duckdb"
-              output_dir = "/data/outputs"
-
-              with duckdb.connect(db_path, read_only=True) as con:
-                  df = con.execute("SELECT * FROM erp_web_zscore").df()
-
-              df_premium = df[df["z_score"] > 2].copy()
-              df_ordinaire = df[df["z_score"] <= 2].copy()
-
-              premium_path = os.path.join(output_dir, "vins_premium.csv")
-              ordinaire_path = os.path.join(output_dir, "vins_ordinaires.csv")
-
-              df_premium.to_csv(premium_path, index=False, encoding="utf-8")
-              df_ordinaire.to_csv(ordinaire_path, index=False, encoding="utf-8")
-
-              print(f"[EXPORT CSV OK] Fichiers generes : vins_premium.csv ({len(df_premium)} lignes) & vins_ordinaires.csv ({len(df_ordinaire)} lignes)")
+      shutil.rmtree(staging_dir, ignore_errors=True)
+      print(f"[TEST 5 & PUBLICATION ATOMIQUE OK] Fichiers verifies et publies dans {output_dir} ({exp_total} produits, CA={exp_ca:.2f} EUR, {exp_prem} premium / {exp_ord} ordinaires).")
 
 errors:
-  - id: alerte_equipe_data
-    type: io.kestra.plugin.core.log.Log
-    level: ERROR
-    message: "[ALERTE CRITIQUE BOTTLENECK] Echec du pipeline ({{ flow.id }}) lors de l'execution {{ execution.id }}. Aucun fichier corrompu n'a ete transmis."
+  - id: nettoyage_staging_et_alerte
+    type: io.kestra.plugin.scripts.python.Script
+    description: "Nettoyage du dossier de staging isole et journalisation de l'alerte d'incident dans Kestra"
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    script: |
+      import shutil
+      import sys
+      staging_dir = "/data/outputs/.staging_{{ execution.id }}"
+      shutil.rmtree(staging_dir, ignore_errors=True)
+      print("[ALERTE INCIDENT BOTTLENECK] Echec du pipeline ({{ flow.id }}) lors de l'execution {{ execution.id }}. Le dossier de staging a ete purge : les fichiers de production precedents dans /data/outputs sont restes 100% intacts.", file=sys.stderr)
 
 triggers:
   - id: planification_mensuelle_15_du_mois
